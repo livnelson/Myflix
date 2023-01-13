@@ -1,7 +1,15 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+User.destroy_all
+Avatar.destroy_all
+
+puts "Seeding Avatars 👤"
+Avatar.create(name: "Myflix-1", imgUrl:'%PUBLIC_URL%/avatars/myflix-1.jpg')
+Avatar.create(name: "Myflix-2", imgUrl:'%PUBLIC_URL%/avatars/myflix-2.jpg')
+Avatar.create(name: "Myflix-3", imgUrl:'%PUBLIC_URL%/avatars/myflix-3.jpg')
+Avatar.create(name: "Myflix-4", imgUrl:'%PUBLIC_URL%/avatars/myflix-4.jpg')
+Avatar.create(name: "Myflix-5", imgUrl:'%PUBLIC_URL%/avatars/myflix-5.jpg')
+Avatar.create(name: "Myflix-6", imgUrl:'%PUBLIC_URL%/avatars/myflix-6.jpg')
+
+puts "Seeding Users 🙂"
+liv = User.create(username: "liv", password: "12345678", first_name: "Liv", last_name: "N", profile_img:'%PUBLIC_URL%/avatars/myflix-2.jpg')
+
+puts "Done Seeding 🌱"

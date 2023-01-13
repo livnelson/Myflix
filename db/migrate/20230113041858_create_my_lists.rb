@@ -8,6 +8,7 @@ class CreateMyLists < ActiveRecord::Migration[7.0]
       t.string :overview
       t.integer :vote_average
       t.integer :vote_count
+      t.integer :movie_id
       t.belongs_to :user
       t.timestamps
     end
