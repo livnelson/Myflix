@@ -1,0 +1,131 @@
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.modal-content {
+  width: 600px;
+  background-color: #101010;
+}
+
+.modal-header, .modal-footer {
+  padding: 10px;
+}
+
+.modal-title {
+  margin-top: -50px;
+  font-size: 32px;
+}
+
+.modal-body {
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  line-height: 1.25;
+}
+
+.modal-image {
+  width:100%;
+}
+
+.modal-button {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  text-align: right;
+  font-size: 24px;
+  padding-top: 5px;
+  padding-left: 5px;
+}
+
+.modal-button:hover {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.modal-fade-bottom {
+  margin-top: -30px;
+  padding: 0;
+  height: 30px;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+} 
+
+.modal-play-button {
+  border: none;
+  border-radius: 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.modal-details {
+  display: flex;
+  grid-column-start: 20, 20, 20, 20, 20;
+  padding-left: 10px;
+  justify-items: center;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.modal-likes{
+  margin-left: 10px;
+}
+
+.modal-likes:hover{
+  color: #c40f14;
+  cursor: pointer;
+}
+
+.modal-list{
+  padding-left: 10px;
+}
+
+.modal-list:hover{
+  color: #c40f14;
+  cursor: pointer;
+}
+
+.modal-rating{
+  align-content: flex-end;
+  padding-left: 10px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.modal-votes{
+  align-content: flex-end;
+  padding-left: 10px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.modal-date {
+  align-content: flex-end;
+  padding-left: 10px;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.fave-movie {
+  object-fit: contain;
+  width: 150px;
+  max-height: 130px;
+  margin-right: 10px;
+  transition: transform 450ms;
+}
