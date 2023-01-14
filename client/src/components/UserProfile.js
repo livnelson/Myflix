@@ -26,7 +26,7 @@ function UserProfile({ user, setUser }) {
           console.log('User Deleted')
           navigate('/')
         } else {
-          res.json().then(data => setErrors(Object.entries(data.errors).map(e => `${e[0]} ${e[1]}`)))
+          res.json().then((err) => setErrors(err.errors));
         }
       })
   }
@@ -60,7 +60,7 @@ function UserProfile({ user, setUser }) {
   return (
     <div>
       <div className='user-profile'>
-        <Link to='/UserHome' onClick={goToHome} className='back-link'>← Back to Home</Link>
+        <Link to='/' onClick={goToHome} className='back-link'>← Back to Home</Link>
         <img src={user.avatar} alt={user.username} className='avatar' />
         <h1 className='greeting'>Hello {user.first_name}!</h1>
         <button className="button" type="submit" onClick={handleShowEdit}>Edit  Profile</button>

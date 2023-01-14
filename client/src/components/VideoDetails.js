@@ -11,27 +11,27 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
     setViewDetails(!viewDetails)
   }
 
-  function toggleLike() {
-    setLike(!like)
-  }
+  // function toggleLike() {
+  //   setLike(!like)
+  // }
 
   function handleLikes() {
     console.log("liked");
     setLike(!like)
-    // const likeObj = { vote_count: (movie.vote_count += 1) };
-    // const configObject = {
-    //   method: "PATCH",
-    //   headers: {
-    //     "content-type": "application/JSON",
-    //   },
-    //   body: JSON.stringify(likeObj),
-    // };
-    // fetch(`voteCount/${movie.id}`, configObject)
-    //   .then((r) => r.json())
-    //   .then((votes) => {
-    //     console.log(votes);
-    //     setVoteCount(votes);
-    //   });
+    const likeObj = { voteCount: (movie.vote_count += 1) };
+    const configObject = {
+      method: "PATCH",
+      headers: {
+        "content-type": "application/JSON",
+      },
+      body: JSON.stringify(likeObj),
+    };
+    fetch(`vote_count/${movie.id}`, configObject)
+      .then((r) => r.json())
+      .then((votes) => {
+        console.log(votes);
+        // setVoteCount(votes);
+      });
   }
 
   function handleAddToList(e) {
@@ -42,7 +42,7 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
       name: (movie.title || movie.name || movie.original_name),
       poster_path: (movie.poster_path),
       user_id: (user.id),
-      movie_id: (movie.id)
+      movie_id: (movie.movie_id)
     };
     console.log(movieObj);
 
@@ -75,7 +75,7 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
         </div>
         <div className='modal-details'>
           <button className='modal-play-button'>▶ Play</button>
-          <p onClick={handleLikes} className='modal-likes'>{like ? '♥' : '♡'}</p>
+          <p onClick={handleLikes} className='modal-likes'>{voteCount ? '♥' : '♡'}</p>
           <p onClick={handleAddToList} className='modal-list'>{addToList ? '✓' : '﹢'}</p>
           <p className='modal-rating'><strong>Rating:</strong> <em>{movie.vote_average}</em></p>
           <p className='modal-votes'><strong>Comminity Votes:</strong> <em>{movie.vote_count}</em></p>

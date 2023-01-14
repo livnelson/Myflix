@@ -24,5 +24,7 @@ Rails.application.routes.draw do
   get "/avatars", to: "avatars#index"
 
   get "allfaves", to: "my_lists#index"
+
+  patch "/vote_count/:movie_id", to: "my_lists#update"
   
 end

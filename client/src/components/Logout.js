@@ -10,7 +10,7 @@ function Logout({ user, setIsLoggedIn }) {
       method: "DELETE",
     })
     console.log("User logged out")
-    navigate("/");
+    navigate("/login");
     setIsLoggedIn(false);
   }
 
