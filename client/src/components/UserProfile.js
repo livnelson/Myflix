@@ -3,12 +3,17 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import EditProfile from './EditProfile'
 import FaveMovie from './FaveMovie'
+import YouTube from 'react-youtube'
+import movieTrailer from "movie-trailer"
 import '../styles/UserProfile.css'
+
+const base_url = "http://image.tmdb.org/t/p/original/"
 
 function UserProfile({ user, setUser }) {
   const [showEdit, setShowEdit] = useState(false)
   const [myFaves, setMyFaves] = useState([])
   const [errors, setErrors] = useState(false)
+  const [trailerURL, setTrailerURL] = useState('')
 
   const navigate = useNavigate();
 
@@ -23,8 +28,9 @@ function UserProfile({ user, setUser }) {
     })
       .then(res => {
         if (res.ok) {
-          console.log('User Deleted')
+          setUser(null)
           navigate('/')
+          console.log('User Deleted')
         } else {
           res.json().then((err) => setErrors(err.errors));
         }
@@ -32,7 +38,7 @@ function UserProfile({ user, setUser }) {
   }
 
   function goToHome() {
-    navigate('/UserHome')
+    navigate('/')
   }
 
   useEffect(() => {
@@ -52,25 +58,32 @@ function UserProfile({ user, setUser }) {
       })
   }, [])
 
-  const mappedFaves = myFaves.map(movie =>{
-    return <FaveMovie key={movie.id} name={movie.name} poster_path={movie.poster_path} />
+  const deleteMovie = (name) => setMyFaves(current => current.filter(p => p.name !== name))
+
+  const filteredFaves = myFaves.filter((fave) => {
+    if (fave.user_id === user.id) return true
+})
+
+  const mappedFaves = filteredFaves.map(movie => {
+    return <FaveMovie key={movie.id} id={movie.id} name={movie.name} poster_path={movie.poster_path} overview={movie.overview} deleteMovie={deleteMovie} />
   })
 
-
-  return (
-    <div>
+  return ( 
+    <div className='user-profile-page'>
+      <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       <div className='user-profile'>
         <Link to='/' onClick={goToHome} className='back-link'>← Back to Home</Link>
-        <img src={user.avatar} alt={user.username} className='avatar' />
+        <img src={user.profile_img} alt={user.username} className='user-avatar' />
         <h1 className='greeting'>Hello {user.first_name}!</h1>
-        <button className="button" type="submit" onClick={handleShowEdit}>Edit  Profile</button>
         {showEdit ? <EditProfile user={user} setUser={setUser} /> : null}
+        <button className="button" type="submit" onClick={handleShowEdit}>Edit  Profile</button>
         <button className="button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
       </div>
-      <h2 className='my-faves'>My Faves List</h2>
-      <div className='myfaves-movies'>
-        <div className='myfave-posters'>
-      {mappedFaves}
+      <br />
+      <h2 className='fave-greeting'>My Faves List</h2>
+      <div className='faves-row'>
+        <div  className='faves-row-posters'>
+          {mappedFaves}
         </div>
       </div>
     </div>

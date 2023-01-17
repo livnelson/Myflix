@@ -1,6 +1,7 @@
 // client/src/components/EditProfile.js
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../styles/EditProfile.css'
 
 function EditProfile({ user, setUser }) {
   const [errors, setErrors] = useState(false)
@@ -58,7 +59,7 @@ function EditProfile({ user, setUser }) {
           res.json().then(updatedUser => {
             console.log(updatedUser)
             setUser(updatedUser)
-            navigate('/UserHome')
+            navigate('/')
           })
         } else {
           res.json().then(json => setErrors(json.errors))
@@ -68,8 +69,8 @@ function EditProfile({ user, setUser }) {
 
   return (
     <div>
-      <div className="new-user-card">
-        <div className="create-user-form">
+      <div className="edit-user-card">
+        <div className="edit-user-form">
 
           <form onSubmit={handleEditUser}>
             <h3>Edit Your Profile</h3>
@@ -100,7 +101,7 @@ function EditProfile({ user, setUser }) {
               value={editFirstName}
               placeholder="Enter your first name"
               onChange={handleFirstNameChange}
-              required
+              
             />
             <br />
             <input
@@ -110,7 +111,7 @@ function EditProfile({ user, setUser }) {
               value={editLastName}
               placeholder="Enter your last name"
               onChange={handleLastNameChange}
-              required
+              
             />
             <br />
             <input
@@ -119,10 +120,10 @@ function EditProfile({ user, setUser }) {
               value={editAvatar}
               placeholder="Choose your avatar"
               onChange={handlAvatarChange}
-              required
+              
             />
             <br />
-            <button className="button" type="submit">Update Profile</button>
+            <button className="button" type="submit">Save Changes</button>
           </form>
           <br />
         </div>

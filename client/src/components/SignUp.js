@@ -1,17 +1,15 @@
 // client/src/components/SignUp.js
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import Avatar from './Avatar'
 import '../styles/SignUp.css'
 
-function CreateUser({ setUser }) {
+function SignUpForm({ setUser, avatars }) {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [profileImg, setProfileImg] = useState("");
-  const [avatars, setAvatars] = useState([]);
 
   const navigate = useNavigate();
 
@@ -31,9 +29,9 @@ function CreateUser({ setUser }) {
     setLastName(e.target.value);
   }
 
-  function handlProfileImgChange(e) {
-    setProfileImg(e.target.value);
-  }
+  // function handlProfileImgChange(e) {
+  //   setProfileImg(e.target.value);
+  // }
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -65,109 +63,103 @@ function CreateUser({ setUser }) {
         setPassword("")
         setProfileImg("")
         setUser(user)
-        navigate(`/UserHome`)
+        navigate(`/`)
       });
   }
 
-  // const mappedAvatars = avatars.map((avatar) => {
-  //   return <Avatar key={avatar.id} id={avatar.id} name={avatar.name} img_url={avatar.img_url} />
-  // })
+  const mappedAvatars = avatars.map((avatar) => (
+    <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
+  ))
+
+  const handleAvatarClick = (avatar) => {
+    console.log(avatar.id)
+    setProfileImg(avatar.imgUrl);
+  }
 
   return (
-    <div>
-      <div className="signup-card">
-        <Link to="/" className="back-link">← Back to Log In</Link>
-        <h1 className='greeting'>Welcome to Myflix!</h1>
-        <div className="signup-form">
-          <form onSubmit={handleSubmit}>
-            <input
-              className="input-field"
-              name="username"
-              type="text"
-              value={username}
-              placeholder="Enter Username"
-              onChange={handleUsernameChange}
-              required
-            />
-            <br />
-            <input
-              className="input-field"
-              name="password"
-              type="password"
-              value={password}
-              placeholder="Enter Password"
-              onChange={handlePasswordChange}
-              required
-            />
-            <br />
-            <input
-              className="input-field"
-              name="first_name"
-              type="text"
-              value={firstName}
-              placeholder="Enter Your First Name"
-              onChange={handleFirstNameChange}
-              required
-            />
-            <br />
-            <input
-              className="input-field"
-              name="last_name"
-              type="text"
-              value={lastName}
-              placeholder="Enter Your Last Name"
-              onChange={handleLastNameChange}
-              required
-            />
-            <br />
-            <input
+    <div
+      style={{
+        backgroundImage: `url('./netflix-login-background.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center top',
+        height: '100vh',
+        width: '100vw',
+      }}
+      className="signup-page"
+    >
+      <div>
+        <img className='signup-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
+      </div>
+      <div className='signup-body'>
+        <div className="signup-card">
+          <Link to="/" className="back-link">← Back to Log In</Link>
+          <h1 className='greeting'>Welcome to Myflix!</h1>
+          <div className="signup-form">
+            <form onSubmit={handleSubmit}>
+              <div className="signup-inputs">
+                <input
+                  className="input-field"
+                  name="username"
+                  type="text"
+                  value={username}
+                  placeholder="Enter Username"
+                  onChange={handleUsernameChange}
+                  required
+                />
+                <br />
+                <input
+                  className="input-field"
+                  name="password"
+                  type="password"
+                  value={password}
+                  placeholder="Enter Password"
+                  onChange={handlePasswordChange}
+                  required
+                />
+                <br />
+                <input
+                  className="input-field"
+                  name="first_name"
+                  type="text"
+                  value={firstName}
+                  placeholder="Enter Your First Name"
+                  onChange={handleFirstNameChange}
+                  required
+                />
+                <br />
+                <input
+                  className="input-field"
+                  name="last_name"
+                  type="text"
+                  value={lastName}
+                  placeholder="Enter Your Last Name"
+                  onChange={handleLastNameChange}
+                  required
+                />
+                <br />
+              </div>
+              <div className='avatar-section'>
+                <h4 className='subheading'>Choose Your Avatar</h4>
+                <div className='avatars'>
+                  {mappedAvatars}
+                </div>
+              </div>
+              {/* <input
               className="input-field"
               name="profile_img"
               value={profileImg}
               placeholder="Enter Profile Img URL Here"
               onChange={handlProfileImgChange}
               required
-            />
-            <br />
-            <div className="avatars">
-              <img
-                src='https://photos.google.com/share/AF1QipNW2yZ3G0cVDavDeVaZcqfdFyPQaIPapQSanwu6Nj8q4vOkcdbh7VVRqHVTb5pW3g/photo/AF1QipP3WjkxDFD8W3XlF-fPRR1bSKX49oYi8G-AZxwz?key=aE9TbWVSSmhqRXd1eFlkcmpjUzVwbldIX21zZEhR'
-                alt='myflix-1'
-                className='avatar'
-                 />
-              <img
-                src='https://photos.google.com/share/AF1QipNW2yZ3G0cVDavDeVaZcqfdFyPQaIPapQSanwu6Nj8q4vOkcdbh7VVRqHVTb5pW3g/photo/AF1QipOEEO7HFb_f-0kjZW8Ed_uwv39cy568T_0_JrCZ?key=aE9TbWVSSmhqRXd1eFlkcmpjUzVwbldIX21zZEhR'
-                alt='myflix-2' 
-                className='avatar'
-                />
-              <img
-                src='https://photos.google.com/share/AF1QipNW2yZ3G0cVDavDeVaZcqfdFyPQaIPapQSanwu6Nj8q4vOkcdbh7VVRqHVTb5pW3g/photo/AF1QipN3PbmxdCSfcJpkdE70fWRC-tAfZ9RlNsPEJJT7?key=aE9TbWVSSmhqRXd1eFlkcmpjUzVwbldIX21zZEhR'
-                alt='myflix-3' 
-                className='avatar'
-                />
-              <img
-                src='https://photos.google.com/share/AF1QipNW2yZ3G0cVDavDeVaZcqfdFyPQaIPapQSanwu6Nj8q4vOkcdbh7VVRqHVTb5pW3g/photo/AF1QipP35RQNXhIDDJ8e7O-mNXYgyVNa0lwOZFQgBI8I?key=aE9TbWVSSmhqRXd1eFlkcmpjUzVwbldIX21zZEhR'
-                alt='myflix-4'
-                className='avatar'
-                />
-              <img
-                src='https://photos.google.com/share/AF1QipNW2yZ3G0cVDavDeVaZcqfdFyPQaIPapQSanwu6Nj8q4vOkcdbh7VVRqHVTb5pW3g/photo/AF1QipOsa79FKkeCDvRpjad69eqPnrkFFeJOCOoBSEbW?key=aE9TbWVSSmhqRXd1eFlkcmpjUzVwbldIX21zZEhR'
-                alt='myflix-5'
-                className='avatar' 
-                />
-              <img
-                src='https://photos.google.com/share/AF1QipNW2yZ3G0cVDavDeVaZcqfdFyPQaIPapQSanwu6Nj8q4vOkcdbh7VVRqHVTb5pW3g/photo/AF1QipN9a-baIe4vgLtjsKV1qxes9wGxLynk5XlpZmgl?key=aE9TbWVSSmhqRXd1eFlkcmpjUzVwbldIX21zZEhR'
-                alt='myflix-6' 
-                className='avatar'
-                />
-
-            </div>
-            <button className="button" type="submit">Sign Up Now</button>
-          </form>
+            /> */}
+              <br />
+              <button className="button" type="submit">Sign Up Now</button>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
-export default CreateUser;
+export default SignUpForm;

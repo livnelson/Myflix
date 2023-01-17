@@ -28,7 +28,8 @@ function Row({ title, fetchURL, isLargeRow }) {
     <img
       key={movie.id}
       onClick={() => handleClick(movie)}
-      className={`row-poster ${isLargeRow && 'row-poster-large'}`}
+      // className={`row-poster ${isLargeRow && 'row-poster-large'}`}
+      className={`row-poster`}
       // src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
       src={`${base_url}${movie.poster_path}`}
       alt={movie.name} />
@@ -63,10 +64,11 @@ function Row({ title, fetchURL, isLargeRow }) {
 
   return (
     <div className="row">
-      <h4>{title}</h4>
+      <h4 className="row-title">{title}</h4>
       <div className="row-posters">
         {mappedMovies}
       </div>
+      <br/>
       {trailerURL && <YouTube style={{}} className='youtube-video' videoId={trailerURL} options={options} />}
     </div>
   )

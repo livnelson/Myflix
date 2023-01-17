@@ -9,7 +9,7 @@
   margin-top: 44px;
   width: 190px;
   height: 160px;
-  background-color: black;
+  background-color: #111;
   color: white;
   border-radius: 3px;
 }
@@ -19,7 +19,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   grid-column-start: 20, 80;
-  width: 190px;
+  width: 140px;
   padding-left: 10px;
   padding-top: 30px;
   justify-items: flex-start;
@@ -37,10 +37,11 @@
   flex-wrap: wrap;
   flex-direction: column;
   width: 40px;
-  padding-left: 10px;
+  height: 40px;
   font-size: 13px;
   overflow: hidden;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
+  background-color: #222;
 }
 
 .current-user-avatar:hover {

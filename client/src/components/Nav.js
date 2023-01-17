@@ -12,7 +12,8 @@ function Nav({ user }) {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 80) {
         handleShow(true)
-      } else handleShow(false)
+      }
+      else handleShow(false)
     })
     // return () => {
     //   window.removeEventListener('scroll')
@@ -34,7 +35,7 @@ function Nav({ user }) {
       <div className='logout-button'>
       </div>
       <div className='nav-avatar' onClick={toggleViewUser}>
-      <img src={user.avatar} alt={user.first_name} className='nav-avatar'/>
+      <img src={user.profile_img} alt={user.first_name} className='nav-avatar'/>
       </div>
       {viewMenu ? null : <NavMenu user={user} />}
     </div>

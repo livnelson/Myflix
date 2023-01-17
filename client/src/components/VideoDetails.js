@@ -11,32 +11,38 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
     setViewDetails(!viewDetails)
   }
 
-  // function toggleLike() {
-  //   setLike(!like)
-  // }
-
-  function handleLikes() {
-    console.log("liked");
+  function handleLikes(e) {
+    e.preventDefault();
     setLike(!like)
-    const likeObj = { voteCount: (movie.vote_count += 1) };
+    console.log("Clicked add to Movie List");
+    console.log(movie);
+
+    const likeObj = {
+      name: (movie.title || movie.name || movie.original_name),
+      poster_path: (movie.poster_path),
+      movie_id: (movie.movie_id),
+      voteCount: (movie.vote_count += 1),
+    }
+
     const configObject = {
-      method: "PATCH",
+      method: "POST",
       headers: {
         "content-type": "application/JSON",
       },
       body: JSON.stringify(likeObj),
-    };
-    fetch(`vote_count/${movie.id}`, configObject)
+    }
+
+    fetch(`/add_to_movies`, configObject)
       .then((r) => r.json())
       .then((votes) => {
         console.log(votes);
-        // setVoteCount(votes);
-      });
+        setVoteCount(votes);
+      })
   }
 
   function handleAddToList(e) {
     e.preventDefault();
-    console.log("submitted");
+    console.log("Clicked add to MyList");
 
     const movieObj = {
       name: (movie.title || movie.name || movie.original_name),
@@ -44,7 +50,8 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
       user_id: (user.id),
       movie_id: (movie.movie_id)
     };
-    console.log(movieObj);
+
+    // console.log(movieObj);
 
     const configObject = {
       method: "POST",
@@ -54,7 +61,7 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
       body: JSON.stringify(movieObj),
     };
 
-    fetch("/my_lists", configObject)
+    fetch("/add_to_mylist", configObject)
       .then((r) => r.json())
       .then((myList) => {
         console.log(myList)

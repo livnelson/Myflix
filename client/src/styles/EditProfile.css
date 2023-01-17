@@ -1,0 +1,55 @@
+.edit-user-card {
+  color:white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  padding-bottom: 40px;
+  margin: auto;
+  margin-top: 40px;
+  background-color: #000;
+  border-radius: 3px;
+}
+
+.edit-user-form {
+  display: flex;
+  justify-content: center;
+}
+
+.greeting {
+  color: white;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.back-link {
+  font-size: 11px;
+}
+
+.back-link:hover {
+  color: #c40f14;
+  cursor: pointer;
+}
+
+.button {
+  color: white;
+  background-color: #c40f14;
+  width: 200px;
+  margin: auto;
+  margin-top: 30px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  text-align: center;
+  transition: transform 450ms;
+}
+
+.button:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}

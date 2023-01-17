@@ -1,23 +1,24 @@
 // client/src/components/UserHome.js
-import React, { useState } from 'react'
+import React from 'react'
 import requests from '../requests'
 import '../styles/App.css'
 import Row from './Row'
 import Banner from './Banner'
 import Nav from './Nav'
+import Login from './Login'
 
-function UserHome({ user }) {
 
-  console.log(user)
+function UserHome({ user, setUser, setIsLoggedIn}) {
   
-  if (!user) return
+  if (!user) return  <Login onLogin={setUser} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
 
   return (
   <div className='app'>
       <Nav user={user}/>
       <Banner user={user}/>
+      <br />
       <Row
-        title="Myflix {Netflix}  Originals"
+        title="Myflix { Netflix }  Originals"
         fetchURL={requests.fetchNetflixOriginals}
         isLargeRow />
       <Row title="Trending Now" fetchURL={requests.fetchTrendingNow} />

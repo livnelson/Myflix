@@ -1,8 +1,10 @@
 // client/src/components/Login.js
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import SignUp from './SignUp'
 import '../styles/Login.css'
 
-function Login({ onLogin, setIsLoggedIn }) {
+function Login({ onLogin, setShowLogin }) {
   // const [user, setUser] = useState({})
   // const [errors, setErrors] = useState([])
   // const [formData, setFormData] = useState({
@@ -13,8 +15,9 @@ function Login({ onLogin, setIsLoggedIn }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  // const [showSignUp, setShowSignUp] = useState(false)
 
-
+const navigate = useNavigate()
 
   // const { username, password } = formData
 
@@ -29,9 +32,10 @@ function Login({ onLogin, setIsLoggedIn }) {
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       setIsLoading(false);
+      // navigate('/UserHome')
       if (r.ok) {
         r.json().then((user) => onLogin(user));
-      } 
+      }
       else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -42,6 +46,11 @@ function Login({ onLogin, setIsLoggedIn }) {
   //   const { name, value } = e.target
   //   setFormData({ ...formData, [name]: value })
   // }
+
+  function handleSignUp() {
+    console.log('Link clicked')
+    navigate('/SignUp')
+  }
 
   return (
     <div
@@ -83,14 +92,13 @@ function Login({ onLogin, setIsLoggedIn }) {
                 required
               />
               <br />
-              
-                {isLoading ? "Loading..." : null}
-           
+              {isLoading ? "Loading..." : null}
               <button className="login-button" type="submit">Sign In</button>
             </form>
           </div>
           {errors ? <div className="errors">{errors}</div> : null}
-          <p className="sign-up-link" onClick={() => setIsLoggedIn(false)}> New to Myflix? <strong>Sign up now.</strong></p>
+          {/* <Link to={<SignUpForm />} className="sign-up-link"> New to Myflix? <strong>Sign up now.</strong></Link> */}
+          <p className="sign-up-link" onClick={handleSignUp}> New to Myflix? <span className="sign-up-form-link">Sign up now.</span></p>
           <p className="login-disclaimer">This is a Netflix inspired clone built to give viewers an example of my programming abilities and graphic design skills. This app includes all movie listings from Netflix and may include titles that are considered NSFW or inappropriate for underage viewers. Please consider your environment when viewing. Thanks and enjoy!  ~ Liv</p>
         </div>
       </div>

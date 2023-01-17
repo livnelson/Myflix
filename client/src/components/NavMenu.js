@@ -11,7 +11,7 @@ function NavMenu({ user }) {
       <div className='nav-dropdown'>
         <Link to="/UserProfile">
           <div className='current-user'>
-            <img className="current-user-avatar" src={user.avatar} alt={user.first_name} />
+            <img className="current-user-avatar" src={user.profile_img} alt={user.username} />
             <p className='current-user-name'>{user.first_name}</p>
           </div>
         </Link>

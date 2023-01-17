@@ -12,8 +12,6 @@ function Banner({ user }) {
   const [viewDetails, setViewDetails] = useState(true)
   const [playVideo, setPlayVideo] = useState(true)
   // const [show, setShow] = useState(false)
-  // const [trailerURL, setTrailerURL] = useState('')
-
 
   useEffect(() => {
     async function fetchData() {
@@ -60,6 +58,7 @@ function Banner({ user }) {
         <h1 className='banner-description'>{truncate(movie?.overview, 150)}</h1>
       </div>
       <div className="banner-fade-bottom" />
+      <br />
     </header>
   )
 }

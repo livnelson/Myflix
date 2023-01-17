@@ -1,8 +1,32 @@
+.signup-page {
+  display: flex;
+  margin-top: 0;
+  justify-content: center;
+}
+
+.signup-logo {
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  width: 140px;
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+.signup-body{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+
 .signup-card {
   color:white;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   width: 400px;
   padding: 20px;
@@ -15,14 +39,27 @@
 
 .signup-form {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
+  margin: auto;
+}
+
+.signup-inputs {
+  justify-content: center;
+  margin: auto;
 }
 
 .greeting {
-  color: white;
   text-align: center;
   margin-top: 10px;
   margin-bottom: 20px;
+}
+
+.subheading {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .back-link {
@@ -52,20 +89,17 @@
   cursor: pointer;
 }
 
-.avatars {
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: repeat(6, 1fr);
-  justify-content: center;
+.avatar-section{
+  justify-content: space-around;
 }
 
-/* .avatars {
+.avatars {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-} */
+}
 
-.avatar{
+.signup-avatars{
   background-color: #333;
   margin-left: 10px;
   width: 50px;
@@ -74,7 +108,7 @@
   transition: transform 450ms;
 }
 
-.avatar:hover{
+.signup-avatars:hover{
   transform: scale(1.1);
   cursor: pointer;
 }

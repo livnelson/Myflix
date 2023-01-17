@@ -98,6 +98,16 @@
   padding-top: 20px;
 }
 
+.sign-up-form-link {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.sign-up-form-link:hover {
+  color: crimson;
+  cursor: pointer;
+}
+
 a {
   color: white;
   text-decoration: none;
