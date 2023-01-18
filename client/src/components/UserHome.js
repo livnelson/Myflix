@@ -10,7 +10,7 @@ import Login from './Login'
 
 function UserHome({ user, setUser, setIsLoggedIn}) {
   
-  if (!user) return  <Login onLogin={setUser} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />
+  if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
 
   return (
   <div className='app'>

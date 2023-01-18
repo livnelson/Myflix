@@ -40,10 +40,15 @@
   padding-left: 30px;
 }
 
+.back-link {
+  font-size: 8px;
+}
+
 .login-form {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
   padding-bottom: 20px;
 }
 
@@ -64,7 +69,7 @@
 .input-field:focus,
 .input-field:focus-visible,
 .input-field:focus-within {
-  border-color: #337152;
+  border-color: #c40f14;
 }
 
 .login-button {
@@ -98,14 +103,16 @@
   padding-top: 20px;
 }
 
-.sign-up-form-link {
-  font-size: 13px;
-  font-weight: 700;
-}
-
 .sign-up-form-link:hover {
   color: crimson;
   cursor: pointer;
+}
+
+.sign-up-form-link {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding-left: 3px;
 }
 
 a {

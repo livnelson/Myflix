@@ -1,69 +1,87 @@
 .signup-page {
   display: flex;
-  margin-top: 0;
-  justify-content: center;
+  margin: 0;
 }
 
 .signup-logo {
-  position: fixed;
+  position: absolute;
   display: flex;
-  justify-content: flex-start;
   text-align: left;
   width: 140px;
   padding-top: 20px;
   padding-left: 20px;
-  margin-bottom: 30px;
 }
 
 .signup-body{
   display: flex;
   justify-content: center;
   margin: auto;
+  margin-top: 100px;
 }
 
-
 .signup-card {
-  color:white;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
   width: 400px;
-  padding: 20px;
-  padding-bottom: 40px;
   margin: auto;
-  margin-top: 40px;
-  background-color: #000;
-  border-radius: 3px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .signup-form {
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
   justify-content: center;
   margin: auto;
+  padding-bottom: 30px;
 }
 
 .signup-inputs {
   justify-content: center;
   margin: auto;
+  max-width: 300px;
 }
 
-.greeting {
+.signup-input-field {
+  width: 98%;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 6px;
+  border: 2px solid;
+  border-radius: 4px;  
+}
+
+.signup-field:hover,
+.signup-field:active,
+.signup-field:focus,
+.signup-field:focus-visible,
+.signup-field:focus-within {
+  border-color: #c40f14;
+}
+
+.signup-greeting {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 20px;
 }
 
-.subheading {
+.signup-subheading {
   text-align: center;
   margin-top: 20px;
   margin-bottom: 10px;
 }
 
-.back-link {
-  font-size: 11px;
+.login-back-link {
+  font-size: 9px;
 }
 
 .back-link:hover {
@@ -71,10 +89,10 @@
   cursor: pointer;
 }
 
-.button {
+.signup-button {
   color: white;
   background-color: #c40f14;
-  width: 200px;
+  width: 98%;
   margin: auto;
   margin-top: 30px;
   padding-top: 16px;
@@ -82,6 +100,8 @@
   border: none;
   border-radius: 4px;
   font-size: 12px;
+  justify-content: center;
+  text-align: center;
 }
 
 .button:hover {
@@ -90,21 +110,24 @@
 }
 
 .avatar-section{
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .avatars {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
+  margin: auto;
 }
 
 .signup-avatars{
-  background-color: #333;
-  margin-left: 10px;
-  width: 50px;
-  height: 50px;
-  border: 1px solid #202020;
+  width: 40px;
+  height: 40px;
+  border: 1px;
+  border-radius: 4px;
+  margin-left: 4px;
+  margin-right: 4px;
   transition: transform 450ms;
 }
 

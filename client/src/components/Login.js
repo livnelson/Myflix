@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import SignUp from './SignUp'
 import '../styles/Login.css'
 
-function Login({ onLogin, setShowLogin }) {
+function Login({ onLogin }) {
   // const [user, setUser] = useState({})
   // const [errors, setErrors] = useState([])
   // const [formData, setFormData] = useState({
@@ -32,7 +32,6 @@ const navigate = useNavigate()
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       setIsLoading(false);
-      // navigate('/UserHome')
       if (r.ok) {
         r.json().then((user) => onLogin(user));
       }

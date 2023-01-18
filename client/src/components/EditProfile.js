@@ -1,25 +1,28 @@
 // client/src/components/EditProfile.js
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/EditProfile.css'
 
 function EditProfile({ user, setUser }) {
   const [errors, setErrors] = useState(false)
   // const [editUsername, setEditUsername] = useState();
-  // const [editPassword, setEditPassword] = useState("");
+  const [editPassword, setEditPassword] = useState("");
   const [editFirstName, setEditFirstName] = useState("")
   const [editLastName, setEditLastName] = useState("")
   const [editAvatar, setEditAvatar] = useState("")
+  const [avatars, setAvatars] = useState([])
   
   const navigate = useNavigate()
+
+
 
   // function handleUsernameChange(e) {
   //   setEditUsername(e.target.value);
   // }
 
-  // function handlePasswordChange(e) {
-  //   setEditPassword(e.target.value);
-  // }
+  function handlePasswordChange(e) {
+    setEditPassword(e.target.value);
+  }
 
   function handleFirstNameChange(e) {
     setEditFirstName(e.target.value);
@@ -29,9 +32,23 @@ function EditProfile({ user, setUser }) {
     setEditLastName(e.target.value);
   }
 
-  function handlAvatarChange(e) {
-    setEditAvatar(e.target.value);
+  const handleAvatarClick = (avatar) => {
+    console.log(avatar.id)
+    setEditAvatar(avatar.imgUrl);
   }
+
+  useEffect(() => {
+    fetch('/avatars')
+      .then((r) => r.json())
+      .then(avatars => {
+        console.log(avatars)
+        setAvatars(avatars)
+      })
+  },[])
+
+  const mappedAvatars = avatars.map((avatar) => (
+    <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
+  ))
 
   function handleEditUser(e) {
     e.preventDefault()
@@ -42,10 +59,9 @@ function EditProfile({ user, setUser }) {
       first_name: editFirstName,
       last_name: editLastName,
       // username: editUsername,
-      // password: editPassword,
+      password: editPassword,
       profile_img: editAvatar
     };
-    
 
     console.log(editUser)
 
@@ -67,6 +83,7 @@ function EditProfile({ user, setUser }) {
       })
   }
 
+
   return (
     <div>
       <div className="edit-user-card">
@@ -84,7 +101,7 @@ function EditProfile({ user, setUser }) {
               required
             /> */}
             <br />
-            {/* <input
+            <input
               className="input-field"
               name="password"
               type="password"
@@ -93,7 +110,7 @@ function EditProfile({ user, setUser }) {
               onChange={handlePasswordChange}
               required
             />
-            <br /> */}
+            <br />
             <input
               className="input-field"
               name="first_name"
@@ -101,7 +118,6 @@ function EditProfile({ user, setUser }) {
               value={editFirstName}
               placeholder="Enter your first name"
               onChange={handleFirstNameChange}
-              
             />
             <br />
             <input
@@ -111,17 +127,14 @@ function EditProfile({ user, setUser }) {
               value={editLastName}
               placeholder="Enter your last name"
               onChange={handleLastNameChange}
-              
             />
             <br />
-            <input
-              className="input-field"
-              name="profile_img"
-              value={editAvatar}
-              placeholder="Choose your avatar"
-              onChange={handlAvatarChange}
-              
-            />
+             <div className='avatar-section'>
+                <h3 className='signup-subheading'>Choose Your Avatar</h3>
+                <div className='avatars'>
+                  {mappedAvatars}
+                </div>
+              </div>
             <br />
             <button className="button" type="submit">Save Changes</button>
           </form>

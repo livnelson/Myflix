@@ -1,19 +1,21 @@
 // client/src/components/UserProfile.js
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import Login from './Login'
 import EditProfile from './EditProfile'
 import FaveMovie from './FaveMovie'
-import YouTube from 'react-youtube'
-import movieTrailer from "movie-trailer"
+// import YouTube from 'react-youtube'
+// import movieTrailer from "movie-trailer"
 import '../styles/UserProfile.css'
 
 const base_url = "http://image.tmdb.org/t/p/original/"
+
 
 function UserProfile({ user, setUser }) {
   const [showEdit, setShowEdit] = useState(false)
   const [myFaves, setMyFaves] = useState([])
   const [errors, setErrors] = useState(false)
-  const [trailerURL, setTrailerURL] = useState('')
+  // const [trailerURL, setTrailerURL] = useState('')
 
   const navigate = useNavigate();
 
@@ -68,6 +70,8 @@ function UserProfile({ user, setUser }) {
     return <FaveMovie key={movie.id} id={movie.id} name={movie.name} poster_path={movie.poster_path} overview={movie.overview} deleteMovie={deleteMovie} />
   })
 
+  if (!user) return  <Login />
+
   return ( 
     <div className='user-profile-page'>
       <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
@@ -86,6 +90,7 @@ function UserProfile({ user, setUser }) {
           {mappedFaves}
         </div>
       </div>
+      {errors ? <div className="errors">{errors}</div> : null}
     </div>
   )
 }

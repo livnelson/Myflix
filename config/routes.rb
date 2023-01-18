@@ -1,5 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
+  resources :accounts
   resources :movies
   get '*path',
   to: 'fallback#index',

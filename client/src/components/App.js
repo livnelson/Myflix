@@ -11,9 +11,6 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(false)
   const [avatars, setAvatars] = useState ([])
-  // const [errors, setErrors] = useState()
-
-
 
   useEffect(() => {
     fetch("/me").then((r) => {
@@ -21,8 +18,7 @@ function App() {
         r.json().then((user) => setUser(user))
       }
     });
-  }, []);
-
+  }, [])
 
   useEffect(() => {
     fetch('/avatars')
@@ -38,8 +34,8 @@ function App() {
       <Routes>
         {/* <Route exact path="/Login" element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} /> */}
         <Route exact path='/' element={<UserHome user={user} onLogin={setUser} setIsLoggedIn={setIsLoggedIn} setUser={setUser}  />} />
-        <Route exact path='/UserProfile' element={<UserProfile user={user} setUser={setUser} />} onLogin={setUser} isLoggedIn={isLoggedIn} />
-        <Route exact path='/Signup' element={<SignUp setUser={setUser} avatars={avatars} />} />
+        <Route exact path='/UserProfile' element={<UserProfile user={user} setUser={setUser} />} onLogin={setUser} isLoggedIn={isLoggedIn} avatars={avatars} />
+        <Route exact path='/Signup' element={<SignUp setUser={setUser} />} />
       </Routes>
       {/* {errors ? <div>{errors}</div> : null} */}
     </div>
