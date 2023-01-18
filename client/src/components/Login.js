@@ -1,25 +1,15 @@
 // client/src/components/Login.js
 import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import SignUp from './SignUp'
+import { useNavigate } from 'react-router-dom'
 import '../styles/Login.css'
 
 function Login({ onLogin }) {
-  // const [user, setUser] = useState({})
-  // const [errors, setErrors] = useState([])
-  // const [formData, setFormData] = useState({
-  //   username: '',
-  //   password: ''
-  // })
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  // const [showSignUp, setShowSignUp] = useState(false)
 
 const navigate = useNavigate()
-
-  // const { username, password } = formData
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -33,7 +23,7 @@ const navigate = useNavigate()
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((account) => onLogin(account));
       }
       else {
         r.json().then((err) => setErrors(err.errors));
@@ -41,13 +31,8 @@ const navigate = useNavigate()
     });
   }
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target
-  //   setFormData({ ...formData, [name]: value })
-  // }
-
   function handleSignUp() {
-    console.log('Link clicked')
+    // console.log('Link clicked')
     navigate('/SignUp')
   }
 

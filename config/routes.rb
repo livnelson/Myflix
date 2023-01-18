@@ -1,8 +1,5 @@
 # config/routes.rb
 Rails.application.routes.draw do
-  resources :account_users
-  resources :accounts
-  resources :movies
   get '*path',
   to: 'fallback#index',
   constraints: ->(req) { !req.xhr? && req.format.html? }
@@ -12,11 +9,10 @@ Rails.application.routes.draw do
   resources :avatars
   resources :my_lists
   resources :users
+  resources :accounts
   resources :movies
 
-  get "/me", to: "users#show"
-
-  get "/accout_users", to: "account_users#index"
+  get "/me", to: "accounts#show"
   
   post "/login", to: "sessions#login"
   delete "/logout", to: "sessions#destroy"

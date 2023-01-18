@@ -1,0 +1,14 @@
+.select-user-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.welcome-greeting {
+  color: white;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+}

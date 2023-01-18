@@ -76,8 +76,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_18_183308) do
     t.string "first_name"
     t.string "last_name"
     t.string "profile_img"
+    t.bigint "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_users_on_account_id"
   end
 
 end

@@ -1,4 +1,4 @@
-# AccountUser.destroy_all
+Account.destroy_all
 User.destroy_all
 Avatar.destroy_all
 
@@ -10,12 +10,13 @@ a4 = Avatar.create(name: "Myflix-4", imgUrl:'https://liv-creative.com/wp-content
 a5 = Avatar.create(name: "Myflix-5", imgUrl:'https://liv-creative.com/wp-content/uploads/2023/01/myflix-5.jpg')
 a6 = Avatar.create(name: "Myflix-6", imgUrl:'https://liv-creative.com/wp-content/uploads/2023/01/myflix-6.jpg')
 
-puts "Seeding Users 👩"
-liv = User.create(username: "liv", password: "12345678", first_name: "Liv", last_name: "N", profile_img: a2.imgUrl)
+puts "Seeding Account 💲"
+liv = Account.create(username: "liv", password: "12345678")
 
-# puts "Seeding AccountUsers 👨‍👩‍👧‍👧"
-# luke = AccountUser.create(username: "luke", password: "12345678", first_name: "Luke", last_name: "W", profile_img: a5.imgUrl, user_id: liv.id)
-# emma = AccountUser.create(username: "emma", password: "12345678", first_name: "Emma", last_name: "N", profile_img: a4.imgUrl, user_id: liv.id)
-# haley = AccountUser.create(username: "haley", password: "12345678", first_name: "Haley", last_name: "N", profile_img: a6.imgUrl, user_id: liv.id)
+puts "Seeding Users 👨‍👩‍👧‍👦"
+liv = User.create(username: "liv", password: "12345678", first_name: "Liv", last_name: "N", profile_img: a2.imgUrl, account_id: liv.id)
+luke = User.create(username: "luke", password: "12345678", first_name: "Luke", last_name: "W", profile_img: a5.imgUrl, account_id: liv.id)
+emma = User.create(username: "emma", password: "12345678", first_name: "Emma", last_name: "N", profile_img: a4.imgUrl, account_id: liv.id)
+haley = User.create(username: "haley", password: "12345678", first_name: "Haley", last_name: "N", profile_img: a6.imgUrl, account_id: liv.id)
 
 puts "Done Seeding 🌱"

@@ -69,9 +69,9 @@ function SignUp({ setUser, avatars }) {
       });
   }
 
-  const mappedAvatars = avatars.map((avatar) => (
-    <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
-  ))
+  // const mappedAvatars = avatars.map((avatar) => (
+  //   <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
+  // ))
 
   return (
     <div
@@ -137,7 +137,7 @@ function SignUp({ setUser, avatars }) {
               <div className='avatar-section'>
                 <h3 className='signup-subheading'>Choose Your Avatar</h3>
                 <div className='avatars'>
-                  {mappedAvatars}
+                  {/* {mappedAvatars} */}
                 </div>
               </div>
               {/* {isLoading ? "Loading..." : null} */}
