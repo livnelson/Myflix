@@ -1,6 +1,7 @@
-class AccountUser < ApplicationRecord
+class Account < ApplicationRecord
   has_secure_password
-  belongs_to :user
+  has_many :users
+  has_one :my_lists
   has_one :user_avatar, dependent: :destroy
   validates :username, presence: true, uniqueness: true
 end

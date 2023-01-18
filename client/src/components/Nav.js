@@ -26,14 +26,14 @@ function Nav({ user }) {
     // console.log(user)
   }
 
-  useEffect(() => {
-    fetch('/accout_users')
-    .then((r) => r.json())
-    .then(acctUsers => {
-      // console.log(acctUsers)
-      setAccountUsers(acctUsers)
-    })
-  },[])
+  // useEffect(() => {
+  //   fetch('/accout_users')
+  //   .then((r) => r.json())
+  //   .then(acctUsers => {
+  //     // console.log(acctUsers)
+  //     setAccountUsers(acctUsers)
+  //   })
+  // },[])
 
   return (
     <div className={`nav ${show && 'nav-black'}`} >
