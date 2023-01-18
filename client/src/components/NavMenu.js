@@ -5,11 +5,11 @@ import AccountUser from './AccountUser'
 import { Link } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
-function NavMenu({ user, accountUsers }) {
+function NavMenu({ user,  }) {
 
-  const mappedaccountUsers = accountUsers.map((a_user) => {
-    return <AccountUser key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
-})
+//   const mappedaccountUsers = accountUsers.map((a_user) => {
+//     return <AccountUser key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
+// })
 
   return (
     <div className='navmenu'>
@@ -21,7 +21,7 @@ function NavMenu({ user, accountUsers }) {
           </div>
         </Link>
         <div className='account-users'>
-        {mappedaccountUsers}
+        {/* {mappedaccountUsers} */}
         </div>
         <div className='logout'>
           <Logout />

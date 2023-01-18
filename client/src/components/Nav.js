@@ -4,10 +4,10 @@ import NavMenu from './NavMenu'
 import '../styles/Nav.css'
 
 
-function Nav({ user }) {
+function Nav({ user, account }) {
   const [show, handleShow] = useState(false)
   const [viewMenu, setViewMenu] = useState(true)
-  const [accountUsers, setAccountUsers] = useState([])
+  // const [accountUsers, setAccountUsers] = useState([])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -45,9 +45,9 @@ function Nav({ user }) {
       <div className='logout-button'>
       </div>
       <div className='nav-avatar' onClick={toggleViewUser}>
-      <img src={user.profile_img} alt={user.first_name} className='nav-avatar'/>
+      {/* <img src={user.profile_img} alt={user.username} className='nav-avatar'/> */}
       </div>
-      {viewMenu ? null : <NavMenu user={user} accountUsers={accountUsers} />}
+      {/* {viewMenu ? null : <NavMenu user={user} />} */}
     </div>
   )
 }

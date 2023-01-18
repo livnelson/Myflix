@@ -14,9 +14,9 @@ puts "Seeding Account 💲"
 liv = Account.create(username: "liv", password: "12345678")
 
 puts "Seeding Users 👨‍👩‍👧‍👦"
-liv = User.create(username: "liv", password: "12345678", first_name: "Liv", last_name: "N", profile_img: a2.imgUrl, account_id: liv.id)
-luke = User.create(username: "luke", password: "12345678", first_name: "Luke", last_name: "W", profile_img: a5.imgUrl, account_id: liv.id)
-emma = User.create(username: "emma", password: "12345678", first_name: "Emma", last_name: "N", profile_img: a4.imgUrl, account_id: liv.id)
-haley = User.create(username: "haley", password: "12345678", first_name: "Haley", last_name: "N", profile_img: a6.imgUrl, account_id: liv.id)
+liv = User.create(username: "liv", first_name: "Liv", last_name: "N", profile_img: a2.imgUrl, account_id: liv.id)
+luke = User.create(username: "luke", first_name: "Luke", last_name: "W", profile_img: a5.imgUrl, account_id: liv.id)
+emma = User.create(username: "emma", first_name: "Emma", last_name: "N", profile_img: a4.imgUrl, account_id: liv.id)
+haley = User.create(username: "haley", first_name: "Haley", last_name: "N", profile_img: a6.imgUrl, account_id: liv.id)
 
 puts "Done Seeding 🌱"

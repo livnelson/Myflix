@@ -14,7 +14,8 @@ class AccountsController < ApplicationController
   end
 
   def show
-    render json: @current_account
+    puts "*****ACCOUNTS#ME*****"
+   render json: @current_account 
   end
 
   def update

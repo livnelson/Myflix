@@ -1,5 +1,5 @@
 // client/src/components/UserHome.js
-import React from 'react'
+import React, { useEffect } from 'react'
 import requests from '../requests'
 import '../styles/App.css'
 import Row from './Row'
@@ -9,17 +9,28 @@ import Login from './Login'
 
 
 // function UserHome({ user, setUser, setIsLoggedIn}) {
-function UserHome({ user, account }) {
-  
+function UserHome({ user, account, setAccount, setIsLoggedIn }) {
+
+
+  // useEffect(() => {
+  //   fetch("/me").then((r) => {
+  //     if (r.ok) {
+  //       // r.json().then((user) => setUser(user))
+  //       r.json().then((account) => setAccount(account))
+  //     }
+  //   });
+  // }, [])
+
   console.log(user)
   console.log(account)
 
   // if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+  if (!account) return <Login  onLogin={setAccount} setIsLoggedIn={setIsLoggedIn} />
 
   return (
-  <div className='app'>
-      <Nav user={user}/>
-      <Banner user={user}/>
+    <div className='app'>
+      <Nav user={user} />
+      <Banner user={user} />
       <br />
       <Row
         title="Myflix { Netflix }  Originals"

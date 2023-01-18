@@ -1,27 +1,25 @@
 // client/src/components/Logout.js
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function Logout({ user, setIsLoggedIn }) {
+function Logout({ setAccount }) {
   const navigate = useNavigate();
 
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
+    }).then(() => {
+      console.log("User logged out")
+      setAccount(false)
+      navigate("/");
     })
-    console.log("User logged out")
-    navigate("/login");
-    setIsLoggedIn(false);
   }
 
   return (
     <div className="logout">
-      <Link
-        to="/"
-        onClick={handleLogout}
-        className="logout-button"
-      > Sign out of Myflix
-      </Link>
+      <button className="logout-button" onClick={handleLogout}>
+      Sign out of Myflix
+      </button>
     </div>
   );
 }

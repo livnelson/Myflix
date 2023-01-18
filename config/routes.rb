@@ -1,7 +1,6 @@
 # config/routes.rb
 Rails.application.routes.draw do
-  get '*path',
-  to: 'fallback#index',
+  get '*path', to: 'fallback#index',
   constraints: ->(req) { !req.xhr? && req.format.html? }
 
   # resources :sessions
@@ -10,6 +9,7 @@ Rails.application.routes.draw do
   resources :my_lists
   resources :users
   resources :accounts
+  # resources :accounts, except: [:show]
   resources :movies
 
   get "/me", to: "accounts#show"
@@ -17,21 +17,17 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#login"
   delete "/logout", to: "sessions#destroy"
   
-  # post "/mylist", to: "my_lists#create"
-  
+  get "/users", to: "users#index"
   post "/create", to: "users#create"
   patch "/updateuser/:id", to: "users#update"
   delete "/deleteprofile", to: "users#destroy"
 
   get "/avatars", to: "avatars#index"
-
-  get "allfaves", to: "my_lists#index"
-
+  
   post "/add_to_movies", to: "movies#add_movie"
-  # post "create", to: "movies#create"
-
+  
+  get "allfaves", to: "my_lists#index"
   post "/add_to_mylist", to: "my_lists#add_to_list"
-
   delete "/deletemyfave/:name", to: "my_lists#delete_myfave"
   
 end

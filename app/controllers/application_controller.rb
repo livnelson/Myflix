@@ -10,6 +10,7 @@ class ApplicationController < ActionController::API
   private
 
   def authorize
+    puts "*******AUTHORIZING***********"
     @current_account = Account.find_by(id: session[:account_id])
     render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_account
   end

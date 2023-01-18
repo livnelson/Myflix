@@ -1,13 +1,15 @@
 // client/src/components/Login.js
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Login.css'
 
 function Login({ onLogin }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [errors, setErrors] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
+  
+
 
 const navigate = useNavigate()
 
@@ -23,13 +25,19 @@ const navigate = useNavigate()
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((account) => onLogin(account));
+        r.json().then((account) => {
+          // console.log(account)
+          onLogin(account)
+        });
+        
       }
       else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
+
+
 
   function handleSignUp() {
     // console.log('Link clicked')
