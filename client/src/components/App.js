@@ -24,7 +24,7 @@ function App() {
     fetch('/avatars')
       .then((r) => r.json())
       .then(avatars => {
-        console.log(avatars)
+        // console.log(avatars)
         setAvatars(avatars)
       })
   },[])

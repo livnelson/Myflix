@@ -42,7 +42,7 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
 
   function handleAddToList(e) {
     e.preventDefault();
-    console.log("Clicked add to MyList");
+    // console.log("Clicked add to MyList");
 
     const movieObj = {
       name: (movie.title || movie.name || movie.original_name),

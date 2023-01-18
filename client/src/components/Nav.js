@@ -7,6 +7,7 @@ import '../styles/Nav.css'
 function Nav({ user }) {
   const [show, handleShow] = useState(false)
   const [viewMenu, setViewMenu] = useState(true)
+  const [accountUsers, setAccountUsers] = useState([])
 
   useEffect(() => {
     window.addEventListener('scroll', () => {
@@ -22,8 +23,17 @@ function Nav({ user }) {
 
   function toggleViewUser() {
     setViewMenu(!viewMenu)
-    console.log(user)
+    // console.log(user)
   }
+
+  useEffect(() => {
+    fetch('/accout_users')
+    .then((r) => r.json())
+    .then(acctUsers => {
+      // console.log(acctUsers)
+      setAccountUsers(acctUsers)
+    })
+  },[])
 
   return (
     <div className={`nav ${show && 'nav-black'}`} >
@@ -37,7 +47,7 @@ function Nav({ user }) {
       <div className='nav-avatar' onClick={toggleViewUser}>
       <img src={user.profile_img} alt={user.first_name} className='nav-avatar'/>
       </div>
-      {viewMenu ? null : <NavMenu user={user} />}
+      {viewMenu ? null : <NavMenu user={user} accountUsers={accountUsers} />}
     </div>
   )
 }
