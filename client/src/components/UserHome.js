@@ -8,35 +8,24 @@ import Nav from './Nav'
 import Login from './Login'
 
 
-// function UserHome({ user, setUser, setIsLoggedIn}) {
-function UserHome({ user, account, setAccount, setIsLoggedIn }) {
-
-
-  // useEffect(() => {
-  //   fetch("/me").then((r) => {
-  //     if (r.ok) {
-  //       // r.json().then((user) => setUser(user))
-  //       r.json().then((account) => setAccount(account))
-  //     }
-  //   });
-  // }, [])
+function UserHome({ users, setUsers, user, setUser, account, setAccount, setIsLoggedIn }) {
 
   console.log(user)
   console.log(account)
 
-  // if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
-  if (!account) return <Login  onLogin={setAccount} setIsLoggedIn={setIsLoggedIn} />
+  if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+  // if (!account) return <Login onLogin={setAccount} setIsLoggedIn={setIsLoggedIn} users={users} setUsers={setUsers} />
 
   return (
     <div className='app'>
-      <Nav user={user} />
-      <Banner user={user} />
+      <Nav user={user} setUser={setUser} />
+      <Banner user={user} setUser={setUser} />
       <br />
       <Row
         title="Myflix { Netflix }  Originals"
         fetchURL={requests.fetchNetflixOriginals}
         isLargeRow />
-      <Row title="Trending Now" fetchURL={requests.fetchTrendingNow} />
+      <Row title="Trending Now" fetchURL={requests.fetchTrending} />
       <Row title="Top Rated" fetchURL={requests.fetchTopRated} />
       <Row title="Action Movies" fetchURL={requests.fetchActionMovies} />
       <Row title="Comedy Movies" fetchURL={requests.fetchComedyMovies} />

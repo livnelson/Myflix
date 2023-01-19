@@ -4,7 +4,7 @@ import NavMenu from './NavMenu'
 import '../styles/Nav.css'
 
 
-function Nav({ user, account }) {
+function Nav({ user, setUser }) {
   const [show, handleShow] = useState(false)
   const [viewMenu, setViewMenu] = useState(true)
   // const [accountUsers, setAccountUsers] = useState([])
@@ -20,10 +20,10 @@ function Nav({ user, account }) {
     //   window.removeEventListener('scroll')
     // }
   }, [])
+  console.log(user)
 
   function toggleViewUser() {
     setViewMenu(!viewMenu)
-    // console.log(user)
   }
 
   // useEffect(() => {
@@ -42,12 +42,10 @@ function Nav({ user, account }) {
         src='./myflix-logo.png'
         alt='MYFLIX-LOGO'
       />
-      <div className='logout-button'>
-      </div>
       <div className='nav-avatar' onClick={toggleViewUser}>
-      {/* <img src={user.profile_img} alt={user.username} className='nav-avatar'/> */}
+      <img src={user.profile_img} alt={user.username} className='nav-avatar'/>
       </div>
-      {/* {viewMenu ? null : <NavMenu user={user} />} */}
+      {viewMenu ? null : <NavMenu user={user} setUser={setUser} />}
     </div>
   )
 }

@@ -1,8 +1,9 @@
 // client/src/components/Logout.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import '../styles/Logout.css'
 
-function Logout({ setAccount }) {
+function Logout({ setUser }) {
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -10,7 +11,7 @@ function Logout({ setAccount }) {
       method: "DELETE",
     }).then(() => {
       console.log("User logged out")
-      setAccount(false)
+      setUser(false)
       navigate("/");
     })
   }

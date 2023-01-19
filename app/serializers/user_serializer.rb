@@ -1,3 +1,4 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :first_name, :last_name, :profile_img, :account_id
+  attributes :id, :username, :first_name, :last_name, :profile_img
+  has_one :my_list
 end

@@ -1,15 +1,68 @@
 .select-user-page {
   display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   min-height: 100vh;
 }
 
+.logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 80px;
+}
+
 .welcome-greeting {
   color: white;
   text-align: center;
-  font-size: 48px;
+  font-size: 42px;
   font-weight: 300;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.select-users{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row !important;
+  justify-content: space-around;
+  width: 500px;
+}
+
+.select-user {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row !important;
+  color: #777;
+}
+
+.select-user:hover{
+  color: white !important;
+  cursor: pointer;
+}
+
+.select-user-avatar {
+  width: 80px;
+  height: 80px;
+  margin: auto;
+  margin-top: 20px;
+  border-radius: 4px;
+  background-color: #222;
+  justify-content: center;
+}
+
+.select-user-name{
+  padding-top: 10px;
+}
+
+.select-user-avatar:hover {
+  box-sizing: border-box;
+  border: 2px solid #fff;
+}
+
+.sign-out-button{
+  margin-top: 60px;
 }

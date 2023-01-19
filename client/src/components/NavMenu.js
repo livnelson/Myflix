@@ -1,11 +1,13 @@
 // client/src/components/NavMenu.js
-import React from 'react'
+import React, { useNavigate } from 'react'
 import Logout from './Logout'
 import AccountUser from './AccountUser'
 import { Link } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
-function NavMenu({ user,  }) {
+function NavMenu({ user, setUser }) {
+
+  // const navigate = useNavigate()
 
 //   const mappedaccountUsers = accountUsers.map((a_user) => {
 //     return <AccountUser key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
@@ -20,11 +22,11 @@ function NavMenu({ user,  }) {
             <p className='current-user-name'>{user.username}</p>
           </div>
         </Link>
-        <div className='account-users'>
+        {/* <div className='account-users'> */}
         {/* {mappedaccountUsers} */}
-        </div>
+        {/* </div> */}
         <div className='logout'>
-          <Logout />
+          <Logout user={user} setUser={setUser} />
         </div>
       </div>
     </div>

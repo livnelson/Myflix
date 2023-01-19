@@ -10,7 +10,6 @@ function Login({ onLogin }) {
   const [isLoading, setIsLoading] = useState(false)
   
 
-
 const navigate = useNavigate()
 
   function handleSubmit(e) {
@@ -25,9 +24,10 @@ const navigate = useNavigate()
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((account) => {
+        r.json().then((user) => {
           // console.log(account)
-          onLogin(account)
+          onLogin(user)
+          // setUsers(account.users)
         });
         
       }
@@ -36,8 +36,6 @@ const navigate = useNavigate()
       }
     });
   }
-
-
 
   function handleSignUp() {
     // console.log('Link clicked')

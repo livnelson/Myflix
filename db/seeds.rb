@@ -11,12 +11,17 @@ a5 = Avatar.create(name: "Myflix-5", imgUrl:'https://liv-creative.com/wp-content
 a6 = Avatar.create(name: "Myflix-6", imgUrl:'https://liv-creative.com/wp-content/uploads/2023/01/myflix-6.jpg')
 
 puts "Seeding Account 💲"
-liv = Account.create(username: "liv", password: "12345678")
+liv = Account.create(username: "liv", password: "P4$$W0rd!")
+em = Account.create(username: "emily", password: "P4$$W0rd!")
 
 puts "Seeding Users 👨‍👩‍👧‍👦"
-liv = User.create(username: "liv", first_name: "Liv", last_name: "N", profile_img: a2.imgUrl, account_id: liv.id)
-luke = User.create(username: "luke", first_name: "Luke", last_name: "W", profile_img: a5.imgUrl, account_id: liv.id)
-emma = User.create(username: "emma", first_name: "Emma", last_name: "N", profile_img: a4.imgUrl, account_id: liv.id)
-haley = User.create(username: "haley", first_name: "Haley", last_name: "N", profile_img: a6.imgUrl, account_id: liv.id)
+olivia = User.create(username: "Liv", password: "P4$$W0rd!", first_name: "Liv", last_name: "N", profile_img: a2.imgUrl)
+luke = User.create(username: "Luke", password: "P4$$W0rd!", first_name: "Luke", last_name: "W", profile_img: a5.imgUrl)
+emma = User.create(username: "Emma", password: "P4$$W0rd!", first_name: "Emma", last_name: "N", profile_img: a4.imgUrl)
+haley = User.create(username: "Haley", password: "P4$$W0rd!", first_name: "Haley", last_name: "N", profile_img: a6.imgUrl)
+emily = User.create(username: "Emily", password: "P4$$W0rd!", first_name: "Emily", last_name: "P", profile_img: a1.imgUrl)
+simon = User.create(username: "Simon", password: "P4$$W0rd!", first_name: "Simon", last_name: "P", profile_img: a5.imgUrl)
+penny = User.create(username: "Penny", password: "P4$$W0rd!", first_name: "Penny", last_name: "P", profile_img: a3.imgUrl)
+cooper = User.create(username: "Cooper", password: "P4$$W0rd!", first_name: "Cooper", last_name: "P", profile_img: a6.imgUrl)
 
 puts "Done Seeding 🌱"

@@ -18,6 +18,7 @@ function UserProfile({ user, setUser }) {
   // const [trailerURL, setTrailerURL] = useState('')
 
   const navigate = useNavigate();
+  console.log(user)
 
   function handleShowEdit() {
     setShowEdit(!showEdit);
@@ -62,15 +63,15 @@ function UserProfile({ user, setUser }) {
 
   const deleteMovie = (name) => setMyFaves(current => current.filter(p => p.name !== name))
 
-  const filteredFaves = myFaves.filter((fave) => {
-    if (fave.user_id === user.id) return true
-})
+//   const filteredFaves = myFaves.filter((fave) => {
+//     if (fave.user_id === user.id) return true
+// })
 
-  const mappedFaves = filteredFaves.map(movie => {
-    return <FaveMovie key={movie.id} id={movie.id} name={movie.name} poster_path={movie.poster_path} overview={movie.overview} deleteMovie={deleteMovie} />
-  })
+  // const mappedFaves = filteredFaves.map(movie => {
+  //   return <FaveMovie key={movie.id} id={movie.id} name={movie.name} poster_path={movie.poster_path} overview={movie.overview} deleteMovie={deleteMovie} />
+  // })
 
-  if (!user) return  <Login />
+  // if (!user) return  <Login />
 
   return ( 
     <div className='user-profile-page'>
@@ -87,7 +88,7 @@ function UserProfile({ user, setUser }) {
       <h2 className='fave-greeting'>My Faves List</h2>
       <div className='faves-row'>
         <div  className='faves-row-posters'>
-          {mappedFaves}
+          {/* {mappedFaves} */}
         </div>
       </div>
       {errors ? <div className="errors">{errors}</div> : null}
