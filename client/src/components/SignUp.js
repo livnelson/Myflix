@@ -13,13 +13,13 @@ function SignUp({ setUser, avatars }) {
 
   const navigate = useNavigate();
 
-  function handleUsernameChange(e) {
-    setUsername(e.target.value);
-  }
+  // function handleUsernameChange(e) {
+  //   setUsername(e.target.value);
+  // }
 
-  function handlePasswordChange(e) {
-    setPassword(e.target.value);
-  }
+  // function handlePasswordChange(e) {
+  //   setPassword(e.target.value);
+  // }
 
   function handleFirstNameChange(e) {
     setFirstName(e.target.value);
@@ -69,9 +69,9 @@ function SignUp({ setUser, avatars }) {
       });
   }
 
-  // const mappedAvatars = avatars.map((avatar) => (
-  //   <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
-  // ))
+  const mappedAvatars = avatars.map((avatar) => (
+    <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
+  ))
 
   return (
     <div
@@ -137,7 +137,7 @@ function SignUp({ setUser, avatars }) {
               <div className='avatar-section'>
                 <h3 className='signup-subheading'>Choose Your Avatar</h3>
                 <div className='avatars'>
-                  {/* {mappedAvatars} */}
+                  {mappedAvatars}
                 </div>
               </div>
               {/* {isLoading ? "Loading..." : null} */}

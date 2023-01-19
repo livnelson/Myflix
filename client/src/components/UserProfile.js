@@ -55,7 +55,6 @@ function UserProfile({ user, setUser }) {
           res.json().then(faves => {
             console.log(faves)
             setMyFaves(faves)
-
           })
         }
       })

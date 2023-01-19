@@ -45,6 +45,8 @@ function Nav({ user, setUser }) {
       <div className='nav-avatar' onClick={toggleViewUser}>
       <img src={user.profile_img} alt={user.username} className='nav-avatar'/>
       </div>
+      <div>
+      </div>
       {viewMenu ? null : <NavMenu user={user} setUser={setUser} />}
     </div>
   )

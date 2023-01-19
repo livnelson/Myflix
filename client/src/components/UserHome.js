@@ -8,13 +8,9 @@ import Nav from './Nav'
 import Login from './Login'
 
 
-function UserHome({ users, setUsers, user, setUser, account, setAccount, setIsLoggedIn }) {
-
-  console.log(user)
-  console.log(account)
+function UserHome({ user, setUser, setIsLoggedIn }) {
 
   if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
-  // if (!account) return <Login onLogin={setAccount} setIsLoggedIn={setIsLoggedIn} users={users} setUsers={setUsers} />
 
   return (
     <div className='app'>

@@ -1,18 +1,17 @@
 // client/src/components/Login.js
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../styles/Login.css'
 
-function Login({ onLogin }) {
+function Login({ onLogin, setUser  }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   
+  const navigate = useNavigate()
 
-const navigate = useNavigate()
-
-  function handleSubmit(e) {
+ function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
     fetch("/login", {
@@ -24,21 +23,14 @@ const navigate = useNavigate()
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => {
-          // console.log(account)
-          onLogin(user)
-          // setUsers(account.users)
-        });
-        
-      }
-      else {
+        r.json().then((user) => onLogin(user));
+      } else {
         r.json().then((err) => setErrors(err.errors));
       }
     });
   }
 
   function handleSignUp() {
-    // console.log('Link clicked')
     navigate('/SignUp')
   }
 
@@ -87,7 +79,6 @@ const navigate = useNavigate()
             </form>
           </div>
           {errors ? <div className="errors">{errors}</div> : null}
-          {/* <Link to={<SignUpForm />} className="sign-up-link"> New to Myflix? <strong>Sign up now.</strong></Link> */}
           <p className="sign-up-link" onClick={handleSignUp}> New to Myflix? <span className="sign-up-form-link">Sign up now.</span></p>
           <p className="login-disclaimer">This is a Netflix inspired clone built to give viewers an example of my programming abilities and graphic design skills. This app includes all movie listings from Netflix and may include titles that are considered NSFW or inappropriate for underage viewers. Please consider your environment when viewing. Thanks and enjoy!  ~ Liv</p>
         </div>
