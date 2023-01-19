@@ -27,7 +27,7 @@
 }
 
 .modal-body {
-  padding: 10px;
+  padding: 20px;
   margin-bottom: 10px;
   font-size: 13px;
   letter-spacing: 0.5px;
@@ -71,7 +71,7 @@
   border-radius: 2px;
   padding-top: 8px;
   padding-bottom: 8px;
-  padding-left: 20px;
+  padding-left: 40px;
   padding-right: 20px;
 }
 
@@ -129,4 +129,21 @@
   max-height: 130px;
   margin-right: 10px;
   transition: transform 450ms;
+}
+
+.overview {
+  color: #999;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 1.25;
+  padding-top: 6px;
+  padding-left: 10px;
+  padding-right: 8px;
+}
+
+.video-err-message {
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding-left: 8px;
 }

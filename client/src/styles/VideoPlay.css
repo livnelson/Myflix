@@ -102,3 +102,10 @@
   font-size: 11px;
   letter-spacing: 0.5px;
 }
+
+.video-err-message {
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding-left: 8px;
+}

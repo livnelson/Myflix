@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :accounts
   resources :movies
 
-  get "/me", to: "accounts#show"
+  get "/me", to: "users#show"
   
   post "/login", to: "sessions#login"
   delete "/logout", to: "sessions#destroy"

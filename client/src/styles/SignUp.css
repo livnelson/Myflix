@@ -7,7 +7,7 @@
   position: absolute;
   display: flex;
   text-align: left;
-  width: 140px;
+  width: 80px;
   padding-top: 20px;
   padding-left: 20px;
 }
@@ -30,6 +30,7 @@
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 14px;
   border: none;
   border-radius: 4px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -76,16 +77,18 @@
 
 .signup-subheading {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 10px;
 }
 
 .login-back-link {
-  font-size: 9px;
+  color: #777 ;
+  font-size: 11px;
+  letter-spacing: 0.5px;
 }
 
-.back-link:hover {
-  color: #c40f14;
+.login-back-link:hover {
+  color: white;
   cursor: pointer;
 }
 
@@ -94,7 +97,7 @@
   background-color: #c40f14;
   width: 98%;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 40px;
   padding-top: 16px;
   padding-bottom: 16px;
   border: none;
@@ -128,10 +131,15 @@
   border-radius: 4px;
   margin-left: 4px;
   margin-right: 4px;
-  transition: transform 450ms;
 }
 
-.signup-avatars:hover{
-  transform: scale(1.1);
+.signup-avatars:hover,
+.signup-avatars:active,
+.signup-avatars:focus,
+.signup-avatars:focus-visible,
+.signup-avatars:focus-within,
+.signup-avatars:visited {
+  box-sizing: border-box;
+  border: 1px solid #fff;
   cursor: pointer;
 }

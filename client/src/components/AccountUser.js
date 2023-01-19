@@ -15,7 +15,6 @@ function AccountUser({ id, username, profile_img }) {
     // });
   // }
     
-
   return (
     <div className='account-users'>
       {/* <Link to="/UserProfile"> */}

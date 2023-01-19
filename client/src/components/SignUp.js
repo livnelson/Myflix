@@ -88,7 +88,7 @@ function SignUp({ setUser, avatars }) {
       </div>
       <div className='signup-body'>
         <div className="signup-card">
-          <Link to="/" className="login- back-link">← Back to Log In</Link>
+          <Link to="/" className="login-back-link">← Back to Log In</Link>
           <h1 className='signup-greeting'>Welcome to Myflix!</h1>
           <div className="signup-form">
             <form className='signup-inputs' onSubmit={handleSubmit}>

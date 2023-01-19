@@ -4,27 +4,15 @@ import '../styles/VideoPlay.css'
 import YouTube from 'react-youtube'
 import movieTrailer from "movie-trailer"
 
-
 function VideoPlay({ movie, setPlayVideo, playVideo }) {
   const [trailerURL, setTrailerURL] = useState('')
+  const [showMessage, setShowMessage] = useState(false)
 
   function toggleClose() {
     setPlayVideo(!playVideo)
   }
-
-  const handleClick = (movie) => {
-    if (trailerURL) {
-      setTrailerURL('')
-    } else {
-      movieTrailer(null, { tmdbId: movie.id })
-        .then((url) => {
-          console.log("url is " + url);
-          const urlParams = new URLSearchParams(new URL(url).search);
-          console.log("urlParams" + urlParams);
-          setTrailerURL(urlParams.get("v"));
-        })
-        .catch((error) => console.log(error));
-    }
+  function handleClick() {
+    setShowMessage(!showMessage)
   }
 
   const options = {
@@ -45,10 +33,11 @@ function VideoPlay({ movie, setPlayVideo, playVideo }) {
           <div className='modal-fade-bottom'></div>
         </div>
         <div className='modal-header'>
+          <h3 className='modal-title'>{movie.name}<span></span></h3>
         </div>
         <div className='modal-details'>
           <button className='modal-play-button' onClick={handleClick}>▶ Play</button>
-          <h3 className='modal-title'>{movie.name}<span></span></h3>
+          {showMessage ? <p className='video-err-message'><em>Video Unavailable at this time</em></p> : null}
         </div>
         <div className='modal-body'>
         </div>
