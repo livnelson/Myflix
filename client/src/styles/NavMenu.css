@@ -1,0 +1,141 @@
+.navmenu {
+  display: flex;
+  float: right;
+  justify-content: center;
+  align-content: space-between;
+  justify-items: flex-end;
+  align-items: space-between;
+  /* margin-right: 36px; */
+  margin-top: 44px;
+  margin-right: 36px;
+  width: 190px;
+  min-height: 300px;
+  max-height: 500px;
+  background-color: #111;
+  color: white;
+  border-radius: 3px;
+}
+
+.nav-dropdown {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* grid-column-start: 20, 80; */
+  /* width: 160px; */
+  padding-left: 10px;
+  padding-top: 30px;
+  justify-items: center;
+  align-content: space-between;
+  padding: 10px;
+}
+
+.current-user {
+  display: flex;
+  margin-top: 10px;
+  color: #777;
+  align-content: center;
+}
+
+.current-user:hover {
+  display: flex;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.current-user-avatar {
+  display: grid;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #222;
+}
+
+.current-user-avatar:hover {
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+}
+
+.current-user-name {
+  font-size: 16px;
+  padding-left: 10px;
+  padding-top: 8px;
+  
+}
+
+.logout {
+  /* position: fixed; */
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-content: flex-end;
+  justify-content: flex-end;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.logout-button {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  font-size: 13px;
+  width: 160px;
+}
+
+.logout-button:hover {
+  color: #c40f14;
+}
+
+.account_users {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.account-user {
+  color: #777;
+  display: flex;
+  flex-direction: wrap;
+  margin-top: 10px;
+}
+
+.account-user:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.account-user-avatar {
+  display: grid;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 30px;
+  height: 30px;
+  font-size: 13px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #222;
+}
+
+.account-user-avatar:hover {
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+}
+
+.account-user-name {
+  font-size: 16px;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+
+/* .account-user-name:hover {
+  cursor: pointer;
+  color: #fff;
+} */

@@ -10,13 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_13_041912) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_19_235337) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "avatars", force: :cascade do |t|
     t.string "name"
     t.string "imgUrl"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "movies", force: :cascade do |t|
+    t.string "name"
+    t.string "poster_path"
+    t.string "backdrop_path"
+    t.string "release_date"
+    t.string "overview"
+    t.integer "vote_average"
+    t.integer "vote_count"
+    t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,6 +47,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_13_041912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_my_lists_on_user_id"
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "profile_img"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_people_on_user_id"
   end
 
   create_table "user_avatars", force: :cascade do |t|

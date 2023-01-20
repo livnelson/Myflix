@@ -1,0 +1,156 @@
+.login-page {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+.login-logo {
+  position: fixed;
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  width: 80px;
+  padding-top: 20px;
+  padding-left: 20px;
+  margin-bottom: 50px;
+}
+
+.login-body{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.login-card {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  align-content: center;
+  justify-content: center;
+  width: 320px;
+  margin-top: 80px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.login-greeting {
+  padding-top: 26px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+}
+
+.back-link {
+  font-size: 8px;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.input-field {
+  width: 240px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 6px;
+  border: 1px solid;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.input-field:hover,
+.input-field:active,
+.input-field:focus,
+.input-field:focus-visible,
+.input-field:focus-within {
+  border-color: #c40f14;
+}
+
+.login-button {
+  color: white;
+  background-color: #c40f14;
+  width: 98%;
+  margin-top: 30px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.login-button:hover {
+  background-color: #c40f14;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.errors {
+  text-align: center;
+  font-size: 15px;
+  color: crimson;
+  margin: 0;
+}
+
+.sign-up-link {
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 30px;
+  padding-top: 20px;
+}
+
+.sign-up-form-link:hover {
+  color: crimson;
+  cursor: pointer;
+}
+
+.sign-up-form-link {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding-left: 3px;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.login-disclaimer {
+  color: rgb(169, 169, 169);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 1.25px;
+  line-height: 1.25;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 12px;
+  margin-bottom: 30px;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.attribution-title {
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.tmdb-logo {
+  width: 120px;
+  text-align: center;
+  padding-left: 6px;
+}
