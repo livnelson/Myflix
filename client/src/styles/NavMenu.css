@@ -10,6 +10,7 @@
   margin-right: 36px;
   width: 190px;
   min-height: 300px;
+  max-height: 500px;
   background-color: #111;
   color: white;
   border-radius: 3px;
@@ -84,6 +85,7 @@
   margin: auto;
   text-align: center;
   font-size: 13px;
+  width: 160px;
 }
 
 .logout-button:hover {

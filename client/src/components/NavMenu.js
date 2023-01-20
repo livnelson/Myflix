@@ -5,13 +5,13 @@ import Person from './Person'
 import { Link } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
-function NavMenu({ user, setUser }) {
+function NavMenu({ user, setUser, mappedPeople }) {
 
   // const navigate = useNavigate()
 
-  const mappedaccountUsers = user.people.map((a_user) => {
-    return <Person key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
-})
+//   const mappedPeople = user.people.map((a_user) => {
+//     return <Person key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
+// })
 
   return (
     <div className='navmenu'>
@@ -23,9 +23,10 @@ function NavMenu({ user, setUser }) {
           </div>
         </Link>
         {/* <div className='account-users'> */}
-        {mappedaccountUsers}
+        {mappedPeople}
         {/* </div> */}
         <div className='logout'>
+        <button className='logout-button'>Add User</button>
           <Logout user={user} setUser={setUser} />
         </div>
       </div>

@@ -1,30 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
-function AccountUser({ id, username, profile_img }) {
-  // const [accountUser, setAccountUser] = useState({})
+function Person({ id, username, profile_img,  person, setPerson }) {
+  const navigate = useNavigate()
 
-  // function switchProfile() {
-  //   console.log(username)
-   
-    // fetch("/accountuser").then((r) => {
-    //   if (r.ok) {
-    //     r.json().then((user) => setAccountUser(user))
-    //   }
-    // });
-  // }
+  function handlePerson() {
+    console.log(username)
+  }
     
   return (
-    <div className='account-users'>
-      {/* <Link to="/UserProfile"> */}
+    <div className='account-users' onClick={handlePerson}>
         <div className='account-user'>
           <img className="account-user-avatar" src={profile_img} alt={username} />
           <p className='account-user-name' >{username}</p>
         </div>
-      {/* </Link> */}
     </div>
   )
 }
 
-export default AccountUser
+export default Person

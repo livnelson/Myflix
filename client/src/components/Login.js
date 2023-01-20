@@ -39,7 +39,8 @@ function Login({ onLogin, setUser  }) {
       style={{
         backgroundImage: `url('./netflix-login-background.jpg')`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center top',
+        backgroundPosition: 'center center',
+        backgroundAttachment: 'fixed',
         height: '100vh',
         width: '100vw',
       }}
@@ -81,6 +82,12 @@ function Login({ onLogin, setUser  }) {
           {errors ? <div className="errors">{errors}</div> : null}
           <p className="sign-up-link" onClick={handleSignUp}> New to Myflix? <span className="sign-up-form-link">Sign up now.</span></p>
           <p className="login-disclaimer">This is a Netflix inspired clone built to give viewers an example of my programming abilities and graphic design skills. This app includes all movie listings from Netflix and may include titles that are considered NSFW or inappropriate for underage viewers. Please consider your environment when viewing. Thanks and enjoy!  ~ Liv</p>
+        </div>
+      </div>
+      <div className='attribution'>
+        <div>
+        <p className='attribution-title'>Movie Data Provided By:</p>
+        <img className='tmdb-logo' src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg' alt="TMDB-logo"/>
         </div>
       </div>
     </div>

@@ -63,49 +63,19 @@
   border: none;
   border-radius: 2px;
   padding-top: 8px;
-  padding-bottom: 8px;
   padding-left: 20px;
   padding-right: 20px;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
 .modal-play-button {
   cursor: pointer;
 }
 
-.modal-details {
-  display: flex;
-  grid-column-start: 20, 20, 20, 20, 20;
-  padding-left: 10px;
-  justify-items: center;
-  align-items: center;
-  padding-bottom: 10px;
-}
-
-.modal-likes {
-  padding-left: 10px;
-}
-
-.modal-list {
-  padding-left: 10px;
-}
-
-.modal-rating {
-  align-content: flex-end;
-  padding-left: 10px;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-}
-
-.modal-votes {
-  align-content: flex-end;
-  padding-left: 10px;
-  font-size: 11px;
-  letter-spacing: 0.5px;
-}
-
 .video-err-message {
   color: #777;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 1px;
   padding-left: 8px;
 }

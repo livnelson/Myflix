@@ -1,5 +1,6 @@
 .login-page {
   display: flex;
+  flex-direction: column;
   margin-top: 0;
 }
 
@@ -11,7 +12,7 @@
   width: 80px;
   padding-top: 20px;
   padding-left: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .login-body{
@@ -26,7 +27,7 @@
   align-content: center;
   justify-content: center;
   width: 320px;
-  margin-top: 60px;
+  margin-top: 80px;
   margin: auto;
   border: none;
   border-radius: 4px;
@@ -123,7 +124,7 @@ a {
 
 .login-disclaimer {
   color: rgb(169, 169, 169);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 300;
   letter-spacing: 1.25px;
   line-height: 1.25;
@@ -131,4 +132,25 @@ a {
   padding-right: 30px;
   padding-top: 12px;
   margin-bottom: 30px;
+}
+
+.attribution {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.attribution-title {
+  color: white;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.tmdb-logo {
+  width: 120px;
+  text-align: center;
+  padding-left: 6px;
 }

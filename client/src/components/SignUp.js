@@ -79,6 +79,7 @@ function SignUp({ setUser, avatars }) {
         backgroundImage: `url('./netflix-login-background.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center top',
+        backgroundAttachment: 'fixed',
         height: '100vh',
         width: '100vw',
       }}

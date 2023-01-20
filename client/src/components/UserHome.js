@@ -1,5 +1,5 @@
 // client/src/components/UserHome.js
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import requests from '../requests'
 import '../styles/App.css'
 import Row from './Row'
@@ -8,13 +8,13 @@ import Nav from './Nav'
 import Login from './Login'
 
 
-function UserHome({ user, setUser, setIsLoggedIn }) {
+function UserHome({ user, setUser, setIsLoggedIn, search, setSearch, handleSearch, setSearchResults, searchResults }) {
 
   if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
 
   return (
     <div className='app'>
-      <Nav user={user} setUser={setUser} />
+      <Nav user={user} setUser={setUser} search={search} setSearch={setSearch} handleSearch={handleSearch} setSearchResults={setSearchResults} searchResults={searchResults} />
       <Banner user={user} setUser={setUser} />
       <br />
       <Row
