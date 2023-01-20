@@ -84,7 +84,6 @@
 .login-back-link {
   color: #777 ;
   font-size: 11px;
-  letter-spacing: 0.5px;
 }
 
 .login-back-link:hover {
@@ -107,9 +106,9 @@
   text-align: center;
 }
 
-.button:hover {
-  background-color: #c40f14;
+.signup-button:hover {
   cursor: pointer;
+  font-weight: 800;
 }
 
 .avatar-section{

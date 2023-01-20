@@ -58,11 +58,13 @@ body {
 }
 
 .back-link {
-  font-size: 12px;
+  color: #777 ;
+  font-size: 11px;
+  letter-spacing: 0.5px;
 }
 
 .back-link:hover {
-  color: #c40f14;
+  color: #fff;
   cursor: pointer;
 }
 

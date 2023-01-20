@@ -92,8 +92,8 @@ function VideoDetails({ movie, user, viewDetails, setViewDetails }) {
           <p className='modal-rating'><strong>Rating:</strong> <em>{movie.vote_average}</em></p>
           <p className='modal-votes'><strong>Comminity Votes:</strong> <em>{movie.vote_count}</em></p>
           <p className='modal-date'><strong>Release Date:</strong> <em>{movie.release_date}</em></p>
-        </div>
           {showMessage ? <p className='video-err-message'><em>Video Unavailable at this time</em></p> : null}
+        </div>
         <div className='modal-body'>
           <h3 className='modal-title'>{movie.title || movie.name || movie.original_name}</h3>
           <p className='overview'>{movie.overview}</p>

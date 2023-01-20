@@ -9,7 +9,7 @@
   margin-top: 44px;
   margin-right: 36px;
   width: 190px;
-  min-height: 180px;
+  min-height: 300px;
   background-color: #111;
   color: white;
   border-radius: 3px;
@@ -74,7 +74,7 @@
   flex-direction: column;
   align-content: flex-end;
   justify-content: flex-end;
-  margin-top: 30px;
+  margin-top: 16px;
   text-align: center;
 }
 
@@ -94,13 +94,18 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-
 }
 
 .account-user {
+  color: #777;
   display: flex;
   flex-direction: wrap;
   margin-top: 10px;
+}
+
+.account-user:hover {
+  color: white;
+  cursor: pointer;
 }
 
 .account-user-avatar {
@@ -118,7 +123,8 @@
 
 .account-user-avatar:hover {
   cursor: pointer;
-  color: #c40f14;
+  box-sizing: border-box;
+  border: 1px solid #fff;
 }
 
 .account-user-name {
@@ -127,7 +133,7 @@
   padding-top: 10px;
 }
 
-.account-user-name:hover {
+/* .account-user-name:hover {
   cursor: pointer;
-  color: #c40f14;
-}
+  color: #fff;
+} */

@@ -5,8 +5,8 @@
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  padding: 20px;
-  padding-bottom: 40px;
+  /* padding: 20px; */
+  /* padding-bottom: 40px; */
   margin: auto;
   margin-top: 40px;
   background-color: #000;
@@ -46,10 +46,11 @@
   border-radius: 4px;
   font-size: 12px;
   text-align: center;
-  transition: transform 450ms;
+  /* transition: transform 450ms; */
 }
 
 .button:hover {
   cursor: pointer;
-  transform: scale(1.03);
+  font-weight: 800;
+  /* transform: scale(1.03); */
 }

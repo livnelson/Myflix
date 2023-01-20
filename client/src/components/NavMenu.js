@@ -1,7 +1,7 @@
 // client/src/components/NavMenu.js
 import React, { useNavigate } from 'react'
 import Logout from './Logout'
-import AccountUser from './AccountUser'
+import Person from './Person'
 import { Link } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
@@ -9,9 +9,9 @@ function NavMenu({ user, setUser }) {
 
   // const navigate = useNavigate()
 
-//   const mappedaccountUsers = accountUsers.map((a_user) => {
-//     return <AccountUser key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
-// })
+  const mappedaccountUsers = user.people.map((a_user) => {
+    return <Person key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
+})
 
   return (
     <div className='navmenu'>
@@ -23,7 +23,7 @@ function NavMenu({ user, setUser }) {
           </div>
         </Link>
         {/* <div className='account-users'> */}
-        {/* {mappedaccountUsers} */}
+        {mappedaccountUsers}
         {/* </div> */}
         <div className='logout'>
           <Logout user={user} setUser={setUser} />

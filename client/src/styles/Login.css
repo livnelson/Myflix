@@ -87,6 +87,7 @@
 .login-button:hover {
   background-color: #c40f14;
   cursor: pointer;
+  font-weight: 800;
 }
 
 .errors {
