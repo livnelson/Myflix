@@ -1,24 +1,32 @@
-// client/src/components/EditProfile.js
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
+// import { Context } from "../contexts/Context"
 import '../styles/EditProfile.css'
 
 function EditProfile({ user, setUser }) {
   const [errors, setErrors] = useState(false)
-  // const [editUsername, setEditUsername] = useState();
   const [editPassword, setEditPassword] = useState("");
   const [editFirstName, setEditFirstName] = useState("")
   const [editLastName, setEditLastName] = useState("")
   const [editAvatar, setEditAvatar] = useState("")
   const [avatars, setAvatars] = useState([])
+
+  // const {
+  //   setErrors,
+  //   editPassword,
+  //   setEditPassword,
+  //   editFirstName,
+  //   setEditFirstName,
+  //   editLastName,
+  //   setEditLastName,
+  //   editAvatar,
+  //   setEditAvatar,
+  //   avatars,
+  //   setAvatars,
+  //   user,
+  //   setUser} = useContext(Context)
   
   const navigate = useNavigate()
-
-
-
-  // function handleUsernameChange(e) {
-  //   setEditUsername(e.target.value);
-  // }
 
   function handlePasswordChange(e) {
     setEditPassword(e.target.value);
@@ -58,7 +66,6 @@ function EditProfile({ user, setUser }) {
     const editUser = {
       first_name: editFirstName,
       last_name: editLastName,
-      // username: editUsername,
       password: editPassword,
       profile_img: editAvatar
     };
@@ -83,12 +90,10 @@ function EditProfile({ user, setUser }) {
       })
   }
 
-
   return (
     <div>
       <div className="edit-user-card">
         <div className="edit-user-form">
-
           <form onSubmit={handleEditUser}>
             <h3>Edit Your Profile</h3>
             {/* <input
@@ -108,7 +113,7 @@ function EditProfile({ user, setUser }) {
               value={editPassword}
               placeholder="Enter a new password"
               onChange={handlePasswordChange}
-              required
+              // required
             />
             <br />
             <input
@@ -136,7 +141,7 @@ function EditProfile({ user, setUser }) {
                 </div>
               </div>
             <br />
-            <button className="button" type="submit">Save Changes</button>
+            <button className="profile-button" type="submit">Save Changes</button>
           </form>
           <br />
         </div>

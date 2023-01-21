@@ -6,10 +6,11 @@ import Person from './Person'
 import '../styles/Nav.css'
 
 
-function Nav({ user, setUser, search, setSearch, setSearchResults, person, setPerson }) {
+function Nav({ user, setUser, setSearchResults, person, setPerson, people }) {
   const [show, handleShow] = useState(false)
   const [viewMenu, setViewMenu] = useState(true)
   const [searchAPI, setSearchAPI] = useState(false)
+  const [search, setSearch] = useState("")
   // const [person, setPerson] = useState(false)
 
   const navigate = useNavigate()
@@ -47,6 +48,20 @@ function Nav({ user, setUser, search, setSearch, setSearchResults, person, setPe
       })
   }
 
+  const mappedPeople = people.map((person) => {
+    return <Person
+      key={person.id}
+      id={person.id}
+      username={person.username}
+      profile_img={person.profile_img}
+      person={person}
+      setPerson={setPerson}
+      // showProfile={showProfile}
+      // setShowProfile={setShowProfile}
+       />
+  })
+
+
   
   // const mappedPeople = user.people.map((a_user) => {
   //   return <Person key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} person={person} setPerson={setPerson} />
@@ -69,7 +84,7 @@ function Nav({ user, setUser, search, setSearch, setSearchResults, person, setPe
             placeholder="Enter movie title..."
             type="text"
             id="search"
-            // value={search}
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
           >
           </input>
@@ -81,7 +96,7 @@ function Nav({ user, setUser, search, setSearch, setSearchResults, person, setPe
           <img src={user.profile_img} alt={user.username} className='nav-avatar' />
         </div>
         <div>
-          {viewMenu ? null : <NavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} />}
+          {viewMenu ? null : <NavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} mappedPeople={mappedPeople}/>}
         </div>
       </span>
     </div>

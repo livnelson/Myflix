@@ -14,6 +14,7 @@ class PeopleController < ApplicationController
 
   def show
     person = Person.find(params[:id])
+    session[:person_id] = person.id
     render json: person, status: :accepted
   end
 

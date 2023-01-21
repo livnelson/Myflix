@@ -10,6 +10,9 @@ import PersonProfile from './PersonProfile'
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(false)
+  const [myList, setMylist] = useState('')
+  const [profileImg, setProfileImg] = useState('')
+
   // const [account, setAccount] = useState(null)
   const [avatars, setAvatars] = useState([])
   // const [users, setUsers] = useState([])
@@ -17,12 +20,20 @@ function App() {
   const [searchResults, setSearchResults] = useState([])
     const [person, setPerson] = useState({})
   const [showProfile, setShowProfile] = useState(false)
+  const [people, setPeople] = useState([])
+  const [username, setUsername] = useState('')
 
   // auto-login
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {
+          setUser(user)
+          setMylist(user.my_lists)
+          setProfileImg(user.profile_img)
+          setPeople(user.people)
+          setUsername(user.username)
+        });
       }
     });
   }, []);
@@ -60,9 +71,15 @@ function App() {
             setSearchResults={setSearchResults} 
             searchResults={searchResults} 
             person={person} 
-            setPerson={setPerson} />}
+            setPerson={setPerson}
+            people={people} />}
           />
-        <Route exact path='/UserProfile' element={<UserProfile user={user} onLogin={setUser} />} />
+        <Route exact path='/UserProfile' element={
+          <UserProfile 
+          user={user} 
+          onLogin={setUser} 
+          setUser={setUser}
+          people={people} />} />
         <Route exact path='/Signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
         <Route exact path='/SearchResults' element={
           <SearchResults 

@@ -68,7 +68,7 @@ body {
   cursor: pointer;
 }
 
-.button {
+.user-button {
   color: white;
   background-color: #c40f14;
   width: 200px;
@@ -81,7 +81,7 @@ body {
   font-size: 12px;
 }
 
-.button:hover {
+.user-button:hover {
   background-color: #c40f14;
   cursor: pointer;
 }

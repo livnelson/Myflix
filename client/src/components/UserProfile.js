@@ -80,8 +80,8 @@ function UserProfile({ user, setUser }) {
         <img src={user.profile_img} alt={user.username} className='user-avatar' />
         <h1 className='greeting'>Hello {user.first_name}!</h1>
         {showEdit ? <EditProfile user={user} setUser={setUser} /> : null}
-        <button className="button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
-        <button className="button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
+        <button className="user-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
+        <button className="user-button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
       </div>
       <br />
       <h2 className='fave-greeting'>My Faves List</h2>

@@ -6,21 +6,21 @@ import { Link } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
 
-function NavMenu({ user, setUser, person, setPerson }) {
+function NavMenu({ user, setUser, person, setPerson, people, mappedPeople }) {
   
 
-  const mappedPeople = user.people.map((person) => {
-    return <Person
-      key={person.id}
-      id={person.id}
-      username={person.username}
-      profile_img={person.profile_img}
-      person={person}
-      setPerson={setPerson}
-      // showProfile={showProfile}
-      // setShowProfile={setShowProfile}
-       />
-  })
+  // const mappedPeople = people.map((person) => {
+  //   return <Person
+  //     key={person.id}
+  //     id={person.id}
+  //     username={person.username}
+  //     profile_img={person.profile_img}
+  //     person={person}
+  //     setPerson={setPerson}
+  //     // showProfile={showProfile}
+  //     // setShowProfile={setShowProfile}
+  //      />
+  // })
 
   return (
     <div className='navmenu'>

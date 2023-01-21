@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import EditProfile from './EditProfile'
+import PersonEdit from './PersonEdit'
 import Row from './Row'
 import PersonBanner from './PersonBanner'
 import requests from '../requests'
 // import FaveMovie from './FaveMovie'
 import '../styles/UserProfile.css'
 import '../styles/PersonProfile.css'
+import '../styles/EditProfile.css'
 
 const base_url = "http://image.tmdb.org/t/p/original/"
 
@@ -73,24 +74,30 @@ function PersonProfile({ person, setPerson }) {
 
   return (
     <div className='person-profile-page'>
-      <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
-      <div className='user-profile'>
-        <Link to='/' onClick={goToHome} className='back-link'>← Back to Home</Link>
-        <img src={person.profile_img} alt={person.username} className='user-avatar' />
-        <h1 className='greeting'>Hello {person.first_name}!</h1>
-        {showEdit ? <EditProfile person={person} setPerson={setPerson} /> : null}
-        <button className="button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
-        <button className="button" type="submit" onClick={handleDeletePerson}>Delete Profile</button>
+      <div className='person-header'>
+        <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
+        <Link to='/' onClick={goToHome} className='person-back-link'>← Back to Main Profile</Link>
+      </div>
+      <div className='person-profile'>
+        <div className='person-welcome'>
+          <img id='person-avatar' src={person.profile_img} alt={person.username} />
+          <h1 id='person-greeting'>Hello {person.username}!</h1>
+          <button className="person-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit" : "Edit Profile"}</button>
+          <button className="person-button" type="submit" onClick={handleDeletePerson}>Delete Profile</button>
+        </div>
+        {showEdit ? <PersonEdit person={person} setPerson={setPerson} setShowEdit={setShowEdit} showEdit={showEdit}/> : null}
       </div>
       <br />
-      <h2 className='fave-greeting'>My Faves List</h2>
-      <div className='faves-row'>
-        <div className='faves-row-posters'>
-          {/* {mappedFaves} */}
+      <PersonBanner person={person} />
+      <div className='person-faves'>
+        <h2 className='fave-greeting'>My Faves List</h2>
+        <div className='faves-row'>
+          <div className='faves-row-posters'>
+            {/* {mappedFaves} */}
+          </div>
         </div>
       </div>
       <div className='rows'>
-        <PersonBanner person={person}/>
         <Row title="Trending Now" fetchURL={requests.fetchTrending} />
         <Row title="Top Rated" fetchURL={requests.fetchTopRated} />
         <Row title="Action Movies" fetchURL={requests.fetchActionMovies} />

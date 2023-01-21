@@ -9,8 +9,8 @@
   margin-top: 44px;
   margin-right: 36px;
   width: 190px;
-  min-height: 300px;
-  max-height: 500px;
+  /* min-height: 300px; */
+  max-height: 600px;
   background-color: #111;
   color: white;
   border-radius: 3px;
