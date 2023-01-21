@@ -14,7 +14,7 @@ function Person({ id, username, profile_img, person, setPerson }) {
       .then((personObj) => {
         console.log(personObj)
         setPerson(personObj)
-        navigate('/PersonHome')
+        navigate('/PersonProfile')
         // setShowProfile(!showProfile)
       })
   }

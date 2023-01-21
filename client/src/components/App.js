@@ -5,7 +5,6 @@ import UserProfile from './UserProfile'
 import SignUp from './SignUp'
 import SearchResults from "./SearchResults"
 import PersonProfile from './PersonProfile'
-import PersonHome from './PersonHome'
 
 
 function App() {
@@ -70,17 +69,6 @@ function App() {
            search={search} 
            searchResults={searchResults} />}
           />
-        <Route exact path='/PersonHome' element={
-          <PersonHome 
-            search={search} 
-            setSearch={setSearch} 
-            setSearchResults={setSearchResults} 
-            searchResults={searchResults} 
-            person={person}
-            setPerson={setPerson}
-            user={user}
-            setUser={setUser} />} 
-        />
         <Route exact path='/PersonProfile' element={
           <PersonProfile 
             search={search} 
