@@ -30,5 +30,7 @@ Rails.application.routes.draw do
   get "allfaves", to: "my_lists#index"
   post "/add_to_mylist", to: "my_lists#add_to_list"
   delete "/deletemyfave/:name", to: "my_lists#delete_myfave"
+
+  get "/person_profile/:id", to: "people#show"
   
 end

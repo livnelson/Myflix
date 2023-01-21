@@ -4,18 +4,26 @@ import requests from '../requests'
 import '../styles/App.css'
 import Row from './Row'
 import Banner from './Banner'
-import Nav from './Nav'
+import PersonNav from './PersonNav'
 import Login from './Login'
 
 
-function UserHome({ user, setUser, setIsLoggedIn, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson }) {
-
-  if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+function PersonHome({ user, setUser, person, setPerson, search, setSearch, handleSearch, setSearchResults, searchResults }) {
 
   return (
     <div className='app'>
-      <Nav user={user} setUser={setUser} search={search} setSearch={setSearch} handleSearch={handleSearch} setSearchResults={setSearchResults} searchResults={searchResults} person={person} setPerson={setPerson} />
-      <Banner user={user} setUser={setUser} />
+      <PersonNav
+        search={search}
+        setSearch={setSearch}
+        handleSearch={handleSearch}
+        setSearchResults={setSearchResults}
+        searchResults={searchResults}
+        person={person}
+        setPerson={setPerson}
+        user={user}
+        setUser={setUser}
+      />
+      <Banner />
       <br />
       <Row
         title="Myflix { Netflix }  Originals"
@@ -32,4 +40,4 @@ function UserHome({ user, setUser, setIsLoggedIn, search, setSearch, handleSearc
   )
 }
 
-export default UserHome
+export default PersonHome

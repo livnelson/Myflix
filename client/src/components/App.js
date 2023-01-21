@@ -1,22 +1,23 @@
-// client/src/components/App.js
 import React, { useState, useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
-import SelectUser from "./SelectUser"
 import UserHome from './UserHome'
 import UserProfile from './UserProfile'
 import SignUp from './SignUp'
 import SearchResults from "./SearchResults"
+import PersonProfile from './PersonProfile'
+import PersonHome from './PersonHome'
 
 
 function App() {
   // const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState(false)
-  const [account, setAccount] = useState(null)
+  // const [account, setAccount] = useState(null)
   const [avatars, setAvatars] = useState([])
-  const [users, setUsers] = useState([])
+  // const [users, setUsers] = useState([])
   const [search, setSearch] = useState()
   const [searchResults, setSearchResults] = useState([])
-
+    const [person, setPerson] = useState({})
+  const [showProfile, setShowProfile] = useState(false)
 
   // auto-login
   useEffect(() => {
@@ -37,19 +38,57 @@ function App() {
       })
   }, [])
 
+  // function handlePerson() {
+  //   console.log(user.person.id)
+  //   fetch(`/person_profile/${user.person.id}`)
+  //     .then((res) => res.json())
+  //     .then((personObj) => {
+  //       console.log(personObj)
+  //       setPerson(personObj)
+  //       setShowProfile(!showProfile)
+  //     })
+  // }
+
   return (
     <div>
       <Routes>
-        {/* <Route exact path="/" element={<Login  onLogin={setAccount} setAccount={setAccount} setIsLoggedIn={setIsLoggedIn} users={users} setUsers={setUsers} />} /> */}
-        {/* <Route exact path='/' element={<SelectUser user={user} account={account} setAccount={setAccount} onLogin={setAccount}setUser={setUser}  />} /> */}
-        {/* <Route exact path='/SelectUser' element={<SelectUser account={account} setAccount={setAccount} onLogin={setAccount} avatars={avatars} users={users} setUsers={setUsers}  />} /> */}
-        <Route exact path='/' element={<UserHome user={user} setUser={setUser} search={search} setSearch={setSearch} setSearchResults={setSearchResults} searchResults={searchResults} />} />
-        {/* <Route exact path='/' element={<UserHome onLogin={setAccount} account={account} setAccount={setAccount} users={users} setUsers={setUsers}user={user} />} /> */}
-        <Route exact path='/UserProfile' element={<UserProfile user={user} setUser={setUser} />} onLogin={setUser} />
-        {/* <Route exact path='/UserProfile' element={<UserProfile account={account} setAccount={setAccount} />} /> */}
-        {/* <Route exact path='/UserProfile' element={<UserProfile user={user} setUser={setUser} />} onLogin={setUser} isLoggedIn={isLoggedIn} avatars={avatars} /> */}
-        <Route exact path='/Signup' element={<SignUp setAccount={setAccount} avatars={avatars} setUser={setUser} />} />
-        <Route exact path='/SearchResults' element={<SearchResults search={search} searchResults={searchResults} />} />
+        <Route exact path='/' element={
+          <UserHome 
+            user={user} 
+            setUser={setUser} 
+            earch={search} 
+            setSearch={setSearch} 
+            setSearchResults={setSearchResults} 
+            searchResults={searchResults} 
+            person={person} 
+            setPerson={setPerson} />}
+          />
+        <Route exact path='/UserProfile' element={<UserProfile user={user} onLogin={setUser} />} />
+        <Route exact path='/Signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
+        <Route exact path='/SearchResults' element={
+          <SearchResults 
+           search={search} 
+           searchResults={searchResults} />}
+          />
+        <Route exact path='/PersonHome' element={
+          <PersonHome 
+            search={search} 
+            setSearch={setSearch} 
+            setSearchResults={setSearchResults} 
+            searchResults={searchResults} 
+            person={person}
+            setPerson={setPerson}
+            user={user}
+            setUser={setUser} />} 
+        />
+        <Route exact path='/PersonProfile' element={
+          <PersonProfile 
+            search={search} 
+            searchResults={searchResults} 
+            user={user} 
+            person={person} 
+            setPerson={setPerson} />} 
+        />
       </Routes>
     </div>
   );

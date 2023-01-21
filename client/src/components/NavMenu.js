@@ -1,17 +1,26 @@
 // client/src/components/NavMenu.js
-import React, { useNavigate } from 'react'
+import React, { useState } from 'react'
 import Logout from './Logout'
 import Person from './Person'
 import { Link } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
-function NavMenu({ user, setUser, mappedPeople }) {
 
-  // const navigate = useNavigate()
+function NavMenu({ user, setUser, person, setPerson }) {
+  
 
-//   const mappedPeople = user.people.map((a_user) => {
-//     return <Person key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} />
-// })
+  const mappedPeople = user.people.map((person) => {
+    return <Person
+      key={person.id}
+      id={person.id}
+      username={person.username}
+      profile_img={person.profile_img}
+      person={person}
+      setPerson={setPerson}
+      // showProfile={showProfile}
+      // setShowProfile={setShowProfile}
+       />
+  })
 
   return (
     <div className='navmenu'>
@@ -22,14 +31,13 @@ function NavMenu({ user, setUser, mappedPeople }) {
             <p className='current-user-name'>{user.username}</p>
           </div>
         </Link>
-        {/* <div className='account-users'> */}
         {mappedPeople}
-        {/* </div> */}
         <div className='logout'>
-        <button className='logout-button'>Add User</button>
+          <button className='logout-button'>Add User</button>
           <Logout user={user} setUser={setUser} />
         </div>
       </div>
+      {/* {showProfile ? <PersonProfile /> : null} */}
     </div>
   )
 }

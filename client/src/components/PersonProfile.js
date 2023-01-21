@@ -1,24 +1,26 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import EditProfile from './EditProfile'
-import FaveMovie from './FaveMovie'
+// import FaveMovie from './FaveMovie'
 import '../styles/UserProfile.css'
+import '../styles/PersonProfile.css'
 
 const base_url = "http://image.tmdb.org/t/p/original/"
 
-function UserProfile({ person, setPerson }) {
+function PersonProfile({ person, setPerson }) {
   const [showEdit, setShowEdit] = useState(false)
   const [myFaves, setMyFaves] = useState([])
   const [errors, setErrors] = useState(false)
 
   const navigate = useNavigate();
+  
   console.log(person)
 
   function handleShowEdit() {
     setShowEdit(!showEdit);
   }
 
-  function handleDeleteProfile() {
+  function handleDeletePerson() {
     // fetch(`/users/${user.id}`, {
     //   method: 'DELETE',
     //   headers: { 'Content-Type': 'application/json' }
@@ -39,19 +41,19 @@ function UserProfile({ person, setPerson }) {
   }
 
   useEffect(() => {
-    fetch('/allfaves', {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify()
-    })
-      .then(res => {
-        if (res.ok) {
-          res.json().then(faves => {
-            console.log(faves)
-            setMyFaves(faves)
-          })
-        }
-      })
+    // fetch('/allfaves', {
+    //   method: 'GET',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify()
+    // })
+    //   .then(res => {
+    //     if (res.ok) {
+    //       res.json().then(faves => {
+    //         console.log(faves)
+    //         setMyFaves(faves)
+    //       })
+    //     }
+    //   })
   }, [])
 
   // const deleteMovie = (name) => setMyFaves(current => current.filter(p => p.name !== name))
@@ -67,7 +69,7 @@ function UserProfile({ person, setPerson }) {
   // if (!user) return  <Login />
 
   return ( 
-    <div className='user-profile-page'>
+    <div className='person-profile-page'>
       <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       <div className='user-profile'>
         <Link to='/' onClick={goToHome} className='back-link'>← Back to Home</Link>
@@ -75,7 +77,7 @@ function UserProfile({ person, setPerson }) {
         <h1 className='greeting'>Hello {person.first_name}!</h1>
         {showEdit ? <EditProfile person={person} setPerson={setPerson} /> : null}
         <button className="button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
-        <button className="button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
+        <button className="button" type="submit" onClick={handleDeletePerson}>Delete Profile</button>
       </div>
       <br />
       <h2 className='fave-greeting'>My Faves List</h2>
@@ -89,4 +91,4 @@ function UserProfile({ person, setPerson }) {
   )
 }
 
-export default UserProfile
+export default PersonProfile
