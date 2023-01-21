@@ -6,7 +6,7 @@ import Person from './Person'
 import '../styles/Nav.css'
 
 
-function Nav({ user, setUser, search, setSearch, setSearchResults, person, setPerson }) {
+function PersonNav({ user, setUser, search, setSearch, setSearchResults, person, setPerson }) {
   const [show, handleShow] = useState(false)
   const [viewMenu, setViewMenu] = useState(true)
   const [searchAPI, setSearchAPI] = useState(false)
@@ -78,7 +78,7 @@ function Nav({ user, setUser, search, setSearch, setSearchResults, person, setPe
           <h4 className='search-icon' onClick={handleSearchBar}>☌</h4></> :
           <h4 className='search-icon' onClick={handleSearchBar}>☌</h4>}
         <div className='nav-avatar' onClick={toggleViewUser}>
-          <img src={user.profile_img} alt={user.username} className='nav-avatar' />
+          <img src={person.profile_img} alt={person.username} className='nav-avatar' />
         </div>
         <div>
           {viewMenu ? null : <NavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} />}
@@ -88,4 +88,4 @@ function Nav({ user, setUser, search, setSearch, setSearchResults, person, setPe
   )
 }
 
-export default Nav
+export default PersonNav
