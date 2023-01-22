@@ -41,17 +41,17 @@ console.log(person)
   return (
     <div className='navmenu'>
       <div className='nav-dropdown'>
-        <Link to="/UserProfile">
+        {/* <Link to="/UserProfile">
           <div className='current-user'>
             <img className="current-user-avatar" src={user.profile_img} alt={user.username} />
             <p className='current-user-name'>{user.username}</p>
           </div>
-        </Link>
+        </Link> */}
         {mappedPeople}
         <div className='logout'>
-          <button className='logout-button'  onClick={handleViewProfile}>View Profile</button>
-          <br />
-          <button className='logout-button'  onClick={handleAddPerson}>Add User</button>
+
+          {/* <button className='logout-button'  onClick={handleAddPerson}>Add User</button> */}
+          <button className='logout-button'  onClick={handleViewProfile}>View Your Profile</button>
           <Logout user={user} setUser={setUser} />
         </div>
       </div>

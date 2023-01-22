@@ -66,3 +66,34 @@
 .sign-out-button{
   margin-top: 60px;
 }
+
+.person-avatars {
+  color: #777;
+}
+
+.person-avatars:hover {
+  color: white;
+}
+
+.person-avatar {
+  display: grid;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 80px;
+  height: 80px;
+  font-size: 13px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background-color: #222;
+}
+
+.person-avatar:hover {
+  cursor: pointer;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+}
+
+/* .person-name {
+  color: #777;
+} */

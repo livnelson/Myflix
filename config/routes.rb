@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   delete "/deletemyfave/:name", to: "my_lists#delete_myfave"
   
   get "/person_profile/:id", to: "people#show"
+  delete "/deleteprofile/:id", to: "people#destroy"
   
   get "/personfaves", to: "lists#index"
   post "/add_to_personlist", to: "lists#add_to_list"

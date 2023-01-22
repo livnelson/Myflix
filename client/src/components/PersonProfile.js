@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import Login from './Login'
 import PersonEdit from './PersonEdit'
-import FaveMovie from './FaveMovie'
+import PersonFaveMovie from './PersonFaveMovie'
 // import YouTube from 'react-youtube'
 // import movieTrailer from "movie-trailer"
 import '../styles/UserProfile.css'
@@ -25,13 +25,13 @@ function PersonProfile({ user, setUser,  person, setPerson }) {
   }
 
   function handleDeleteProfile() {
-    fetch(`/users/${person.id}`, {
+    fetch(`/deleteprofile/${person.id}}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(res => {
         if (res.ok) {
-          setUser(null)
+          setPerson(null)
           navigate('/')
           console.log('User Deleted')
         } else {
@@ -44,42 +44,24 @@ function PersonProfile({ user, setUser,  person, setPerson }) {
     navigate('/')
   }
 
-//   useEffect(() => {
-//     fetch('/allfaves', {
-//       method: 'GET',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify()
-//     })
-//       .then(res => {
-//         if (res.ok) {
-//           res.json().then(faves => {
-//             console.log(faves)
-//             setMyFaves(faves)
-//           })
-//         }
-//       })
-//   }, [])
-
   const deleteMovie = (name) => setMyFaves(current => current.filter(p => p.name !== name))
 
-//   const filteredFaves = myFaves.filter((fave) => {
-//     if (fave.person_id === person.id) return true
-// })
+  const filteredFaves = person.lists.filter((fave) => {
+    if (fave.person_id === person.id) return true
+})
 
-  const mappedFaves = person.lists.map(movie => {
-    return <FaveMovie key={movie.id} id={movie.id} name={movie.name} poster_path={movie.poster_path} overview={movie.overview} deleteMovie={deleteMovie} />
+  const mappedFaves = filteredFaves.map(movie => {
+    return <PersonFaveMovie key={movie.id} id={movie.id} name={movie.name} poster_path={movie.poster_path} overview={movie.overview} deleteMovie={deleteMovie} />
   })
-
-  // if (!user) return  <Login />
 
   return ( 
     <div className='user-profile-page'>
       <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       <div className='user-profile'>
-        <Link to='/' onClick={goToHome} className='back-link'>← Back to Home</Link>
+        <Link to='/Home' onClick={goToHome} className='back-link'>← Back to Home</Link>
         <img src={person.profile_img} alt={person.username} className='user-avatar' />
         <h1 className='greeting'>Hello {person.first_name}!</h1>
-        {showEdit ? <PersonEdit user={user} setUser={setUser} /> : null}
+        {showEdit ? <PersonEdit person={person} setPerson={setPerson} setShowEdit={setShowEdit} showEdit={showEdit} /> : null}
         <button className="user-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
         <button className="user-button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
       </div>

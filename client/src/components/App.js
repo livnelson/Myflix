@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
-import UserHome from './UserHome'
+// import UserHome from './UserHome'
 import UserProfile from './UserProfile'
 import SignUp from './SignUp'
 import SearchResults from "./SearchResults"
@@ -143,7 +143,9 @@ function App() {
             user={user}
             person={person}
             avatars={avatars}
-            setPerson={setPerson} />}
+            setPerson={setPerson}
+            setPeople={setPeople}
+            people={people} />}
         />
       </Routes>
     </div>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import '../styles/SignUp.css'
 
-function PeopleAdd({ setPerson, user, avatars }) {
+function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
 
   const [username, setUsername] = useState("");
 
@@ -58,6 +58,7 @@ function PeopleAdd({ setPerson, user, avatars }) {
         setUsername("")
         setProfileImg("")
         setPerson(person)
+        // setPeople(...people, person)
         navigate(`/`)
       });
   }

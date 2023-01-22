@@ -5,12 +5,13 @@ import '../styles/App.css'
 import Row from './Row'
 import PersonBanner from './PersonBanner'
 import PersonNav from './PersonNav'
+import SelectUser from './SelectUser'
 import Login from './Login'
 
 
 function PersonHome({ user, setUser, setIsLoggedIn, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
   const [addToFave, setAddToFave] = useState({})
-  // if (!person) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
+  if (!person.id) return  <SelectUser />
 
   return (
     <div className='app'>

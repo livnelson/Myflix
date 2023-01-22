@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate , Link} from 'react-router-dom'
 import Login from './Login'
 import Nav from './Nav'
 import Logout from './Logout'
 import User from './User'
 import Person from './Person'
+import SelectPerson from './SelectPerson'
 import '../styles/SelectUser.css'
 
 function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, avatars, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
+  const navigate = useNavigate()
+  
   // const [users, setUsers] = useState([])
 
   // useEffect(() => {
@@ -38,7 +42,7 @@ function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, 
   // })
 
   const mappedPeople = people.map((person) => {
-    return <Person
+    return <SelectPerson
       key={person.id}
       id={person.id}
       username={person.username}
@@ -61,7 +65,9 @@ function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, 
   //   console.log(users)
   // }
 
-  console.log(account)
+  function handleAddPerson() {
+    navigate('/PersonAdd')
+  }
 
   if (!user.id) return <Login onLogin={setUser} setAccount={setAccount} setIsLoggedIn={setIsLoggedIn} />
 
@@ -77,7 +83,8 @@ function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, 
         {mappedPeople}
       </div>
       <div className='sign-out-button'>
-      <Logout user={user} setUser={setUser} />
+        <button  className='logout-button' onClick={handleAddPerson}>Add a New User</button>
+      {/* <Logout user={user} setUser={setUser} /> */}
       </div>
     </div>
   )
