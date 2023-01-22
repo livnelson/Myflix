@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import CurrentPeople from './CurrentPeople'
 import '../styles/SignUp.css'
 
 function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
@@ -58,7 +59,6 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
         setUsername("")
         setProfileImg("")
         setPerson(person)
-        // setPeople(...people, person)
         navigate(`/`)
       });
   }
@@ -73,6 +73,7 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
       <div>
         <img className='signup-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       </div>
+
       <div className='signup-body'>
         <div className="signup-card">
           <Link to="/" className="login-back-link">← Back to Home</Link>
@@ -88,7 +89,7 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
-              />
+                />
               <br />
               <input
                 className="signup-input-field"
@@ -98,7 +99,7 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
                 placeholder="Enter Your First Name"
                 onChange={handleFirstNameChange}
                 required
-              />
+                />
               <br />
               <input
                 className="signup-input-field"
@@ -108,7 +109,7 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
                 placeholder="Enter Your Last Name"
                 onChange={handleLastNameChange}
                 required
-              />
+                />
               <br />
               <div className='avatar-section'>
                 <h3 className='signup-subheading'>Choose Your Avatar</h3>

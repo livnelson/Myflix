@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/Login.css'
 
-function Login({ onLogin, setUser  }) {
+function Login({ onLogin, setUser, people, setPeople }) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
@@ -23,7 +23,10 @@ function Login({ onLogin, setUser  }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => {
+          onLogin(user)
+          setPeople(user.people)
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

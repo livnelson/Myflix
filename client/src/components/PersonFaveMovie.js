@@ -1,4 +1,5 @@
 import React, { useState }from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/UserProfile.css'
 
 
@@ -7,6 +8,8 @@ const base_url = "http://image.tmdb.org/t/p/original/"
 
 function PersonFaveMovie({ id, poster_path, name, overview, myFaves, setMyFaves, deleteMovie }) {
   const [ hover, setHover] = useState(false)
+
+  const navigate = useNavigate()
 
   function handleMovieClick(){
     console.log(name)
@@ -23,6 +26,7 @@ function PersonFaveMovie({ id, poster_path, name, overview, myFaves, setMyFaves,
         if (res.ok) {
           console.log(res)
           deleteMovie(name)
+          navigate('/Home')
         } else {
           res.json().then(data => console.log("Did not delete"))
         }

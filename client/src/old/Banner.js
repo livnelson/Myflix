@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from '../axios'
 import requests from '../requests'
-import VideoDetails from './VideoDetails'
-import VideoPlay from './VideoPlay'
+import VideoDetails from '../components/VideoDetails'
+import VideoPlay from '../components/VideoPlay'
 import '../styles/Banner.css'
 
 

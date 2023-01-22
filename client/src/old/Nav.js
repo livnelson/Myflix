@@ -1,8 +1,8 @@
 // client/src/components/Nav.js
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import NavMenu from './NavMenu'
-import Person from './Person'
+import NavMenu from '../components/NavMenu'
+import Person from '../components/Person'
 import '../styles/Nav.css'
 
 

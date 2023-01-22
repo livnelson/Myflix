@@ -1,39 +1,33 @@
 // client/src/components/UserProfile.js
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import Login from './Login'
 import PersonEdit from './PersonEdit'
 import PersonFaveMovie from './PersonFaveMovie'
-// import YouTube from 'react-youtube'
-// import movieTrailer from "movie-trailer"
 import '../styles/UserProfile.css'
 
-const base_url = "http://image.tmdb.org/t/p/original/"
 
-
-function PersonProfile({ user, setUser,  person, setPerson }) {
+function PersonProfile({ person, setPerson, myFaves, setMyFaves }) {
   const [showEdit, setShowEdit] = useState(false)
-  const [myFaves, setMyFaves] = useState([])
+  // const [myFaves, setMyFaves] = useState([])
   const [errors, setErrors] = useState(false)
-  // const [trailerURL, setTrailerURL] = useState('')
 
   const navigate = useNavigate();
-  console.log(user)
+  console.log(person)
 
   function handleShowEdit() {
     setShowEdit(!showEdit);
   }
 
   function handleDeleteProfile() {
-    fetch(`/deleteprofile/${person.id}}`, {
+    fetch(`/deleteperson/${person.id}}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(res => {
         if (res.ok) {
           setPerson(null)
-          navigate('/')
           console.log('User Deleted')
+          navigate('/')
         } else {
           res.json().then((err) => setErrors(err.errors));
         }

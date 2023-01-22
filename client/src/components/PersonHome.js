@@ -11,11 +11,25 @@ import Login from './Login'
 
 function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
   const [addToFave, setAddToFave] = useState({})
-  if (!person.id) return  <SelectUser />
+  const [myFaves, setMyFaves] = useState([])
+
+  if (!person.id) return  <SelectUser   
+                            user={user}
+                            setUser={setUser}
+                            earch={search}
+                            setSearch={setSearch}
+                            setSearchResults={setSearchResults}
+                            searchResults={searchResults}
+                            person={person}
+                            setPerson={setPerson}
+                            people={people}
+                            myFaves={myFaves}
+                            setMyFaves={setMyFaves} />
 
   return (
     <div className='app'>
-      <PersonNav 
+      <PersonNav
+        key={person.id}
         user={user} 
         setUser={setUser} 
         search={search} 
@@ -26,7 +40,7 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
         person={person} 
         setPerson={setPerson}
         people={people} />
-      <PersonBanner  person={person} setAddToFave={setAddToFave} addToFave={addToFave}  />
+      <PersonBanner key={person.id} person={person} setAddToFave={setAddToFave} addToFave={addToFave}  />
       <br />
       <Row
         title="Myflix { Netflix }  Originals"

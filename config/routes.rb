@@ -16,18 +16,18 @@ Rails.application.routes.draw do
   get "/me", to: "users#show"
   
   post "/login", to: "sessions#login"
-  post "/login_person", to: "sessions#login"
   delete "/logout", to: "sessions#destroy"
   
-  get "/home/:id", to: "users#show"
   get "/users", to: "users#index"
+  get "/home/:id", to: "users#show"
   post "/create", to: "users#create"
   patch "/updateuser/:id", to: "users#update"
   delete "/deleteprofile", to: "users#destroy"
   
+  get "/person_profile/:id", to: "people#show"
+  post "/addperson", to: "people#create"
   patch "/updateperson/:id", to: "people#update"
   delete "/deleteperson/:id", to: "people#destroy"
-  post "/addperson", to: "people#create"
   
   get "/avatars", to: "avatars#index"
   
@@ -39,9 +39,6 @@ Rails.application.routes.draw do
   get "/allfaves", to: "my_lists#index"
   post "/add_to_mylist", to: "my_lists#add_to_list"
   delete "/deletemyfave/:name", to: "my_lists#delete_myfave"
-  
-  get "/person_profile/:id", to: "people#show"
-  delete "/deleteprofile/:id", to: "people#destroy"
   
   get "/personfaves", to: "lists#index"
   post "/add_to_personlist", to: "lists#add_to_list"

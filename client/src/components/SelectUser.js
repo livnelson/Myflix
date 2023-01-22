@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useNavigate , Link} from 'react-router-dom'
-import { Context } from "../contexts/Context"
+import { useNavigate } from 'react-router-dom'
+// import { Context } from "../contexts/Context"
 import Login from './Login'
-import Nav from './Nav'
+// import Nav from './Nav'
 import Logout from './Logout'
-import User from './User'
-import Person from './Person'
+// import User from './User'
+// import Person from './Person'
 import SelectProfile from './SelectProfile'
 
 import '../styles/SelectUser.css'
 
-function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, avatars, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
+function SelectUser({ setUser, user, setAccount, setIsLoggedIn, setPerson, people, setPeople }) {
   const navigate = useNavigate()
 
   const mappedPeople = people.map((person) => {
@@ -28,10 +28,15 @@ function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, 
   console.log(user)
 
   function handleAddPerson() {
-    navigate('/PersonAdd')
+    navigate('/manage_profiles')
   }
 
-  if (!user.id) return <Login onLogin={setUser} setAccount={setAccount} setIsLoggedIn={setIsLoggedIn} />
+  if (!user.id) return <Login 
+                          onLogin={setUser} 
+                          setAccount={setAccount} 
+                          setIsLoggedIn={setIsLoggedIn} 
+                          people={people} 
+                          setPeople={setPeople} />
 
   return (
     <div className='select-user-page'>
@@ -45,7 +50,8 @@ function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, 
         {mappedPeople}
       </div>
       <div className='sign-out-button'>
-        <button  className='logout-button' onClick={handleAddPerson}>Add a New User</button>
+        <button  className='logout-button' onClick={handleAddPerson}>Manage Profiles</button>
+        <Logout setUser={setUser} user={user} setAccount={setAccount} setIsLoggedIn={setIsLoggedIn} setPerson={setPerson} people={people}  />
       </div>
     </div>
   )

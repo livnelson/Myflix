@@ -34,6 +34,7 @@
   width: 30px;
   border-radius: 4px;
   object-fit: contain;
+  /* z-index: 9999; */
 }
 
 .nav-avatar:hover {
@@ -45,7 +46,7 @@
   color: #777;
   font-size: 24px;
   text-align: right;
-  padding-right: 90px;
+  margin-right: 90px;
   margin-left: 14px;
 }
 
@@ -57,6 +58,7 @@
 .search-form {
   display: flex;
   justify-content: flex-end;
+  margin-right: 90px;
 }
 
 .search-field {

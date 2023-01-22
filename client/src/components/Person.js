@@ -3,30 +3,18 @@ import { Link, useNavigate } from 'react-router-dom'
 // import PersonProfile from './PersonProfile'
 import '../styles/NavMenu.css'
 
-function Person({ id, username, profile_img, setPerson,  }) {
+function Person({ id, username, profile_img, setPerson, viewMenu, setViewMenu   }) {
   const navigate = useNavigate()
 
-  // const configPerson = {
-  //   username, 
-  //   user_id: user.id
-  // }
-
   function handlePerson() {
+    setViewMenu(!viewMenu)
     console.log(id)
     fetch(`/person_profile/${id}`)
-    // fetch(`/login_person`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(configPerson),
-    // })
       .then((res) => res.json())
       .then((personObj) => {
         console.log(personObj)
         setPerson(personObj)
         navigate('/Home')
-        // setShowProfile(!showProfile)
       })
   }
 

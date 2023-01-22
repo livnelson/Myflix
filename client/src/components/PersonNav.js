@@ -7,10 +7,9 @@ import '../styles/Nav.css'
 
 function PersonNav({ user, setUser, setSearchResults, person, setPerson, people }) {
   const [show, handleShow] = useState(false)
-  const [viewMenu, setViewMenu] = useState(true)
+  const [viewMenu, setViewMenu] = useState(false)
   const [searchAPI, setSearchAPI] = useState(false)
   const [search, setSearch] = useState("")
-  // const [person, setPerson] = useState(false)
 
   const navigate = useNavigate()
 
@@ -28,13 +27,25 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people 
 
   console.log(user)
 
-  function toggleViewUser() {
+  function toggleViewMenu() {
     setViewMenu(!viewMenu)
   }
 
   function handleSearchBar() {
     setSearchAPI(!searchAPI)
   }
+
+  // function handlePerson() {
+  //   console.log(person.id)
+  //   fetch(`/person_profile/${person.id}`)
+  //   .then((res) => res.json())
+  //   .then((personObj) => {
+  //     console.log(personObj)
+  //     setPerson(personObj)
+  //     setViewMenu(!viewMenu)
+  //       navigate('/Home')
+  //     })
+  // }
 
   function handleSearch(e) {
     e.preventDefault()
@@ -75,29 +86,30 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people 
       />
       <div>
       </div>
-      <span className='nav-contents'>
-
-        {searchAPI ? <><form className='search-form' onSubmit={handleSearch}>
+      <div className='nav-contents'>
+        {searchAPI ?<form className='search-form' onSubmit={handleSearch}>
           <input
             className="search-field"
-            placeholder="Enter movie title..."
+            placeholder="Enter a title..."
             type="text"
             id="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            required
           >
           </input>
           <button type='submit' className='search-button'>Submit Search</button>
-        </form>
-          <h4 className='search-icon' onClick={handleSearchBar}>☌</h4></> :
+        </form>:
           <h4 className='search-icon' onClick={handleSearchBar}>☌</h4>}
-        <div className='nav-avatar' onClick={toggleViewUser}>
+          <div>
+        <div className='nav-avatar' onClick={toggleViewMenu}>
           <img src={person.profile_img} alt={person.username} className='nav-avatar' />
         </div>
-        <div>
-          {viewMenu ? null : <PersonNavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} />}
+          {viewMenu ? <PersonNavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} viewMenu={viewMenu} setViewMenu={setViewMenu}/> : null}
         </div>
-      </span>
+        <div>
+        </div>
+      </div>
     </div>
   )
 }

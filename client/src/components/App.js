@@ -7,22 +7,21 @@ import PersonProfile from './PersonProfile'
 import PersonHome from './PersonHome'
 import PersonAdd from './PersonAdd'
 import SelectUser from './SelectUser'
+import CurrentPeople from "./CurrentPeople"
 // import { Context } from "../contexts/Context"
-
-
 
 function App() {
   const [user, setUser] = useState({})
-  const [myList, setMylist] = useState('')
-  const [profileImg, setProfileImg] = useState('')
   const [avatars, setAvatars] = useState([])
+  const [people, setPeople] = useState([])
+  const [person, setPerson] = useState({})
   const [search, setSearch] = useState()
   const [searchResults, setSearchResults] = useState([])
-  const [person, setPerson] = useState({})
-  const [showProfile, setShowProfile] = useState(false)
-  const [people, setPeople] = useState([])
-  const [username, setUsername] = useState('')
   const [myFaves, setMyFaves] = useState([])
+  // const [myList, setMylist] = useState('')
+  // const [profileImg, setProfileImg] = useState('')
+  // const [showProfile, setShowProfile] = useState(false)
+  // const [username, setUsername] = useState('')
 
   // const { user, setUser, people, setPeople, fetchMe } = useContext(Context)
 
@@ -32,16 +31,21 @@ function App() {
       if (r.ok) {
         r.json().then((user) => {
           setUser(user)
-          setMylist(user.my_lists)
-          setProfileImg(user.profile_img)
           setPeople(user.people)
-          setUsername(user.username)
         });
       }
     });
   }, []);
 
-
+  useEffect(() => {
+    fetch("/profile_me").then((r) => {
+      if (r.ok) {
+        r.json().then((person) => {
+          setPerson(person)
+        });
+      }
+    });
+  }, []);
 
   useEffect(() => {
     fetch('/avatars')
@@ -53,33 +57,11 @@ function App() {
       })
   }, [])
 
-  // useEffect(() => {
-  //   fetch('/personfaves', {
-  //     method: 'GET',
-  //     headers: { 'Content-Type': 'application/json' },
-  //     body: JSON.stringify()
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         res.json().then(faves => {
-  //           console.log(faves)
-  //           setMyFaves(faves)
-  //         })
-  //       }
-  //     })
-  // }, [])
+    const mappedCurrentPeople = people.map(person => {
+    return <CurrentPeople key={person.id} id={person.id} username={person.username} profile_image={person.profile_image} />
+  })
 
-  // function handlePerson() {
-  //   console.log(user.person.id)
-  //   fetch(`/person_profile/${user.person.id}`)
-  //     .then((res) => res.json())
-  //     .then((personObj) => {
-  //       console.log(personObj)
-  //       setPerson(personObj)
-  //       setShowProfile(!showProfile)
-  //     })
-  // }
-
+  console.log(mappedCurrentPeople)
 
   return (
     <div>
@@ -94,7 +76,8 @@ function App() {
             searchResults={searchResults}
             person={person}
             setPerson={setPerson}
-            people={people} />}
+            people={people}
+            setPeople={setPeople} />}
         />
         {/* <Route exact path='/' element={
           <UserHome
@@ -120,7 +103,7 @@ function App() {
             setPerson={setPerson}
             people={people} />}
         />
-        <Route exact path='/UserProfile' element={
+        <Route exact path='/manage_profiles' element={
           <UserProfile
             user={user}
             onLogin={setUser}
@@ -132,15 +115,17 @@ function App() {
             search={search}
             searchResults={searchResults} />}
         />
-        <Route exact path='/PersonProfile' element={
+        <Route exact path='/profile' element={
           <PersonProfile
             search={search}
             searchResults={searchResults}
             user={user}
             person={person}
-            setPerson={setPerson}  />}
+            setPerson={setPerson}
+            myFaves={myFaves}
+            setMyFaves={setMyFaves} />}
         />
-        <Route exact path='/PersonAdd' element={
+        <Route exact path='/add_profile' element={
           <PersonAdd
             user={user}
             person={person}

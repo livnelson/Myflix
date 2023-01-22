@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../styles/NavMenu.css'
 import '../styles/SelectUser.css'
 
-function SelectProfile({ id, username, profile_img, setPerson,  }) {
+function SelectProfile({ id, username, profile_img, setPerson, person}) {
   const navigate = useNavigate()
 
   function handlePerson() {
@@ -17,6 +17,21 @@ function SelectProfile({ id, username, profile_img, setPerson,  }) {
         navigate('/Home')
       })
   }
+
+  // function handlePerson() {
+  //   console.log(id)
+  //   fetch(`person_profile/${id}`, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(person)
+  //   })
+  //     .then((res) => res.json())
+  //     .then((personObj) => {
+  //       console.log(personObj)
+  //       setPerson(personObj)
+  //       navigate('/Home')
+  //     })
+  // }
 
   return (
     <>

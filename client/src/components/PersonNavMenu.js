@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
-import { useNavigate , Link} from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import Logout from './Logout'
 import Person from './Person'
 import '../styles/NavMenu.css'
 
 
-function PersonNavMenu({ user, setUser, person, setPerson, people }) {
+function PersonNavMenu({ user, setUser, person, setPerson, people, viewMenu, setViewMenu }) {
   const navigate = useNavigate()
-  
-  function handleAddPerson() {
-    navigate('/PersonAdd')
-  }
-console.log(person)
+
+  // function handleAddPerson() {
+  //   navigate('/PersonAdd')
+  // }
+  // console.log(person)
+
   function handleViewProfile() {
     console.log(person.id)
-
     fetch(`/person_profile/${person.id}`)
       .then((res) => res.json())
       .then((personObj) => {
         console.log(personObj)
+        setViewMenu(!viewMenu)
         setPerson(personObj)
-        navigate('/PersonProfile')
+        navigate('/profile')
         // setShowProfile(!showProfile)
       })
   }
@@ -33,9 +34,9 @@ console.log(person)
       profile_img={person.profile_img}
       person={person}
       setPerson={setPerson}
-      // showProfile={showProfile}
-      // setShowProfile={setShowProfile}
-       />
+      viewMenu={viewMenu}
+      setViewMenu={setViewMenu}
+    />
   })
 
   return (
@@ -51,7 +52,7 @@ console.log(person)
         <div className='logout'>
 
           {/* <button className='logout-button'  onClick={handleAddPerson}>Add User</button> */}
-          <button className='logout-button'  onClick={handleViewProfile}>View Your Profile</button>
+          <button className='logout-button' onClick={handleViewProfile}>View Your Profile</button>
           <Logout user={user} setUser={setUser} />
         </div>
       </div>
