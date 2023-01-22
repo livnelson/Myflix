@@ -10,6 +10,7 @@
   justify-content: flex-end;
   margin: auto;
   margin-top: 86px;
+  z-index: 9999;
 }
 
 .modal-content {

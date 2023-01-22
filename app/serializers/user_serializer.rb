@@ -3,3 +3,4 @@ class UserSerializer < ActiveModel::Serializer
   has_many :my_lists
   has_many :people
 end
+

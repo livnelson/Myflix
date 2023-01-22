@@ -1,12 +1,11 @@
-// client/src/components/Nav.js
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import NavMenu from './NavMenu'
-import Person from './Person'
+import PersonNavMenu from './PersonNavMenu'
+// import Person from './Person'
 import '../styles/Nav.css'
 
 
-function Nav({ user, setUser, setSearchResults, person, setPerson, people }) {
+function PersonNav({ user, setUser, setSearchResults, person, setPerson, people }) {
   const [show, handleShow] = useState(false)
   const [viewMenu, setViewMenu] = useState(true)
   const [searchAPI, setSearchAPI] = useState(false)
@@ -48,19 +47,18 @@ function Nav({ user, setUser, setSearchResults, person, setPerson, people }) {
       })
   }
 
-  const mappedPeople = people.map((person) => {
-    return <Person
-      key={person.id}
-      id={person.id}
-      username={person.username}
-      profile_img={person.profile_img}
-      person={person}
-      setPerson={setPerson}
-      user={user}
-      // showProfile={showProfile}
-      // setShowProfile={setShowProfile}
-       />
-  })
+  // const mappedPeople = people.map((person) => {
+  //   return <Person
+  //     key={person.id}
+  //     id={person.id}
+  //     username={person.username}
+  //     profile_img={person.profile_img}
+  //     person={person}
+  //     setPerson={setPerson}
+  //     // showProfile={showProfile}
+  //     // setShowProfile={setShowProfile}
+  //      />
+  // })
 
 
   
@@ -94,14 +92,14 @@ function Nav({ user, setUser, setSearchResults, person, setPerson, people }) {
           <h4 className='search-icon' onClick={handleSearchBar}>☌</h4></> :
           <h4 className='search-icon' onClick={handleSearchBar}>☌</h4>}
         <div className='nav-avatar' onClick={toggleViewUser}>
-          <img src={user.profile_img} alt={user.username} className='nav-avatar' />
+          <img src={person.profile_img} alt={person.username} className='nav-avatar' />
         </div>
         <div>
-          {viewMenu ? null : <NavMenu user={user} setUser={setUser} person={person} people={people} mappedPeople={mappedPeople}/>}
+          {viewMenu ? null : <PersonNavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} />}
         </div>
       </span>
     </div>
   )
 }
 
-export default Nav
+export default PersonNav

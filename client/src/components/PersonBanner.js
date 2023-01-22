@@ -7,7 +7,7 @@ import VideoPlay from './VideoPlay'
 import '../styles/Banner.css'
 
 
-function PersonBanner({ person }) {
+function PersonBanner({ person, addToFave, setAddToFave }) {
   const [movie, setMovie] = useState([])
   const [viewDetails, setViewDetails] = useState(true)
   const [playVideo, setPlayVideo] = useState(true)
@@ -47,7 +47,7 @@ function PersonBanner({ person }) {
       }}>
 
       <div className='banner-contents'>
-        {viewDetails ? null : <PersonVideoDetails movie={movie} setViewDetails={setViewDetails} person={person}/>}
+        {viewDetails ? null : <PersonVideoDetails movie={movie} setViewDetails={setViewDetails} person={person} setAddToFave={setAddToFave} addToFave={addToFave} />}
         {playVideo ? null : <VideoPlay movie={movie} setPlayVideo={setPlayVideo} />}
         <h1 className='banner-title'>{movie?.title || movie?.name || movie?.original_name}</h1>
         <div className='banner-buttons'>

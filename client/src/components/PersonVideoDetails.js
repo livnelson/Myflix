@@ -2,13 +2,16 @@
 import React, { useState } from 'react'
 import '../styles/VideoDetails.css'
 
-function PersonVideoDetails({ movie, person, viewDetails, setViewDetails }) {
+function PersonVideoDetails({ movie, person, viewDetails, setViewDetails, setAddToFave, addToFave}) {
   const [like, setLike] = useState(false)
   const [voteCount, setVoteCount] = useState(false)
   const [addToList, setAddToList] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
+  // const [myFaveList, setMyFaveList] = useState([])
 
 
+  console.log(person)
+  
   function toggleClose() {
     setViewDetails(!viewDetails)
   }
@@ -46,29 +49,30 @@ function PersonVideoDetails({ movie, person, viewDetails, setViewDetails }) {
     e.preventDefault();
     console.log(person.username);
 
-    // const movieObj = {
-    //   name: (movie.title || movie.name || movie.original_name),
-    //   poster_path: (movie.poster_path),
-    //   person_id: (person.id),
-    //   movie_id: (movie.movie_id)
-    // };
+    const movieObj = {
+      name: (movie.title || movie.name || movie.original_name),
+      poster_path: (movie.poster_path),
+      person_id: (person.id),
+      movie_id: (movie.movie_id)
+    };
 
-    // // console.log(movieObj);
+    // console.log(movieObj);
 
-    // const configObject = {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/JSON",
-    //   },
-    //   body: JSON.stringify(movieObj),
-    // };
+    const configObject = {
+      method: "POST",
+      headers: {
+        "content-type": "application/JSON",
+      },
+      body: JSON.stringify(movieObj),
+    };
 
-    // fetch("/add_to_mylist", configObject)
-    //   .then((r) => r.json())
-    //   .then((myList) => {
-    //     console.log(myList)
-    //     setAddToList(myList)
-    //   });
+    fetch("add_to_personlist", configObject)
+      .then((r) => r.json())
+      .then((list) => {
+        console.log(list)
+        setAddToList(!addToList)
+        setAddToFave(list)
+      });
   }
 
   function handleClick() {

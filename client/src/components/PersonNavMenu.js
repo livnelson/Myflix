@@ -5,25 +5,38 @@ import Person from './Person'
 import '../styles/NavMenu.css'
 
 
-function NavMenu({ user, setUser, person, setPerson, people, mappedPeople }) {
+function PersonNavMenu({ user, setUser, person, setPerson, people }) {
   const navigate = useNavigate()
   
   function handleAddPerson() {
     navigate('/PersonAdd')
   }
+console.log(person)
+  function handleViewProfile() {
+    console.log(person.id)
 
-  // const mappedPeople = people.map((person) => {
-  //   return <Person
-  //     key={person.id}
-  //     id={person.id}
-  //     username={person.username}
-  //     profile_img={person.profile_img}
-  //     person={person}
-  //     setPerson={setPerson}
-  //     // showProfile={showProfile}
-  //     // setShowProfile={setShowProfile}
-  //      />
-  // })
+    fetch(`/person_profile/${person.id}`)
+      .then((res) => res.json())
+      .then((personObj) => {
+        console.log(personObj)
+        setPerson(personObj)
+        navigate('/PersonProfile')
+        // setShowProfile(!showProfile)
+      })
+  }
+
+  const mappedPeople = user.people.map((person) => {
+    return <Person
+      key={person.id}
+      id={person.id}
+      username={person.username}
+      profile_img={person.profile_img}
+      person={person}
+      setPerson={setPerson}
+      // showProfile={showProfile}
+      // setShowProfile={setShowProfile}
+       />
+  })
 
   return (
     <div className='navmenu'>
@@ -36,6 +49,8 @@ function NavMenu({ user, setUser, person, setPerson, people, mappedPeople }) {
         </Link>
         {mappedPeople}
         <div className='logout'>
+          <button className='logout-button'  onClick={handleViewProfile}>View Profile</button>
+          <br />
           <button className='logout-button'  onClick={handleAddPerson}>Add User</button>
           <Logout user={user} setUser={setUser} />
         </div>
@@ -45,4 +60,4 @@ function NavMenu({ user, setUser, person, setPerson, people, mappedPeople }) {
   )
 }
 
-export default NavMenu
+export default PersonNavMenu
