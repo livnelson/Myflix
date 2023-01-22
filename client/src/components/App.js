@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
-// import UserHome from './UserHome'
 import UserProfile from './UserProfile'
 import SignUp from './SignUp'
 import SearchResults from "./SearchResults"
@@ -8,17 +7,15 @@ import PersonProfile from './PersonProfile'
 import PersonHome from './PersonHome'
 import PersonAdd from './PersonAdd'
 import SelectUser from './SelectUser'
+// import { Context } from "../contexts/Context"
+
 
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [user, setUser] = useState({})
   const [myList, setMylist] = useState('')
   const [profileImg, setProfileImg] = useState('')
-
-  // const [account, setAccount] = useState(null)
   const [avatars, setAvatars] = useState([])
-  // const [users, setUsers] = useState([])
   const [search, setSearch] = useState()
   const [searchResults, setSearchResults] = useState([])
   const [person, setPerson] = useState({})
@@ -26,6 +23,8 @@ function App() {
   const [people, setPeople] = useState([])
   const [username, setUsername] = useState('')
   const [myFaves, setMyFaves] = useState([])
+
+  // const { user, setUser, people, setPeople, fetchMe } = useContext(Context)
 
   // auto-login
   useEffect(() => {
@@ -41,6 +40,8 @@ function App() {
       }
     });
   }, []);
+
+
 
   useEffect(() => {
     fetch('/avatars')
@@ -78,6 +79,7 @@ function App() {
   //       setShowProfile(!showProfile)
   //     })
   // }
+
 
   return (
     <div>

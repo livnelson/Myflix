@@ -117,7 +117,7 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
                 </div>
               </div>
               {/* {isLoading ? "Loading..." : null} */}
-              <button className="signup-button" type="submit">Sign Up Now</button>
+              <button className="signup-button" type="submit">Add User</button>
             </form>
           </div>
         </div>

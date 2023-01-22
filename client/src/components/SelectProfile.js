@@ -4,30 +4,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../styles/NavMenu.css'
 import '../styles/SelectUser.css'
 
-function SelectPerson({ id, username, profile_img, setPerson,  }) {
+function SelectProfile({ id, username, profile_img, setPerson,  }) {
   const navigate = useNavigate()
-
-  // const configPerson = {
-  //   username, 
-  //   user_id: user.id
-  // }
 
   function handlePerson() {
     console.log(id)
     fetch(`/person_profile/${id}`)
-    // fetch(`/login_person`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(configPerson),
-    // })
       .then((res) => res.json())
       .then((personObj) => {
         console.log(personObj)
         setPerson(personObj)
         navigate('/Home')
-        // setShowProfile(!showProfile)
       })
   }
 
@@ -43,4 +30,4 @@ function SelectPerson({ id, username, profile_img, setPerson,  }) {
   )
 }
 
-export default SelectPerson
+export default SelectProfile

@@ -1,4 +1,3 @@
-// client/src/components/Avatar.js
 import React from 'react'
 import '../styles/SignUp.css'
 

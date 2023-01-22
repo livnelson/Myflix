@@ -10,7 +10,6 @@ function MovieCard({ id, title, poster_path, overview, release_date, vote_averag
 
   return (
     <div>
-     {/* <div className="movie-cards"> */}
     <div className='movie-card'>
       <img className='search-image' src={`https://image.tmdb.org/t/p/original/${poster_path}`} alt={title} />
       <h3 className='search-title'>{title}</h3>
@@ -22,7 +21,6 @@ function MovieCard({ id, title, poster_path, overview, release_date, vote_averag
       <p className='search-overview'><strong>Community Votes:</strong> <em>{vote_count}</em></p>
     </div>
     </div>
-    //  </div>
   )
 }
 

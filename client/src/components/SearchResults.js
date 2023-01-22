@@ -29,7 +29,7 @@ function SearchResults({ searchResults }) {
       <div className='search-header'>
       <img className='signup-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       <br />
-      <Link to='/' onClick={goToHome} className='search-back-link'>← Back to Home</Link>
+      <Link to='/Home' onClick={goToHome} className='search-back-link'>← Back to Home</Link>
       </div>
       <div className='search-results'>
       {mappedSearch}

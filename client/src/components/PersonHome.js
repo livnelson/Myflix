@@ -9,7 +9,7 @@ import SelectUser from './SelectUser'
 import Login from './Login'
 
 
-function PersonHome({ user, setUser, setIsLoggedIn, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
+function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
   const [addToFave, setAddToFave] = useState({})
   if (!person.id) return  <SelectUser />
 

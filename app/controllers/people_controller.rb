@@ -33,7 +33,7 @@ class PeopleController < ApplicationController
   private
 
   def person_params
-    params.permit(:id, :username, :first_name, :last_name, :profile_img, :user_id)
+    params.permit(:username, :first_name, :last_name, :profile_img, :user_id)
   end
 
 end

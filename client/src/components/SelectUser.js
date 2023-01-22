@@ -1,48 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useNavigate , Link} from 'react-router-dom'
+import { Context } from "../contexts/Context"
 import Login from './Login'
 import Nav from './Nav'
 import Logout from './Logout'
 import User from './User'
 import Person from './Person'
-import SelectPerson from './SelectPerson'
+import SelectProfile from './SelectProfile'
+
 import '../styles/SelectUser.css'
 
 function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, avatars, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
   const navigate = useNavigate()
-  
-  // const [users, setUsers] = useState([])
-
-  // useEffect(() => {
-
-  //   const fetchData = async() => {
-  //     const response = await fetch('/users')
-  //     const users = await response.json()
-  //     setUsers(users)
-  //   }
-  //   fetchData()
-  //   // fetch(`/users`)
-  //   //   .then((r) => r.json())
-  //   //   .then((usersArray) => {
-  //   //     console.log(usersArray)
-  //   //     setUsers(usersArray)
-  //   //   })
-  // }, [])
-
-  // if (!user) {
-  //   return <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn}  />
-  // }
-
-  // const filteredUsers = users.filter((user) => {
-  //   if (user.account_id === user.id) return true
-  // })
-
-  // const mappedUsers = user.people.map((user) => {
-  //   return <User key={user.id} id={user.id} username={user.username} profile_img={user.profile_img} />
-  // })
 
   const mappedPeople = people.map((person) => {
-    return <SelectPerson
+    return <SelectProfile
       key={person.id}
       id={person.id}
       username={person.username}
@@ -50,20 +22,10 @@ function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, 
       person={person}
       setPerson={setPerson}
       user={user}
-      // showProfile={showProfile}
-      // setShowProfile={setShowProfile}
-       />
+    />
   })
 
   console.log(user)
-  // function mappedUsers() {
-  //   // debugger
-  // }
-
-  // function filteredUsers(){
-  //   debugger
-  //   console.log(users)
-  // }
 
   function handleAddPerson() {
     navigate('/PersonAdd')
@@ -84,7 +46,6 @@ function SelectUser({ setUser, user, users, account, setAccount, setIsLoggedIn, 
       </div>
       <div className='sign-out-button'>
         <button  className='logout-button' onClick={handleAddPerson}>Add a New User</button>
-      {/* <Logout user={user} setUser={setUser} /> */}
       </div>
     </div>
   )
