@@ -34,7 +34,6 @@
   width: 30px;
   border-radius: 4px;
   object-fit: contain;
-  /* z-index: 9999; */
 }
 
 .nav-avatar:hover {
@@ -42,12 +41,16 @@
 }
 
 .search-icon {
+  position: fixed;
+  right: 20px;
+  width: 30px;
   transform: scaleY(-1);
   color: #777;
   font-size: 24px;
   text-align: right;
-  margin-right: 90px;
+  margin-right: 60px;
   margin-left: 14px;
+  z-index: 9999;
 }
 
 .search-icon:hover {
@@ -58,7 +61,7 @@
 .search-form {
   display: flex;
   justify-content: flex-end;
-  margin-right: 90px;
+  margin-right: 140px;
 }
 
 .search-field {

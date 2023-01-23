@@ -88,7 +88,7 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people,
       <div>
       </div>
       <div className='nav-contents'>
-        {searchAPI ?<form className='search-form' onSubmit={handleSearch}>
+        {searchAPI ?<><form className='search-form' onSubmit={handleSearch}>
           <input
             className="search-field"
             placeholder="Enter a title..."
@@ -100,7 +100,8 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people,
           >
           </input>
           <button type='submit' className='search-button'>Submit Search</button>
-        </form>:
+        </form>
+        <h4 className='search-icon' onClick={handleSearchBar}>☌</h4></>:
           <h4 className='search-icon' onClick={handleSearchBar}>☌</h4>}
           <div>
         <div className='nav-avatar' onClick={toggleViewMenu}>
