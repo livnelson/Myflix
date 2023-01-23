@@ -6,7 +6,7 @@ import Row from './Row'
 import PersonBanner from './PersonBanner'
 import PersonNav from './PersonNav'
 import WelcomePage from './WelcomePage'
-import Login from './Login'
+// import Login from './Login'
 
 
 function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people, list, setList }) {
@@ -29,7 +29,6 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
   return (
     <div className='app'>
       <PersonNav
-        key={person.id}
         user={user} 
         setUser={setUser} 
         search={search} 
@@ -42,7 +41,7 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
         people={people}
         list={list}
         setList={setList} />
-      <PersonBanner key={person.id} person={person} setAddToFave={setAddToFave} addToFave={addToFave}  />
+      <PersonBanner person={person} setAddToFave={setAddToFave} addToFave={addToFave}  />
       <br />
       <Row
         title="Myflix { Netflix }  Originals"

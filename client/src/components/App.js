@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
-import UserProfile from './UserProfile'
+import AccountProfile from './AccountProfile'
 import SignUp from './SignUp'
 import SearchResults from "./SearchResults"
 import PersonProfile from './PersonProfile'
@@ -8,7 +8,6 @@ import Home from './Home'
 import PersonAdd from './PersonAdd'
 import WelcomePage from './WelcomePage'
 import CurrentPeople from "./CurrentPeople"
-// import { Context } from "../contexts/Context"
 
 function App() {
   const [user, setUser] = useState({})
@@ -19,18 +18,13 @@ function App() {
   const [searchResults, setSearchResults] = useState([])
   const [myFaves, setMyFaves] = useState([])
   const[list, setList] =useState([])
-  // const [myList, setMylist] = useState('')
-  // const [profileImg, setProfileImg] = useState('')
-  // const [showProfile, setShowProfile] = useState(false)
-  // const [username, setUsername] = useState('')
 
-  // const { user, setUser, people, setPeople, fetchMe } = useContext(Context)
-
-  // auto-login
+  // auto-account-login
   useEffect(() => {
     fetch("/me").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
+          // console.log(user)
           setUser(user)
           setPeople(user.people)
         });
@@ -38,23 +32,26 @@ function App() {
     });
   }, []);
 
+  // auto-profile-login
   useEffect(() => {
     fetch("/profile_me").then((r) => {
       if (r.ok) {
         r.json().then((person) => {
+          // console.log(person)
           setPerson(person)
+          setList (person.lists)
         });
       }
     });
   }, []);
 
+  //fetches all avatars available to choose from 
   useEffect(() => {
     fetch('/avatars')
       .then((res) => res.json())
       .then((avatars) => {
         console.log(avatars)
         setAvatars(avatars)
-
       })
   }, [])
 
@@ -80,18 +77,6 @@ function App() {
             people={people}
             setPeople={setPeople} />}
         />
-        {/* <Route exact path='/' element={
-          <UserHome
-            user={user}
-            setUser={setUser}
-            earch={search}
-            setSearch={setSearch}
-            setSearchResults={setSearchResults}
-            searchResults={searchResults}
-            person={person}
-            setPerson={setPerson}
-            people={people} />}
-        /> */}
         <Route exact path='/Home' element={
           <Home
             user={user}
@@ -107,7 +92,7 @@ function App() {
             setList={setList} />}
         />
         <Route exact path='/manage_profiles' element={
-          <UserProfile
+          <AccountProfile
             user={user}
             onLogin={setUser}
             setUser={setUser}

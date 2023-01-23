@@ -24,7 +24,8 @@ Rails.application.routes.draw do
   patch "/updateuser/:id", to: "users#update"
   delete "/deleteprofile", to: "users#destroy"
   
-  get "/person_profile/:id", to: "people#show"
+  get '/profile_me', to: "people#show"
+  get "/person_profile/:id", to: "people#profile_change"
   post "/addperson", to: "people#create"
   patch "/updateperson/:id", to: "people#update"
   delete "/deleteperson/:id", to: "people#destroy"

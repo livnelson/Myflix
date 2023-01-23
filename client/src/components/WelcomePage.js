@@ -8,14 +8,14 @@ import Logout from './Logout'
 // import Person from './Person'
 import SelectProfile from './SelectProfile'
 
-import '../styles/SelectUser.css'
+import '../styles/SelectProfile.css'
 
 function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, people, setPeople }) {
   const navigate = useNavigate()
 
   const mappedPeople = people.map((person) => {
     return <SelectProfile
-      key={person.id}
+      key={Math.random()}
       id={person.id}
       username={person.username}
       profile_img={person.profile_img}
@@ -46,12 +46,18 @@ function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, peop
         alt='MYFLIX-LOGO'
       />
       <h1 className='welcome-greeting'>Who's watching?</h1>
+      <br />
       <div className='select-users'>
         {mappedPeople}
       </div>
       <div className='sign-out-button'>
         <button  className='logout-button' onClick={handleAddPerson}>Manage Profiles</button>
-        <Logout setUser={setUser} user={user} setAccount={setAccount} setIsLoggedIn={setIsLoggedIn} setPerson={setPerson} people={people}  />
+        <Logout 
+          setUser={setUser} 
+          user={user} 
+          setIsLoggedIn={setIsLoggedIn} 
+          setPerson={setPerson} 
+          people={people}  />
       </div>
     </div>
   )

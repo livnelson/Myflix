@@ -1,14 +1,12 @@
-// client/src/components/UserProfile.js
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import PersonEdit from './PersonEdit'
 import PersonFaveMovie from './PersonFaveMovie'
 import '../styles/UserProfile.css'
 
 
-function PersonProfile({ person, setPerson, myFaves, setMyFaves }) {
+function PersonProfile({ person, setPerson, setList }) {
   const [showEdit, setShowEdit] = useState(false)
-  // const [myFaves, setMyFaves] = useState([])
   const [errors, setErrors] = useState(false)
 
   const navigate = useNavigate();
@@ -38,14 +36,21 @@ function PersonProfile({ person, setPerson, myFaves, setMyFaves }) {
     navigate('/')
   }
 
-  const deleteMovie = (name) => setMyFaves(current => current.filter(p => p.name !== name))
+  const deleteMovie = (name) => setList(current => current.filter(p => p.name !== name))
 
   const filteredFaves = person.lists.filter((fave) => {
     if (fave.person_id === person.id) return true
 })
 
   const mappedFaves = filteredFaves.map(movie => {
-    return <PersonFaveMovie key={movie.id} id={movie.id} name={movie.name} poster_path={movie.poster_path} overview={movie.overview} deleteMovie={deleteMovie} />
+    return <PersonFaveMovie 
+              key={movie.id} 
+              id={movie.id} 
+              name={movie.name} 
+              poster_path={movie.poster_path} 
+              overview={movie.overview} 
+              deleteMovie={deleteMovie} 
+              setList={setList} />
   })
 
   return ( 

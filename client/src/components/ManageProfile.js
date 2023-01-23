@@ -1,8 +1,10 @@
+
+
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 // import PersonProfile from './PersonProfile'
 import '../styles/NavMenu.css'
-import '../styles/SelectProfile.css'
+import '../styles/ManageProfile.css'
 
 function SelectProfile({ id, username, profile_img, setPerson, person }) {
   const [hover, setHover] = useState(false)
@@ -40,10 +42,12 @@ function SelectProfile({ id, username, profile_img, setPerson, person }) {
 
   return (
     <>
-      <div className='person-avatars' onClick={handlePerson}>
-        <div className='person'>
-          <img className="person-avatar" src={profile_img} alt={username} />
-          {/* {hover && <div className="delete-button" onClick={handleDelete}>ⓧ</div>} */}
+      <div id='current-person-avatars' onClick={handlePerson}>
+        <div class="tooltip" >
+          <span class="tooltiptext">Delete User</span>
+          <div id='current-person'>
+            <img id="current-person-avatar" src={profile_img} alt={username} />
+          </div>
         </div>
         <p className='person-name' >{username}</p>
       </div>

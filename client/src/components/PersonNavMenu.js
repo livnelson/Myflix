@@ -32,7 +32,7 @@ function PersonNavMenu({ user, setUser, person, setPerson, people, viewMenu, set
 
   const mappedPeople = user.people.map((person) => {
     return <Person
-      key={person.id}
+      key={Math.random()}
       id={person.id}
       username={person.username}
       profile_img={person.profile_img}

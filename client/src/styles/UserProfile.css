@@ -146,3 +146,17 @@ body {
   justify-content: center !important;
   margin: auto;
 }
+
+.manage-users {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center !important;
+  margin: auto;
+  text-align: center;
+}
+
+.current-user-delete {
+  
+}

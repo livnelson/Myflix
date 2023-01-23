@@ -59,3 +59,7 @@
   font-weight: 800;
   /* transform: scale(1.03); */
 }
+
+.avatar-section {
+  width: 300px;
+}
