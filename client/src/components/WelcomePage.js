@@ -10,7 +10,7 @@ import SelectProfile from './SelectProfile'
 
 import '../styles/SelectUser.css'
 
-function SelectUser({ setUser, user, setAccount, setIsLoggedIn, setPerson, people, setPeople }) {
+function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, people, setPeople }) {
   const navigate = useNavigate()
 
   const mappedPeople = people.map((person) => {
@@ -57,4 +57,4 @@ function SelectUser({ setUser, user, setAccount, setIsLoggedIn, setPerson, peopl
   )
 }
 
-export default SelectUser
+export default WelcomePage

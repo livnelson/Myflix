@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 // import PersonProfile from './PersonProfile'
 import '../styles/NavMenu.css'
 
-function Person({ id, username, profile_img, setPerson, viewMenu, setViewMenu   }) {
+function Person({ id, username, profile_img, setPerson, viewMenu, setViewMenu, setList   }) {
   const navigate = useNavigate()
 
   function handlePerson() {
@@ -14,6 +14,7 @@ function Person({ id, username, profile_img, setPerson, viewMenu, setViewMenu   
       .then((personObj) => {
         console.log(personObj)
         setPerson(personObj)
+        setList (personObj.lists)
         navigate('/Home')
       })
   }

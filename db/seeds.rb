@@ -24,14 +24,14 @@ a18 = Avatar.create(name: "Myflix-18", imgUrl: 'https://liv-creative.com/wp-cont
 
 puts "Seeding Users 👩👨"
 liv = User.create(username: "Liv", password: "P4$$W0rd!", first_name: "Liv", last_name: "N", profile_img: a2.imgUrl)
-em = User.create(username: "Emily", password: "P4$$W0rd!", first_name: "Emily", last_name: "P", profile_img: a1.imgUrl)
+em = User.create(username: "Em", password: "P4$$W0rd!", first_name: "Emily", last_name: "P", profile_img: a1.imgUrl)
 
 puts "Seeding People 👨‍👩‍👧‍👦"
 olivia = Person.create(username: "Me", first_name: "Olivia", last_name: "N", profile_img: a2.imgUrl, user_id: liv.id)
 luke = Person.create(username: "Luke", first_name: "Luke", last_name: "W", profile_img: a5.imgUrl, user_id: liv.id)
 emma = Person.create(username: "Emma", first_name: "Emma", last_name: "N", profile_img: a4.imgUrl, user_id: liv.id)
 haley = Person.create(username: "Haley", first_name: "Haley", last_name: "N", profile_img: a6.imgUrl, user_id: liv.id)
-emily = Person.create(username: "Em", first_name: "Emily", last_name: "P", profile_img: a1.imgUrl, user_id: em.id)
+emily = Person.create(username: "Emily", first_name: "Emily", last_name: "P", profile_img: a1.imgUrl, user_id: em.id)
 simon = Person.create(username: "Simon", first_name: "Simon", last_name: "P", profile_img: a5.imgUrl, user_id: em.id)
 penny = Person.create(username: "Penny", first_name: "Penny", last_name: "P", profile_img: a3.imgUrl, user_id: em.id)
 cooper = Person.create(username: "Cooper", first_name: "Cooper", last_name: "P", profile_img: a6.imgUrl, user_id: em.id)

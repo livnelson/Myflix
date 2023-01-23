@@ -2,9 +2,9 @@
   display: flex;
   float: right;
   justify-content: center;
-  align-content: space-between;
+  /* align-content: space-between; */
   justify-items: flex-end;
-  align-items: space-between;
+  /* align-items: space-between; */
   /* margin-right: 36px; */
   margin-top: 44px;
   margin-right: 36px;
@@ -25,8 +25,9 @@
   padding-left: 10px;
   padding-top: 30px;
   justify-items: center;
-  align-content: space-between;
+  /* align-content: space-between; */
   padding: 10px;
+  z-index: 9999;
 }
 
 .current-user {
@@ -69,27 +70,37 @@
 }
 
 .logout {
-  /* position: fixed; */
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-content: flex-end;
   justify-content: flex-end;
-  margin-top: 16px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   text-align: center;
 }
 
-.logout-button {
+#logout-button {
   display: flex;
   justify-content: center;
   margin: auto;
   text-align: center;
   font-size: 13px;
   width: 160px;
+  background-color: transparent;
+  border: 1px solid #777;
+  border-radius: 2px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  color: #777;
+  margin-top: 14px;
 }
 
-.logout-button:hover {
-  color: #c40f14;
+#logout-button:hover {
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
 }
 
 .account_users {

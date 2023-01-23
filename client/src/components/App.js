@@ -4,9 +4,9 @@ import UserProfile from './UserProfile'
 import SignUp from './SignUp'
 import SearchResults from "./SearchResults"
 import PersonProfile from './PersonProfile'
-import PersonHome from './PersonHome'
+import Home from './Home'
 import PersonAdd from './PersonAdd'
-import SelectUser from './SelectUser'
+import WelcomePage from './WelcomePage'
 import CurrentPeople from "./CurrentPeople"
 // import { Context } from "../contexts/Context"
 
@@ -18,6 +18,7 @@ function App() {
   const [search, setSearch] = useState()
   const [searchResults, setSearchResults] = useState([])
   const [myFaves, setMyFaves] = useState([])
+  const[list, setList] =useState([])
   // const [myList, setMylist] = useState('')
   // const [profileImg, setProfileImg] = useState('')
   // const [showProfile, setShowProfile] = useState(false)
@@ -67,7 +68,7 @@ function App() {
     <div>
       <Routes>
         <Route exact path='/' element={
-          <SelectUser
+          <WelcomePage
             user={user}
             setUser={setUser}
             earch={search}
@@ -92,7 +93,7 @@ function App() {
             people={people} />}
         /> */}
         <Route exact path='/Home' element={
-          <PersonHome
+          <Home
             user={user}
             setUser={setUser}
             earch={search}
@@ -101,14 +102,18 @@ function App() {
             searchResults={searchResults}
             person={person}
             setPerson={setPerson}
-            people={people} />}
+            people={people} 
+            list={list} 
+            setList={setList} />}
         />
         <Route exact path='/manage_profiles' element={
           <UserProfile
             user={user}
             onLogin={setUser}
             setUser={setUser}
-            people={people} />} />
+            people={people}
+            setPeople={setPeople}
+            setPerson={setPerson} />} />
         <Route exact path='/Signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
         <Route exact path='/SearchResults' element={
           <SearchResults
@@ -123,7 +128,9 @@ function App() {
             person={person}
             setPerson={setPerson}
             myFaves={myFaves}
-            setMyFaves={setMyFaves} />}
+            setMyFaves={setMyFaves}
+            list={list}
+            setList={setList} />}
         />
         <Route exact path='/add_profile' element={
           <PersonAdd

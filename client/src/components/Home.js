@@ -5,15 +5,15 @@ import '../styles/App.css'
 import Row from './Row'
 import PersonBanner from './PersonBanner'
 import PersonNav from './PersonNav'
-import SelectUser from './SelectUser'
+import WelcomePage from './WelcomePage'
 import Login from './Login'
 
 
-function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
+function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people, list, setList }) {
   const [addToFave, setAddToFave] = useState({})
   const [myFaves, setMyFaves] = useState([])
 
-  if (!person.id) return  <SelectUser   
+  if (!person.id) return  <WelcomePage   
                             user={user}
                             setUser={setUser}
                             earch={search}
@@ -39,7 +39,9 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
         searchResults={searchResults} 
         person={person} 
         setPerson={setPerson}
-        people={people} />
+        people={people}
+        list={list}
+        setList={setList} />
       <PersonBanner key={person.id} person={person} setAddToFave={setAddToFave} addToFave={addToFave}  />
       <br />
       <Row

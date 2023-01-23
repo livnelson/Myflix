@@ -141,3 +141,8 @@ body {
   transform: scale(1.12);
   cursor: pointer;
 }
+
+.current-users {
+  justify-content: center !important;
+  margin: auto;
+}

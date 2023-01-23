@@ -5,11 +5,12 @@ import PersonNavMenu from './PersonNavMenu'
 import '../styles/Nav.css'
 
 
-function PersonNav({ user, setUser, setSearchResults, person, setPerson, people }) {
+function PersonNav({ user, setUser, setSearchResults, person, setPerson, people, list, setList }) {
   const [show, handleShow] = useState(false)
   const [viewMenu, setViewMenu] = useState(false)
   const [searchAPI, setSearchAPI] = useState(false)
   const [search, setSearch] = useState("")
+
 
   const navigate = useNavigate()
 
@@ -105,7 +106,7 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people 
         <div className='nav-avatar' onClick={toggleViewMenu}>
           <img src={person.profile_img} alt={person.username} className='nav-avatar' />
         </div>
-          {viewMenu ? <PersonNavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} viewMenu={viewMenu} setViewMenu={setViewMenu}/> : null}
+          {viewMenu ? <PersonNavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} viewMenu={viewMenu} setViewMenu={setViewMenu} list={list} setList={setList} /> : null}
         </div>
         <div>
         </div>
