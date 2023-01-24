@@ -8,7 +8,7 @@ function PersonEdit({ person, setPerson, showEdit, setShowEdit }) {
   const [editAvatar, setEditAvatar] = useState("")
   const [avatars, setAvatars] = useState([])
   
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   function handleUserameChange(e) {
     setEditUsername(e.target.value);

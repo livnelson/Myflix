@@ -6,7 +6,6 @@ import Row from './Row'
 import PersonBanner from './PersonBanner'
 import PersonNav from './PersonNav'
 import WelcomePage from './WelcomePage'
-// import Login from './Login'
 
 
 function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people, list, setList }) {

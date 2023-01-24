@@ -7,7 +7,6 @@ import PersonProfile from './PersonProfile'
 import Home from './Home'
 import PersonAdd from './PersonAdd'
 import WelcomePage from './WelcomePage'
-import CurrentPeople from "./CurrentPeople"
 
 function App() {
   const [user, setUser] = useState({})
@@ -17,32 +16,36 @@ function App() {
   const [search, setSearch] = useState()
   const [searchResults, setSearchResults] = useState([])
   const [myFaves, setMyFaves] = useState([])
-  const[list, setList] =useState([])
+  const [list, setList] = useState([])
+  const [updatedProfile, setUpdatedProfile] = useState({})
+  const [dataFetched, setDataFetched] = useState(false)
 
   // auto-account-login
   useEffect(() => {
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => {
-          // console.log(user)
-          setUser(user)
-          setPeople(user.people)
-        });
-      }
-    });
-  }, []);
+    if (updatedProfile || !dataFetched) {
+      fetch("/me").then((r) => {
+        if (r.ok) {
+          r.json().then((user) => {
+            // console.log(user)
+            setUser(user)
+            setPeople(user.people)
+          });
+        }
+      });
+    }
+  }, [updatedProfile, dataFetched, setUpdatedProfile, setDataFetched]);
 
-  // auto-profile-login
+  // auto-profile-login & refresh user list on change
   useEffect(() => {
-    fetch("/profile_me").then((r) => {
-      if (r.ok) {
-        r.json().then((person) => {
-          // console.log(person)
-          setPerson(person)
-          setList (person.lists)
-        });
-      }
-    });
+      fetch("/profile_me").then((r) => {
+        if (r.ok) {
+          r.json().then((person) => {
+            console.log(person)
+            setPerson(person)
+            setList(person.lists)
+          });
+        }
+      });
   }, []);
 
   //fetches all avatars available to choose from 
@@ -55,11 +58,7 @@ function App() {
       })
   }, [])
 
-    const mappedCurrentPeople = people.map(person => {
-    return <CurrentPeople key={person.id} id={person.id} username={person.username} profile_image={person.profile_image} />
-  })
-
-  console.log(mappedCurrentPeople)
+  const deleteProfile = (id) => setPeople(current => current.filter(p => p.id !== id))
 
   return (
     <div>
@@ -87,8 +86,8 @@ function App() {
             searchResults={searchResults}
             person={person}
             setPerson={setPerson}
-            people={people} 
-            list={list} 
+            people={people}
+            list={list}
             setList={setList} />}
         />
         <Route exact path='/manage_profiles' element={
@@ -98,7 +97,9 @@ function App() {
             setUser={setUser}
             people={people}
             setPeople={setPeople}
-            setPerson={setPerson} />} />
+            setPerson={setPerson}
+            deleteProfile={deleteProfile}
+            setDataFetched={setDataFetched} />} />
         <Route exact path='/Signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
         <Route exact path='/SearchResults' element={
           <SearchResults
@@ -124,7 +125,8 @@ function App() {
             avatars={avatars}
             setPerson={setPerson}
             setPeople={setPeople}
-            people={people} />}
+            people={people}
+            setDataFetched={setDataFetched} />}
         />
       </Routes>
     </div>

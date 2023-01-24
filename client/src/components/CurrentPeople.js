@@ -1,6 +1,5 @@
 import '../styles/SelectProfile.css'
 
-
 function CurrentPeople({ username, profile_img}) {
 
   return (

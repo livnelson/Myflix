@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   get "/person_profile/:id", to: "people#profile_change"
   post "/addperson", to: "people#create"
   patch "/updateperson/:id", to: "people#update"
-  delete "/deleteperson/:id", to: "people#destroy"
+  delete "/deleteprofile/:id", to: "people#destroy"
   
   get "/avatars", to: "avatars#index"
   

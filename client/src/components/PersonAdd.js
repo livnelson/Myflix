@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import CurrentPeople from './CurrentPeople'
 import '../styles/SignUp.css'
 
-function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
+function PeopleAdd({ setPerson, user, avatars, setPeople, people, setDataFetched }) {
 
   const [username, setUsername] = useState("");
 
@@ -59,6 +58,7 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people }) {
         setUsername("")
         setProfileImg("")
         setPerson(person)
+        setDataFetched(true);
         navigate(`/`)
       });
   }

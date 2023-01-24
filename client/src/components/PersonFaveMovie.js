@@ -1,12 +1,12 @@
 import React, { useState }from 'react'
 import { useNavigate } from 'react-router-dom'
-import '../styles/UserProfile.css'
+import '../styles/AccountProfile.css'
 
 
 const base_url = "http://image.tmdb.org/t/p/original/"
 
 
-function PersonFaveMovie({ id, poster_path, name, overview, myFaves, setMyFaves, deleteMovie, setList }) {
+function PersonFaveMovie({ id, poster_path, name, overview, myFaves, setMyFaves, deleteMovie, setList, setDataFetched }) {
   const [ hover, setHover] = useState(false)
 
   const navigate = useNavigate()
@@ -16,8 +16,7 @@ function PersonFaveMovie({ id, poster_path, name, overview, myFaves, setMyFaves,
   }
 
   function handleDelete() {
-    console.log(name)
-
+    // console.log(name)
     fetch(`/deletepersonfave/${name}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
@@ -26,9 +25,10 @@ function PersonFaveMovie({ id, poster_path, name, overview, myFaves, setMyFaves,
         if (res.ok) {
           console.log(res)
           deleteMovie(name)
+          
           // navigate('/Home')
         } else {
-          res.json().then(data => console.log("Did not delete"))
+          res.json().then(name => console.log("Did not delete"))
         }
       })
   }

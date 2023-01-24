@@ -3,16 +3,16 @@ import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 // import Login from './Login'
 // import EditProfile from './EditProfile'
-import SelectProfile from './SelectProfile'
+import ManageProfile from './ManageProfile'
 // import FaveMovie from './FaveMovie'
 // import YouTube from 'react-youtube'
 // import movieTrailer from "movie-trailer"
-import '../styles/UserProfile.css'
+import '../styles/AccountProfile.css'
 
 // const base_url = "http://image.tmdb.org/t/p/original/"
 
 
-function UserProfile({ user, setUser, people, setPeople, setPerson }) {
+function UserProfile({ user, setUser, people, setPeople, setPerson, deleteProfile , setDataFetched }) {
   const [showEdit, setShowEdit] = useState(false)
   // const [myFaves, setMyFaves] = useState([])
   const [errors, setErrors] = useState(false)
@@ -29,7 +29,7 @@ function UserProfile({ user, setUser, people, setPeople, setPerson }) {
     navigate('/add_profile')
   }
 
-  function handleDeleteProfile() {
+  function handleDeleteAccount() {
     fetch(`/users/${user.id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
@@ -49,7 +49,7 @@ function UserProfile({ user, setUser, people, setPeople, setPerson }) {
     navigate('/')
   }
   const mappedPeople = people.map((person) => {
-    return <SelectProfile
+    return <ManageProfile
       key={Math.random()}
       id={person.id}
       username={person.username}
@@ -57,6 +57,8 @@ function UserProfile({ user, setUser, people, setPeople, setPerson }) {
       person={person}
       setPerson={setPerson}
       user={user}
+      deleteProfile={deleteProfile}
+      setDataFetched={setDataFetched}
     />
   })
 
@@ -69,7 +71,7 @@ function UserProfile({ user, setUser, people, setPeople, setPerson }) {
         <h1 className='greeting'>Hello {user.first_name}!</h1>
         {/* {showEdit ? <EditProfile user={user} setUser={setUser} /> : null} */}
         {/* <button className="user-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button> */}
-        <button className="user-button" type="submit" onClick={handleDeleteProfile}>Delete Account</button>
+        <button className="user-button" type="submit" onClick={handleDeleteAccount}>Delete Account</button>
         <button className="user-button" type="submit" onClick={handleAdduser}>Add a New User</button>
       </div>
       <br />

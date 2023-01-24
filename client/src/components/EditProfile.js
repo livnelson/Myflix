@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import { Context } from "../contexts/Context"
 import '../styles/EditProfile.css'
 
 function EditProfile({ user, setUser }) {
@@ -10,21 +9,6 @@ function EditProfile({ user, setUser }) {
   const [editLastName, setEditLastName] = useState("")
   const [editAvatar, setEditAvatar] = useState("")
   const [avatars, setAvatars] = useState([])
-
-  // const {
-  //   setErrors,
-  //   editPassword,
-  //   setEditPassword,
-  //   editFirstName,
-  //   setEditFirstName,
-  //   editLastName,
-  //   setEditLastName,
-  //   editAvatar,
-  //   setEditAvatar,
-  //   avatars,
-  //   setAvatars,
-  //   user,
-  //   setUser} = useContext(Context)
   
   const navigate = useNavigate()
 
@@ -96,15 +80,6 @@ function EditProfile({ user, setUser }) {
         <div className="edit-user-form">
           <form onSubmit={handleEditUser}>
             <h3>Edit Your Profile</h3>
-            {/* <input
-              className="input-field"
-              name="username"
-              type="text"
-              value={editUsername}
-              placeholder="Enter your username"
-              onChange={handleUsernameChange}
-              required
-            /> */}
             <br />
             <input
               className="input-field"
@@ -113,7 +88,6 @@ function EditProfile({ user, setUser }) {
               value={editPassword}
               placeholder="Enter a new password"
               onChange={handlePasswordChange}
-              // required
             />
             <br />
             <input
@@ -146,6 +120,7 @@ function EditProfile({ user, setUser }) {
           <br />
         </div>
       </div>
+      {errors ? <div className="errors">{errors}</div> : null}
     </div>
   )
 }

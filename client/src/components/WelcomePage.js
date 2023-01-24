@@ -50,8 +50,8 @@ function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, peop
       <div className='select-users'>
         {mappedPeople}
       </div>
-      <div className='sign-out-button'>
-        <button  className='logout-button' onClick={handleAddPerson}>Manage Profiles</button>
+      <div className='sign-out-buttons'>
+        <button  className='manageprofile-button' onClick={handleAddPerson}>Manage Profiles</button>
         <Logout 
           setUser={setUser} 
           user={user} 

@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import PersonEdit from './PersonEdit'
 import PersonFaveMovie from './PersonFaveMovie'
-import '../styles/UserProfile.css'
+import '../styles/AccountProfile.css'
 
 
-function PersonProfile({ person, setPerson, setList }) {
+function PersonProfile({ person, setPerson, setList, list, setDataFetched }) {
   const [showEdit, setShowEdit] = useState(false)
   const [errors, setErrors] = useState(false)
 
@@ -17,7 +17,7 @@ function PersonProfile({ person, setPerson, setList }) {
   }
 
   function handleDeleteProfile() {
-    fetch(`/deleteperson/${person.id}}`, {
+    fetch(`/deleteprofile/${person.id}}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
@@ -36,13 +36,24 @@ function PersonProfile({ person, setPerson, setList }) {
     navigate('/')
   }
 
-  const deleteMovie = (name) => setList(current => current.filter(p => p.name !== name))
+  const deleteMovie = (name) => {
+    console.log(name)
+    const newList= list.filter(movie => {
+      return (movie.name !== name) 
 
-  const filteredFaves = person.lists.filter((fave) => {
-    if (fave.person_id === person.id) return true
-})
+    })
+    // setList(current => current.filter(p => { 
+      //   console.log(p.name)
+      //   // p.name === name 
+      console.log(newList)
+      setList(newList)
+    }
 
-  const mappedFaves = filteredFaves.map(movie => {
+//   const filteredFaves = person.lists.filter((fave) => {
+//     if (fave.person_id === person.id) return true
+// })
+
+  const mappedFaves = person.lists.map(movie => {
     return <PersonFaveMovie 
               key={movie.id} 
               id={movie.id} 
@@ -50,7 +61,9 @@ function PersonProfile({ person, setPerson, setList }) {
               poster_path={movie.poster_path} 
               overview={movie.overview} 
               deleteMovie={deleteMovie} 
-              setList={setList} />
+              setList={setList}
+              list={list}
+              setDataFetched={setDataFetched} />
   })
 
   return ( 
