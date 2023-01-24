@@ -1,16 +1,16 @@
-// client/src/components/Nav.js
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import NavMenu from './NavMenu'
-import Person from './Person'
+import PersonNavMenu from './PersonNavMenu'
+// import Person from './Person'
 import '../styles/Nav.css'
 
 
-function PersonNav({ user, setUser, search, setSearch, setSearchResults, person, setPerson }) {
+function PersonNav({ user, setUser, setSearchResults, person, setPerson, people, list, setList }) {
   const [show, handleShow] = useState(false)
-  const [viewMenu, setViewMenu] = useState(true)
+  const [viewMenu, setViewMenu] = useState(false)
   const [searchAPI, setSearchAPI] = useState(false)
-  // const [person, setPerson] = useState(false)
+  const [search, setSearch] = useState("")
+
 
   const navigate = useNavigate()
 
@@ -28,13 +28,25 @@ function PersonNav({ user, setUser, search, setSearch, setSearchResults, person,
 
   console.log(user)
 
-  function toggleViewUser() {
+  function toggleViewMenu() {
     setViewMenu(!viewMenu)
   }
 
   function handleSearchBar() {
     setSearchAPI(!searchAPI)
   }
+
+  // function handlePerson() {
+  //   console.log(person.id)
+  //   fetch(`/person_profile/${person.id}`)
+  //   .then((res) => res.json())
+  //   .then((personObj) => {
+  //     console.log(personObj)
+  //     setPerson(personObj)
+  //     setViewMenu(!viewMenu)
+  //       navigate('/Home')
+  //     })
+  // }
 
   function handleSearch(e) {
     e.preventDefault()
@@ -46,6 +58,20 @@ function PersonNav({ user, setUser, search, setSearch, setSearchResults, person,
         navigate('/SearchResults')
       })
   }
+
+  // const mappedPeople = people.map((person) => {
+  //   return <Person
+  //     key={person.id}
+  //     id={person.id}
+  //     username={person.username}
+  //     profile_img={person.profile_img}
+  //     person={person}
+  //     setPerson={setPerson}
+  //     // showProfile={showProfile}
+  //     // setShowProfile={setShowProfile}
+  //      />
+  // })
+
 
   
   // const mappedPeople = user.people.map((a_user) => {
@@ -61,29 +87,31 @@ function PersonNav({ user, setUser, search, setSearch, setSearchResults, person,
       />
       <div>
       </div>
-      <span className='nav-contents'>
-
-        {searchAPI ? <><form className='search-form' onSubmit={handleSearch}>
+      <div className='nav-contents'>
+        {searchAPI ?<><form className='search-form' onSubmit={handleSearch}>
           <input
             className="search-field"
-            placeholder="Enter movie title..."
+            placeholder="Enter a title..."
             type="text"
             id="search"
-            // value={search}
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
+            required
           >
           </input>
           <button type='submit' className='search-button'>Submit Search</button>
         </form>
-          <h4 className='search-icon' onClick={handleSearchBar}>☌</h4></> :
+        <h4 className='search-icon' onClick={handleSearchBar}>☌</h4></>:
           <h4 className='search-icon' onClick={handleSearchBar}>☌</h4>}
-        <div className='nav-avatar' onClick={toggleViewUser}>
+          <div>
+        <div className='nav-avatar' onClick={toggleViewMenu}>
           <img src={person.profile_img} alt={person.username} className='nav-avatar' />
         </div>
-        <div>
-          {viewMenu ? null : <NavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} />}
+          {viewMenu ? <PersonNavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} viewMenu={viewMenu} setViewMenu={setViewMenu} list={list} setList={setList} /> : null}
         </div>
-      </span>
+        <div>
+        </div>
+      </div>
     </div>
   )
 }

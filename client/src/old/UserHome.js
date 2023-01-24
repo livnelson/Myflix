@@ -8,13 +8,23 @@ import Nav from './Nav'
 import Login from './Login'
 
 
-function UserHome({ user, setUser, setIsLoggedIn, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson }) {
+function UserHome({ user, setUser, setIsLoggedIn, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people }) {
 
   if (!user) return  <Login onLogin={setUser} setUser={setUser} setIsLoggedIn={setIsLoggedIn} />
 
   return (
     <div className='app'>
-      <Nav user={user} setUser={setUser} search={search} setSearch={setSearch} handleSearch={handleSearch} setSearchResults={setSearchResults} searchResults={searchResults} person={person} setPerson={setPerson} />
+      <Nav 
+        user={user} 
+        setUser={setUser} 
+        search={search} 
+        setSearch={setSearch} 
+        handleSearch={handleSearch} 
+        setSearchResults={setSearchResults} 
+        searchResults={searchResults} 
+        person={person} 
+        setPerson={setPerson}
+        people={people} />
       <Banner user={user} setUser={setUser} />
       <br />
       <Row

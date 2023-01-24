@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from '../axios'
 import requests from '../requests'
-import VideoDetails from './VideoDetails'
+import PersonVideoDetails from './PersonVideoDetails'
 import VideoPlay from './VideoPlay'
 import '../styles/Banner.css'
 
 
-function Banner({ user }) {
+function PersonBanner({ person, addToFave, setAddToFave }) {
   const [movie, setMovie] = useState([])
   const [viewDetails, setViewDetails] = useState(true)
   const [playVideo, setPlayVideo] = useState(true)
@@ -47,7 +47,7 @@ function Banner({ user }) {
       }}>
 
       <div className='banner-contents'>
-        {viewDetails ? null : <VideoDetails movie={movie} setViewDetails={setViewDetails} user={user}/>}
+        {viewDetails ? null : <PersonVideoDetails movie={movie} setViewDetails={setViewDetails} person={person} setAddToFave={setAddToFave} addToFave={addToFave} />}
         {playVideo ? null : <VideoPlay movie={movie} setPlayVideo={setPlayVideo} />}
         <h1 className='banner-title'>{movie?.title || movie?.name || movie?.original_name}</h1>
         <div className='banner-buttons'>
@@ -63,4 +63,4 @@ function Banner({ user }) {
   )
 }
 
-export default Banner
+export default PersonBanner

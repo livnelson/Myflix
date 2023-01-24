@@ -68,7 +68,7 @@ body {
   cursor: pointer;
 }
 
-.button {
+.user-button {
   color: white;
   background-color: #c40f14;
   width: 200px;
@@ -81,7 +81,7 @@ body {
   font-size: 12px;
 }
 
-.button:hover {
+.user-button:hover {
   background-color: #c40f14;
   cursor: pointer;
 }
@@ -140,4 +140,49 @@ body {
 .delete-button:hover {
   transform: scale(1.12);
   cursor: pointer;
+}
+
+.current-users {
+  justify-content: center !important;
+  margin: auto;
+}
+
+.manage-users {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center !important;
+  margin: auto;
+  text-align: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #999;
+  text-align: center;
+  font-size: 12px;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  z-index: 1;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

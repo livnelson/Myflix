@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_19_235337) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_21_233728) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_19_235337) do
     t.string "imgUrl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "name"
+    t.string "poster_path"
+    t.string "backdrop_path"
+    t.string "release_date"
+    t.string "overview"
+    t.integer "vote_average"
+    t.integer "vote_count"
+    t.integer "movie_id"
+    t.bigint "person_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_lists_on_person_id"
   end
 
   create_table "movies", force: :cascade do |t|
