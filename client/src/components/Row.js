@@ -53,7 +53,6 @@ function Row({ title, fetchURL }) {
   }
 
   function handleErrors() {
-    // setInterval(errors, 3000)
     setErrors(!errors)
   }
 

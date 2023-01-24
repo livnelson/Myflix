@@ -100,7 +100,7 @@ function App() {
             setPerson={setPerson}
             deleteProfile={deleteProfile}
             setDataFetched={setDataFetched} />} />
-        <Route exact path='/Signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
+        <Route exact path='/signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
         <Route exact path='/SearchResults' element={
           <SearchResults
             search={search}
