@@ -11,17 +11,18 @@ function PersonBanner({ person, addToFave, setAddToFave }) {
   const [movie, setMovie] = useState([])
   const [viewDetails, setViewDetails] = useState(true)
   const [playVideo, setPlayVideo] = useState(true)
-  // const [show, setShow] = useState(false)
 
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.fetchNetflixOriginals)
+      const request = await axios.get(requests.fetchTrending)
+      // setIntercal fetches new movie data every 10s... but is causing a timeout issue for my API 
+      // setInterval(fetchData, 10000)
       setMovie(
         request.data.results[
         Math.floor(Math.random() * request.data.results.length - 1)
         ])
-    }
-    fetchData()
+    } 
+     fetchData()
   }, [])
 
   function truncate(str, n) {
@@ -39,13 +40,13 @@ function PersonBanner({ person, addToFave, setAddToFave }) {
   }
 
   return (
+    <div>
     <header className='banner'
-      style={{
-        backgroundSize: 'cover',
-        backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
-        backgroundPosition: 'center top',
-      }}>
-
+    style={{
+      backgroundSize: 'cover',
+      backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+      backgroundPosition: 'center top'
+    }}>
       <div className='banner-contents'>
         {viewDetails ? null : <PersonVideoDetails movie={movie} setViewDetails={setViewDetails} person={person} setAddToFave={setAddToFave} addToFave={addToFave} />}
         {playVideo ? null : <VideoPlay movie={movie} setPlayVideo={setPlayVideo} />}
@@ -60,6 +61,7 @@ function PersonBanner({ person, addToFave, setAddToFave }) {
       <div className="banner-fade-bottom" />
       <br />
     </header>
+    </div>
   )
 }
 

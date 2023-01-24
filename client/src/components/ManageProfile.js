@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/NavMenu.css'
 import '../styles/ManageProfile.css'
 
-function SelectProfile({ id, username, profile_img, setPerson, person, deleteProfile, setDataFetched }) {
+function SelectProfile({ username, first_name, profile_img, setPerson, person, deleteProfile, setDataFetched }) {
   const [errors, setErrors] = useState(false)
 
   const navigate = useNavigate()
@@ -37,8 +37,9 @@ function SelectProfile({ id, username, profile_img, setPerson, person, deletePro
             <img id="current-person-avatar" src={profile_img} alt={username} />
           </div>
         </div>
-        <p className='current-person-name' >{username}</p>
+        <p className='current-person-name' >{first_name}</p>
       </div>
+      {errors ? <div className="errors">{errors}</div> : null}
     </>
   )
 }

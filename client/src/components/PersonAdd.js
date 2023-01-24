@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import '../styles/SignUp.css'
 
-function PeopleAdd({ setPerson, user, avatars, setPeople, people, setDataFetched }) {
+function PeopleAdd({ setPerson, user, avatars, setDataFetched }) {
 
   const [username, setUsername] = useState("");
 
@@ -77,20 +77,9 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people, setDataFetched
       <div className='signup-body'>
         <div className="signup-card">
           <Link to="/" className="login-back-link">← Back to Home</Link>
-          <h1 className='signup-greeting'>Add a New User</h1>
+          <h1 className='signup-greeting'>Create a Profile</h1>
           <div className="signup-form">
             <form className='signup-inputs' onSubmit={handleSubmit}>
-              <input
-                className="signup-input-field"
-                placeholder="Enter Username"
-                type="text"
-                id="username"
-                autoComplete="off"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-                />
-              <br />
               <input
                 className="signup-input-field"
                 name="first_name"
@@ -118,7 +107,7 @@ function PeopleAdd({ setPerson, user, avatars, setPeople, people, setDataFetched
                 </div>
               </div>
               {/* {isLoading ? "Loading..." : null} */}
-              <button className="signup-button" type="submit">Add User</button>
+              <button className="signup-button" type="submit">Save Profile</button>
             </form>
           </div>
         </div>

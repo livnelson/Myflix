@@ -1,15 +1,15 @@
-// client/src/components/Row.js
 import React, { useState, useEffect } from 'react'
-import axios from '../axios'
-import '../styles/Row.css'
 import YouTube from 'react-youtube'
 import movieTrailer from "movie-trailer"
+import axios from '../axios'
+import '../styles/Row.css'
 
 const base_url = "http://image.tmdb.org/t/p/original/"
 
-function Row({ title, fetchURL, isLargeRow }) {
+function Row({ title, fetchURL }) {
   const [movies, setMovies] = useState([])
   const [trailerURL, setTrailerURL] = useState('')
+  const [errors, setErrors] = useState(false)
 
   // fetch movies to parse into rows based on category/genre
   useEffect(() => {
@@ -22,19 +22,15 @@ function Row({ title, fetchURL, isLargeRow }) {
     fetchData()
   }, [fetchURL]);
 
-  // console.log(movies)
-
   const mappedMovies = movies.map(movie => (
     <img
       key={movie.id}
       onClick={() => handleClick(movie)}
-      // className={`row-poster ${isLargeRow && 'row-poster-large'}`}
       className={`row-poster`}
-      // src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
       src={`${base_url}${movie.poster_path}`}
       alt={movie.name} />
   ))
-  
+
   // https://www.npmjs.com/package/react-youtube
   // https://www.npmjs.com/package/movie-trailer
   // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams
@@ -49,8 +45,16 @@ function Row({ title, fetchURL, isLargeRow }) {
           console.log("urlParams" + urlParams);
           setTrailerURL(urlParams.get("v"));
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error)
+          setErrors(error)
+        });
     }
+  }
+
+  function handleErrors() {
+    // setInterval(errors, 3000)
+    setErrors(!errors)
   }
 
   // https://developers.google.com/youtube/player_parameters
@@ -68,8 +72,11 @@ function Row({ title, fetchURL, isLargeRow }) {
       <div className="row-posters">
         {mappedMovies}
       </div>
-      <br/>
-      {trailerURL && <YouTube style={{}} className='youtube-video' videoId={trailerURL} options={options} />}
+      <br />
+      <div>
+        {trailerURL && <YouTube className='youtube-video' videoId={trailerURL} options={options} />}
+        {errors ? <div className="errors" onClick={handleErrors}>ⓧ Video unavailable at this time <em>(click to close)</em></div> : null}
+      </div>
     </div>
   )
 }

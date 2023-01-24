@@ -1,29 +1,21 @@
 // client/src/components/UserProfile.js
 import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-// import Login from './Login'
-// import EditProfile from './EditProfile'
+import EditProfile from './EditProfile'
 import ManageProfile from './ManageProfile'
-// import FaveMovie from './FaveMovie'
-// import YouTube from 'react-youtube'
-// import movieTrailer from "movie-trailer"
 import '../styles/AccountProfile.css'
 
-// const base_url = "http://image.tmdb.org/t/p/original/"
 
-
-function UserProfile({ user, setUser, people, setPeople, setPerson, deleteProfile , setDataFetched }) {
+function UserProfile({ user, setUser, people, setPerson, deleteProfile, setDataFetched }) {
   const [showEdit, setShowEdit] = useState(false)
-  // const [myFaves, setMyFaves] = useState([])
   const [errors, setErrors] = useState(false)
-  // const [trailerURL, setTrailerURL] = useState('')
 
   const navigate = useNavigate();
   console.log(user)
 
-  // function handleShowEdit() {
-  //   setShowEdit(!showEdit);
-  // }
+  function handleEditAccount() {
+    setShowEdit(!showEdit);
+  }
 
   function handleAdduser() {
     navigate('/add_profile')
@@ -48,12 +40,14 @@ function UserProfile({ user, setUser, people, setPeople, setPerson, deleteProfil
   function goToHome() {
     navigate('/')
   }
+
   const mappedPeople = people.map((person) => {
     return <ManageProfile
-      key={Math.random()}
+      key={person.id}
       id={person.id}
       username={person.username}
       profile_img={person.profile_img}
+      first_name={person.first_name}
       person={person}
       setPerson={setPerson}
       user={user}
@@ -67,10 +61,10 @@ function UserProfile({ user, setUser, people, setPeople, setPerson, deleteProfil
       <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       <div className='user-profile'>
         <Link to='/' onClick={goToHome} className='back-link'>← Back to Home</Link>
-        <img src={user.profile_img} alt={user.username} className='user-avatar' />
-        <h1 className='greeting'>Hello {user.first_name}!</h1>
-        {/* {showEdit ? <EditProfile user={user} setUser={setUser} /> : null} */}
-        {/* <button className="user-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button> */}
+        {/* <img src={user.profile_img} alt={user.username} className='user-avatar' /> */}
+        <h1 className='greeting'>Welcome {user.first_name}!</h1>
+        {showEdit ? <EditProfile user={user} setUser={setUser} /> : null}
+        <button className="user-button" type="submit" onClick={handleEditAccount}>{showEdit ? "Cancel Edit Profile" : "Edit Account Profile"}</button>
         <button className="user-button" type="submit" onClick={handleDeleteAccount}>Delete Account</button>
         <button className="user-button" type="submit" onClick={handleAdduser}>Add a New User</button>
       </div>

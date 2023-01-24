@@ -10,7 +10,7 @@ import SelectProfile from './SelectProfile'
 
 import '../styles/SelectProfile.css'
 
-function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, people, setPeople }) {
+function WelcomePage({ setUser, user, person, setAccount, setIsLoggedIn, setPerson, people, setPeople }) {
   const navigate = useNavigate()
 
   const mappedPeople = people.map((person) => {
@@ -37,7 +37,7 @@ function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, peop
                           setIsLoggedIn={setIsLoggedIn} 
                           people={people} 
                           setPeople={setPeople} />
-
+  
   return (
     <div className='select-user-page'>
       <img

@@ -12,35 +12,35 @@ function EditProfile({ user, setUser }) {
   
   const navigate = useNavigate()
 
-  function handlePasswordChange(e) {
-    setEditPassword(e.target.value);
-  }
+  // function handlePasswordChange(e) {
+  //   setEditPassword(e.target.value);
+  // }
 
   function handleFirstNameChange(e) {
     setEditFirstName(e.target.value);
   }
 
-  function handleLastNameChange(e) {
-    setEditLastName(e.target.value);
-  }
+  // function handleLastNameChange(e) {
+  //   setEditLastName(e.target.value);
+  // }
 
-  const handleAvatarClick = (avatar) => {
-    console.log(avatar.id)
-    setEditAvatar(avatar.imgUrl);
-  }
+  // const handleAvatarClick = (avatar) => {
+  //   console.log(avatar.id)
+  //   setEditAvatar(avatar.imgUrl);
+  // }
 
-  useEffect(() => {
-    fetch('/avatars')
-      .then((r) => r.json())
-      .then(avatars => {
-        console.log(avatars)
-        setAvatars(avatars)
-      })
-  },[])
+  // useEffect(() => {
+  //   fetch('/avatars')
+  //     .then((r) => r.json())
+  //     .then(avatars => {
+  //       console.log(avatars)
+  //       setAvatars(avatars)
+  //     })
+  // },[])
 
-  const mappedAvatars = avatars.map((avatar) => (
-    <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
-  ))
+  // const mappedAvatars = avatars.map((avatar) => (
+  //   <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
+  // ))
 
   function handleEditUser(e) {
     e.preventDefault()
@@ -49,9 +49,9 @@ function EditProfile({ user, setUser }) {
     
     const editUser = {
       first_name: editFirstName,
-      last_name: editLastName,
-      password: editPassword,
-      profile_img: editAvatar
+      // last_name: editLastName,
+      // password: editPassword,
+      // profile_img: editAvatar
     };
 
     console.log(editUser)
@@ -81,39 +81,40 @@ function EditProfile({ user, setUser }) {
           <form onSubmit={handleEditUser}>
             <h3>Edit Your Profile</h3>
             <br />
-            <input
+            {/* <input
               className="input-field"
               name="password"
               type="password"
               value={editPassword}
               placeholder="Enter a new password"
               onChange={handlePasswordChange}
-            />
+            /> */}
             <br />
             <input
               className="input-field"
               name="first_name"
               type="text"
               value={editFirstName}
-              placeholder="Enter your first name"
+              placeholder="Enter a new name"
               onChange={handleFirstNameChange}
+              required
             />
             <br />
-            <input
+            {/* <input
               className="input-field"
               name="last_name"
               type="text"
               value={editLastName}
               placeholder="Enter your last name"
               onChange={handleLastNameChange}
-            />
-            <br />
+            /> */}
+            {/* <br />
              <div className='avatar-section'>
                 <h3 className='signup-subheading'>Choose Your Avatar</h3>
                 <div className='avatars'>
                   {mappedAvatars}
                 </div>
-              </div>
+              </div> */}
             <br />
             <button className="profile-button" type="submit">Save Changes</button>
           </form>
