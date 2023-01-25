@@ -1,21 +1,23 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
-import PersonEdit from './PersonEdit'
-import PersonFaveMovie from './PersonFaveMovie'
+import EditProfile from './EditProfile'
+import FaveMovie from './FaveMovie'
 import '../styles/AccountProfile.css'
 
 
-function PersonProfile({ person, setPerson, setList, list, setDataFetched }) {
+function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpdatedAccount, deleteProfile }) {
   const [showEdit, setShowEdit] = useState(false)
-  const [errors, setErrors] = useState(false)
+  const [errors, setErrors] = useState(false)  
 
   const navigate = useNavigate();
   console.log(person)
 
+  // shows EditProfile component for user(person) 
   function handleShowEdit() {
     setShowEdit(!showEdit);
   }
 
+  // allows users to delete their profile
   function handleDeleteProfile() {
     fetch(`/deleteprofile/${person.id}}`, {
       method: 'DELETE',
@@ -24,6 +26,9 @@ function PersonProfile({ person, setPerson, setList, list, setDataFetched }) {
       .then(res => {
         if (res.ok) {
           setPerson(null)
+          setDataFetched(true)
+          setUpdatedAccount(null)
+          deleteProfile(person.id)
           console.log('User Deleted')
           navigate('/')
         } else {
@@ -36,30 +41,28 @@ function PersonProfile({ person, setPerson, setList, list, setDataFetched }) {
     navigate('/')
   }
 
+  // handles deleting movie from useres My Faves list
   const deleteMovie = (name) => {
     console.log(name)
     const newList= list.filter(movie => {
       return (movie.name !== name) 
-
     })
-    // setList(current => current.filter(p => { 
-      //   console.log(p.name)
-      //   // p.name === name 
       console.log(newList)
       setList(newList)
     }
 
-//   const filteredFaves = person.lists.filter((fave) => {
-//     if (fave.person_id === person.id) return true
-// })
-
-  const mappedFaves = person.lists.map(movie => {
-    return <PersonFaveMovie 
+  // maps current users(person) fave movies for profile page
+  const mappedFaves = list.map(movie => {
+    return <FaveMovie 
               key={movie.id} 
               id={movie.id} 
-              name={movie.name} 
+              name={movie.name || movie.title || movie.original_name} 
               poster_path={movie.poster_path} 
-              overview={movie.overview} 
+              backdrop_path={movie.backdrop_path}
+              overview={movie.overview}
+              release_date={movie.release_date || movie.first_air_date}
+              vote_average={movie.vote_average}
+              vote_count={movie.vote_count}
               deleteMovie={deleteMovie} 
               setList={setList}
               list={list}
@@ -73,7 +76,7 @@ function PersonProfile({ person, setPerson, setList, list, setDataFetched }) {
         <Link to='/Home' onClick={goToHome} className='back-link'>← Back to Home</Link>
         <img src={person.profile_img} alt={person.username} className='user-avatar' />
         <h1 className='greeting'>Hello {person.first_name}!</h1>
-        {showEdit ? <PersonEdit person={person} setPerson={setPerson} setShowEdit={setShowEdit} showEdit={showEdit} /> : null}
+        {showEdit ? <EditProfile person={person} setPerson={setPerson} setShowEdit={setShowEdit} showEdit={showEdit} /> : null}
         <button className="user-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
         <button className="user-button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
       </div>
@@ -89,4 +92,4 @@ function PersonProfile({ person, setPerson, setList, list, setDataFetched }) {
   )
 }
 
-export default PersonProfile
+export default UserProfile

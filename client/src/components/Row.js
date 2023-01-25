@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import YouTube from 'react-youtube'
 import movieTrailer from "movie-trailer"
-import axios from '../axios'
+import { movieAxios } from '../instance'
 import '../styles/Row.css'
 
 const base_url = "http://image.tmdb.org/t/p/original/"
@@ -14,14 +14,15 @@ function Row({ title, fetchURL }) {
   // fetch movies to parse into rows based on category/genre
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(fetchURL)
+      const request = await movieAxios.get(fetchURL)
       // console.log(request)
-      setMovies(request.data.results)
+      await setMovies(request.data.results)
       return request
     }
     fetchData()
   }, [fetchURL]);
 
+  // mapps movies to display on each row
   const mappedMovies = movies.map(movie => (
     <img
       key={movie.id}
@@ -74,7 +75,7 @@ function Row({ title, fetchURL }) {
       <br />
       <div>
         {trailerURL && <YouTube className='youtube-video' videoId={trailerURL} options={options} />}
-        {errors ? <div className="errors" onClick={handleErrors}>ⓧ Video unavailable at this time <em>(click to close)</em></div> : null}
+        {errors ? <div className="errors" onClick={handleErrors}>ⓧ Video unavailable at this time</div> : null}
       </div>
     </div>
   )

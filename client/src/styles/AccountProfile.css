@@ -187,3 +187,23 @@ body {
 .tooltip:hover .tooltiptext {
   visibility: visible;
 }
+
+.modal-title {
+  color: white;
+}
+
+.modal-rating{
+  color: white;
+}
+
+.modal-votes {
+  color: white;
+}
+
+.modal-date {
+  color: white;
+}
+
+.modal-button {
+  color: white;
+}

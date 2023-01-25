@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-// import PersonProfile from './PersonProfile'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../styles/NavMenu.css'
 
-function Person({ id, username, profile_img, setPerson, viewMenu, setViewMenu, setList   }) {
+function Person({ id, username, profile_img, setPerson, viewMenu, setViewMenu, setList }) {
   const navigate = useNavigate()
 
+  // allows users to switch profiles from the NavMenu
   function handlePerson() {
     setViewMenu(!viewMenu)
     console.log(id)

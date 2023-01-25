@@ -1,62 +1,56 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import '../styles/EditProfile.css'
+import React, { useState, useEffect } from 'react'
+import '../styles/PersonEdit.css'
 
-function EditProfile({ user, setUser }) {
+
+function PersonEdit({ person, setPerson, showEdit, setShowEdit }) {
   const [errors, setErrors] = useState(false)
-  const [editPassword, setEditPassword] = useState("");
-  const [editFirstName, setEditFirstName] = useState("")
-  const [editLastName, setEditLastName] = useState("")
+  const [editUsername, setEditUsername] = useState()
   const [editAvatar, setEditAvatar] = useState("")
   const [avatars, setAvatars] = useState([])
   
-  const navigate = useNavigate()
-
-  // function handlePasswordChange(e) {
-  //   setEditPassword(e.target.value);
-  // }
-
-  function handleFirstNameChange(e) {
-    setEditFirstName(e.target.value);
+  function handleUserameChange(e) {
+    setEditUsername(e.target.value);
   }
 
-  // function handleLastNameChange(e) {
-  //   setEditLastName(e.target.value);
-  // }
+  const handleAvatarClick = (avatar) => {
+    console.log(avatar.id)
+    setEditAvatar(avatar.imgUrl);
+  }
 
-  // const handleAvatarClick = (avatar) => {
-  //   console.log(avatar.id)
-  //   setEditAvatar(avatar.imgUrl);
-  // }
+  useEffect(() => {
+    fetch('/avatars')
+      .then((r) => r.json())
+      .then(avatars => {
+        console.log(avatars)
+        setAvatars(avatars)
+      })
+  },[])
 
-  // useEffect(() => {
-  //   fetch('/avatars')
-  //     .then((r) => r.json())
-  //     .then(avatars => {
-  //       console.log(avatars)
-  //       setAvatars(avatars)
-  //     })
-  // },[])
+  //  all avatars available for users to choose from for their profile
+  const mappedAvatars = avatars.map((avatar) => (
+    <img 
+      key={avatar.id} 
+      id={avatar.id} 
+      src={avatar.imgUrl}
+      alt={avatar.name} 
+      className='signup-avatars' 
+      onClick={() => handleAvatarClick(avatar)} />
+  ))
 
-  // const mappedAvatars = avatars.map((avatar) => (
-  //   <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
-  // ))
-
-  function handleEditUser(e) {
+  const editUser = {
+    username: editUsername,
+    profile_img: editAvatar
+  };
+  
+  function handleEditPerson(e) {
     e.preventDefault()
     
-    console.log(user)
-    
-    const editUser = {
-      first_name: editFirstName,
-      // last_name: editLastName,
-      // password: editPassword,
-      // profile_img: editAvatar
-    };
+    console.log(person)
 
     console.log(editUser)
 
-    fetch(`/updateuser/${user.id}`, {
+    // updates the user(person) profile
+    fetch(`/updateperson/${person.id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(editUser)
@@ -65,8 +59,9 @@ function EditProfile({ user, setUser }) {
         if (res.ok) {
           res.json().then(updatedUser => {
             console.log(updatedUser)
-            setUser(updatedUser)
-            navigate('/')
+            setPerson(updatedUser)
+            setEditUsername('')
+            setShowEdit(!showEdit)
           })
         } else {
           res.json().then(json => setErrors(json.errors))
@@ -76,54 +71,34 @@ function EditProfile({ user, setUser }) {
 
   return (
     <div>
-      <div className="edit-user-card">
-        <div className="edit-user-form">
-          <form onSubmit={handleEditUser}>
+      <div id="edit-person-card">
+        <div className="edit-person-form">
+          <form onSubmit={handleEditPerson}>
             <h3>Edit Your Profile</h3>
-            <br />
-            {/* <input
-              className="input-field"
-              name="password"
-              type="password"
-              value={editPassword}
-              placeholder="Enter a new password"
-              onChange={handlePasswordChange}
-            /> */}
             <br />
             <input
               className="input-field"
               name="first_name"
               type="text"
-              value={editFirstName}
-              placeholder="Enter a new name"
-              onChange={handleFirstNameChange}
+              value={editUsername}
+              placeholder="Enter a new profile name"
+              onChange={handleUserameChange}
               required
             />
             <br />
-            {/* <input
-              className="input-field"
-              name="last_name"
-              type="text"
-              value={editLastName}
-              placeholder="Enter your last name"
-              onChange={handleLastNameChange}
-            /> */}
-            {/* <br />
              <div className='avatar-section'>
                 <h3 className='signup-subheading'>Choose Your Avatar</h3>
                 <div className='avatars'>
                   {mappedAvatars}
                 </div>
-              </div> */}
-            <br />
-            <button className="profile-button" type="submit">Save Changes</button>
+              </div>
+            <button id="person-save-button" type="submit">Save Changes</button>
           </form>
           <br />
         </div>
       </div>
-      {errors ? <div className="errors">{errors}</div> : null}
     </div>
   )
 }
 
-export default EditProfile
+export default PersonEdit

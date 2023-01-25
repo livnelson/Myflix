@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import PersonNavMenu from './PersonNavMenu'
-// import Person from './Person'
+import NavMenu from './NavMenu'
 import '../styles/Nav.css'
 
 
@@ -11,9 +10,9 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people,
   const [searchAPI, setSearchAPI] = useState(false)
   const [search, setSearch] = useState("")
 
-
   const navigate = useNavigate()
 
+  // adds navbar background when scrolling down the page
   useEffect(() => {
     window.addEventListener('scroll', () => {
       if (window.scrollY > 80) {
@@ -28,26 +27,17 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people,
 
   console.log(user)
 
+  // show NavMenu component
   function toggleViewMenu() {
     setViewMenu(!viewMenu)
   }
 
+  // shows search bar
   function handleSearchBar() {
     setSearchAPI(!searchAPI)
   }
 
-  // function handlePerson() {
-  //   console.log(person.id)
-  //   fetch(`/person_profile/${person.id}`)
-  //   .then((res) => res.json())
-  //   .then((personObj) => {
-  //     console.log(personObj)
-  //     setPerson(personObj)
-  //     setViewMenu(!viewMenu)
-  //       navigate('/Home')
-  //     })
-  // }
-
+  // search feature API request
   function handleSearch(e) {
     e.preventDefault()
     fetch(`https://api.themoviedb.org/3/search/multi?api_key=7c552d1090c325ff3ddca4dfe3fd45a9&language=en-US&query=${search}&page=1&include_adult=false`)
@@ -58,25 +48,6 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people,
         navigate('/SearchResults')
       })
   }
-
-  // const mappedPeople = people.map((person) => {
-  //   return <Person
-  //     key={person.id}
-  //     id={person.id}
-  //     username={person.username}
-  //     profile_img={person.profile_img}
-  //     person={person}
-  //     setPerson={setPerson}
-  //     // showProfile={showProfile}
-  //     // setShowProfile={setShowProfile}
-  //      />
-  // })
-
-
-  
-  // const mappedPeople = user.people.map((a_user) => {
-  //   return <Person key={a_user.id} id={a_user.id} username={a_user.username} profile_img={a_user.profile_img} person={person} setPerson={setPerson} />
-  // })
 
   return (
     <div className={`nav ${show && 'nav-black'}`} >
@@ -107,7 +78,16 @@ function PersonNav({ user, setUser, setSearchResults, person, setPerson, people,
         <div className='nav-avatar' onClick={toggleViewMenu}>
           <img src={person.profile_img} alt={person.username} className='nav-avatar' />
         </div>
-          {viewMenu ? <PersonNavMenu user={user} setUser={setUser} person={person} setPerson={setPerson} people={people} viewMenu={viewMenu} setViewMenu={setViewMenu} list={list} setList={setList} /> : null}
+          {viewMenu ? <NavMenu 
+                        user={user} 
+                        setUser={setUser} 
+                        person={person} 
+                        setPerson={setPerson} 
+                        people={people} 
+                        viewMenu={viewMenu} 
+                        setViewMenu={setViewMenu} 
+                        list={list} 
+                        setList={setList} /> : null}
         </div>
         <div>
         </div>

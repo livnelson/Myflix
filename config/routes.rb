@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   
   get "/avatars", to: "avatars#index"
   
-  post "/add_to_movies", to: "movies#add_movie"
+  post "/add_likes", to: "movies#add_movie"
   
   get "/personfaves", to: "lists#index"
   delete "/deletepersonfave/:name", to: "lists#delete_myfave"

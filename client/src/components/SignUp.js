@@ -29,6 +29,7 @@ function SignUp({ setUser }) {
       body: JSON.stringify(userObj),
     };
 
+    // create a new account and routes to AddProfile component
     fetch("/create", configObject)
       .then((r) => r.json())
       .then((user) => {

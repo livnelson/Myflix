@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import PersonProfile from './PersonProfile'
 import '../styles/NavMenu.css'
 import '../styles/ManageProfile.css'
 
-function SelectProfile({ username, first_name, profile_img, setPerson, person, deleteProfile, setDataFetched }) {
+
+function SelectProfile({ username, profile_img, setPerson, person, deleteProfile, setDataFetched, setUpdatedProfile }) {
   const [errors, setErrors] = useState(false)
 
   const navigate = useNavigate()
 
+  // delets user from account
   function handleDeleteProfile() {
     console.log(person)
     fetch(`/deleteprofile/${person.id}`, {
@@ -17,9 +18,10 @@ function SelectProfile({ username, first_name, profile_img, setPerson, person, d
     })
       .then(res => {
         if (res.ok) {
-          setPerson(null)
+          // setPerson(null)
           deleteProfile(res)
           setDataFetched(true)
+          setUpdatedProfile()
           navigate('/')
           console.log('User Deleted')
         } else {
@@ -37,7 +39,7 @@ function SelectProfile({ username, first_name, profile_img, setPerson, person, d
             <img id="current-person-avatar" src={profile_img} alt={username} />
           </div>
         </div>
-        <p className='current-person-name' >{first_name}</p>
+        <p className='current-person-name' >{username}</p>
       </div>
       {errors ? <div className="errors">{errors}</div> : null}
     </>

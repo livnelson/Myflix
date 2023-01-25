@@ -1,5 +1,5 @@
 // client/src/components/Login.js
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import useSound from 'use-sound'
 import  neflixOpeningSound from '../sounds/netflixOpeningSound.mp3'
 import { useNavigate } from 'react-router-dom'
@@ -16,7 +16,6 @@ function Login({ onLogin, setPeople }) {
 
  function handleSubmit(e) {
     e.preventDefault();
-    play()
     setIsLoading(true);
     fetch("/login", {
       method: "POST",
@@ -28,6 +27,7 @@ function Login({ onLogin, setPeople }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => {
+          play()
           onLogin(user)
           setPeople(user.people)
         });

@@ -2,23 +2,17 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import '../styles/SignUp.css'
 
-function PeopleAdd({ setPerson, user, avatars, setDataFetched }) {
-
+function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount }) {
   const [username, setUsername] = useState("");
-
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
   const [profileImg, setProfileImg] = useState("");
 
   const navigate = useNavigate();
 
 
-  function handleFirstNameChange(e) {
-    setFirstName(e.target.value);
-  }
-
-  function handleLastNameChange(e) {
-    setLastName(e.target.value);
+  function handleUsernameChange(e) {
+    setUsername(e.target.value);
   }
 
   const handleAvatarClick = (avatar) => {
@@ -32,8 +26,8 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched }) {
     console.log("submitted");
 
     const userObj = {
-      first_name: firstName,
-      last_name: lastName,
+      // first_name: firstName,
+      // last_name: lastName,
       username,
       profile_img: profileImg,
       user_id: user.id
@@ -49,20 +43,23 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched }) {
       body: JSON.stringify(userObj),
     };
 
+    //  adds user profile to account and navigates to users(person) home
     fetch("/addperson", configObject)
       .then((r) => r.json())
       .then((person) => {
         console.log(person)
-        setFirstName("")
-        setLastName("")
+        // setFirstName("")
+        // setLastName("")
         setUsername("")
         setProfileImg("")
         setPerson(person)
         setDataFetched(true);
-        navigate(`/`)
+        setUpdatedAccount(person)
+        navigate(`/Home`)
       });
   }
 
+  // all avatars available for users to choose for thier profile
   const mappedAvatars = avatars.map((avatar) => (
     <img key={avatar.id} id={avatar.id} src={avatar.imgUrl} alt={avatar.name} className='signup-avatars' onClick={() => handleAvatarClick(avatar)} />
   ))
@@ -73,7 +70,6 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched }) {
       <div>
         <img className='signup-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       </div>
-
       <div className='signup-body'>
         <div className="signup-card">
           <Link to="/" className="login-back-link">← Back to Home</Link>
@@ -84,19 +80,9 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched }) {
                 className="signup-input-field"
                 name="first_name"
                 type="text"
-                value={firstName}
+                value={username}
                 placeholder="Enter Your First Name"
-                onChange={handleFirstNameChange}
-                required
-                />
-              <br />
-              <input
-                className="signup-input-field"
-                name="last_name"
-                type="text"
-                value={lastName}
-                placeholder="Enter Your Last Name"
-                onChange={handleLastNameChange}
+                onChange={handleUsernameChange}
                 required
                 />
               <br />
@@ -106,7 +92,6 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched }) {
                   {mappedAvatars}
                 </div>
               </div>
-              {/* {isLoading ? "Loading..." : null} */}
               <button className="signup-button" type="submit">Save Profile</button>
             </form>
           </div>

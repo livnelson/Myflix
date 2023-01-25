@@ -10,6 +10,7 @@ function SearchResults({ searchResults }) {
     navigate('/')
   }
 
+  // maps search results to parse details for each movie card
   const mappedSearch = searchResults.results.map((s) => {
     return <MovieCard
       key={s.id}
