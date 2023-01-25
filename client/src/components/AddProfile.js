@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import '../styles/SignUp.css'
+// import '../styles/SignUp.css'
+import '../styles/PersonProfile.css'
 
 function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount }) {
   const [username, setUsername] = useState("");
@@ -65,13 +66,12 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
   ))
 
   return (
-    <div
-      className='signup-page'>
+    <div>
       <div>
         <img className='signup-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       </div>
       <div className='signup-body'>
-        <div className="signup-card">
+        <div className="create-profile-card">
           <Link to="/" className="login-back-link">← Back to Home</Link>
           <h1 className='signup-greeting'>Create a Profile</h1>
           <div className="signup-form">

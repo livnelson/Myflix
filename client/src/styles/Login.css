@@ -34,6 +34,10 @@
   justify-content: center;
   width: 320px;
   margin-top: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin: auto;
   border: none;
   border-radius: 4px;
@@ -159,5 +163,5 @@ a {
   width: 120px;
   text-align: center;
   padding-left: 6px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }

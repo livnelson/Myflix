@@ -154,3 +154,14 @@ body {
   transform: scale(1.12);
   cursor: pointer;
 }
+
+.create-profile-card{
+  background-color: black;
+  color: white;
+  margin-top: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}

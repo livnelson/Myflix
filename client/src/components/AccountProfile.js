@@ -31,7 +31,7 @@ function UserProfile({ user, setUser, people, setPerson, deleteProfile, setDataF
       .then(res => {
         if (res.ok) {
           setUser(null)
-          navigate('/')
+          navigate('/signup')
           console.log('User Deleted')
         } else {
           res.json().then((err) => setErrors(err.errors));
