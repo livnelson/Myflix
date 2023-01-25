@@ -25,8 +25,6 @@ body {
 
 .person-profile-page {
   margin-top: 0;
-  /* min-height: 100vh;
-  min-width: 100vw; */
   max-height: 800px;
   justify-content: center;
 }
@@ -164,4 +162,10 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 5px;
+}
+
+.signup-back-link{
+  color: #777;
+  font-size: 11px;
+  margin-left: -14px;
 }

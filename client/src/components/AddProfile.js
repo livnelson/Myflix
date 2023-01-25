@@ -72,7 +72,7 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
       </div>
       <div className='signup-body'>
         <div className="create-profile-card">
-          <Link to="/" className="login-back-link">← Back to Home</Link>
+          <Link to="/" className="signup-back-link">← Back to Home</Link>
           <h1 className='signup-greeting'>Create a Profile</h1>
           <div className="signup-form">
             <form className='signup-inputs' onSubmit={handleSubmit}>
