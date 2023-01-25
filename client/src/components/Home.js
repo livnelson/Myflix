@@ -1,5 +1,5 @@
 // client/src/components/UserHome.js
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import requests from '../requests'
 import '../styles/App.css'
 import Row from './Row'
@@ -8,7 +8,7 @@ import NavBar from './NavBar'
 import WelcomePage from './WelcomePage'
 
 
-function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people, list, setList }) {
+function Home({ user, setUser, search, setSearch, handleSearch, setSearchResults, searchResults, person, setPerson, people, list, setList }) {
   const [addToFave, setAddToFave] = useState({})
   const [myFaves, setMyFaves] = useState([])
 
@@ -54,4 +54,4 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
   )
 }
 
-export default PersonHome
+export default Home
