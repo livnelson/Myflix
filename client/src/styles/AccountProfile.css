@@ -59,7 +59,7 @@ body {
 
 .back-link {
   color: #777 ;
-  font-size: 11px;
+  font-size: 11px ! important;
   letter-spacing: 0.5px;
 }
 
@@ -84,6 +84,7 @@ body {
 .user-button:hover {
   background-color: #c40f14;
   cursor: pointer;
+  font-weight: 700;
 }
 
 .faves-row {
@@ -174,9 +175,9 @@ body {
   padding: 5px 0;
   border-radius: 6px;
  
-  /* Position the tooltip text - see examples below! */
+  /* Tooltip text position */
   position: absolute;
-  bottom: 100%;
+  bottom: 103%;
   left: 50%;
   margin-left: -60px;
   z-index: 1;
@@ -185,4 +186,24 @@ body {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.modal-title {
+  color: white;
+}
+
+.modal-rating{
+  color: white;
+}
+
+.modal-votes {
+  color: white;
+}
+
+.modal-date {
+  color: white;
+}
+
+.modal-button {
+  color: white;
 }

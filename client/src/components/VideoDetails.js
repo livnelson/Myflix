@@ -1,21 +1,20 @@
-// client/src/components/VideoDetails.js
 import React, { useState } from 'react'
 import '../styles/VideoDetails.css'
 
-function PersonVideoDetails({ movie, person, viewDetails, setViewDetails, setAddToFave, addToFave}) {
+function VideoDetails({ movie, person, viewDetails, setViewDetails, setAddToFave, addToFave, setlist}) {
   const [like, setLike] = useState(false)
   const [voteCount, setVoteCount] = useState(false)
   const [addToList, setAddToList] = useState(false)
   const [showMessage, setShowMessage] = useState(false)
-  // const [myFaveList, setMyFaveList] = useState([])
 
-
-  console.log(person)
+  // console.log(person)
   
+  // shows VideoDetails component
   function toggleClose() {
     setViewDetails(!viewDetails)
   }
 
+  // adds a like to current movie
   function handleLikes(e) {
     e.preventDefault();
     setLike(!like)
@@ -37,7 +36,7 @@ function PersonVideoDetails({ movie, person, viewDetails, setViewDetails, setAdd
       body: JSON.stringify(likeObj),
     }
 
-    fetch(`/add_to_movies`, configObject)
+    fetch(`/add_likes`, configObject)
       .then((r) => r.json())
       .then((votes) => {
         console.log(votes);
@@ -45,18 +44,22 @@ function PersonVideoDetails({ movie, person, viewDetails, setViewDetails, setAdd
       })
   }
 
+  // adds current movie to My Fave list
   function handleAddToList(e) {
     e.preventDefault();
     console.log(person.username);
 
     const movieObj = {
       name: (movie.title || movie.name || movie.original_name),
+      overview: (movie.overview),
       poster_path: (movie.poster_path),
+      backdrop_path: (movie.backdrop_path),
       person_id: (person.id),
-      movie_id: (movie.movie_id)
+      movie_id: (movie.movie_id),
+      vote_average: (movie.vote_average),
+      vote_count: (movie.vote_count),
+      release_date: (movie.release_date ||  movie.first_air_date)
     };
-
-    // console.log(movieObj);
 
     const configObject = {
       method: "POST",
@@ -75,6 +78,7 @@ function PersonVideoDetails({ movie, person, viewDetails, setViewDetails, setAdd
       });
   }
 
+  // allows users to hide video unavailable message
   function handleClick() {
     setShowMessage(!showMessage)
   }
@@ -107,4 +111,4 @@ function PersonVideoDetails({ movie, person, viewDetails, setViewDetails, setAdd
   )
 }
 
-export default PersonVideoDetails
+export default VideoDetails

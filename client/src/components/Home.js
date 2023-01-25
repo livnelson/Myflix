@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react'
 import requests from '../requests'
 import '../styles/App.css'
 import Row from './Row'
-import PersonBanner from './PersonBanner'
-import PersonNav from './PersonNav'
+import Banner from './Banner'
+import NavBar from './NavBar'
 import WelcomePage from './WelcomePage'
 
 
@@ -15,7 +15,7 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
   if (!person.id) return  <WelcomePage   
                             user={user}
                             setUser={setUser}
-                            earch={search}
+                            search={search}
                             setSearch={setSearch}
                             setSearchResults={setSearchResults}
                             searchResults={searchResults}
@@ -27,7 +27,7 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
 
   return (
     <div className='app'>
-      <PersonNav
+      <NavBar
         user={user} 
         setUser={setUser} 
         search={search} 
@@ -40,12 +40,9 @@ function PersonHome({ user, setUser, search, setSearch, handleSearch, setSearchR
         people={people}
         list={list}
         setList={setList} />
-      <PersonBanner person={person} setAddToFave={setAddToFave} addToFave={addToFave}  />
+      <Banner person={person} setAddToFave={setAddToFave} addToFave={addToFave} setList={setList} />
       <br />
-      <Row
-        title="Myflix { Netflix }  Originals"
-        fetchURL={requests.fetchNetflixOriginals}
-        isLargeRow />
+      <Row title="Myflix { Netflix } Originals" fetchURL={requests.fetchNetflixOriginals} />
       <Row title="Trending Now" fetchURL={requests.fetchTrending} />
       <Row title="Top Rated" fetchURL={requests.fetchTopRated} />
       <Row title="Action Movies" fetchURL={requests.fetchActionMovies} />

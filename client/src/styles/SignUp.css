@@ -1,6 +1,11 @@
 .signup-page {
   display: flex;
-  margin: 0;
+  flex-direction: column;
+  background-image: url('../images/netflix-login-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
 }
 
 .signup-logo {
@@ -12,35 +17,11 @@
   padding-left: 20px;
 }
 
-/* .test {
-  color: white;
-  margin-top: 100px;
-}
-
-.person-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 40px;
-  text-align: right;
-  padding-right: 20px;
-  font-size: 12px;
-}
-
-.person-back-link{
-  padding-top: 26px;
-  color: #777;
-}
-
-.person-back-link:hover{
-  color: white;
-  cursor: pointer;
-} */
-
 .signup-body{
   display: flex;
   justify-content: center;
   margin: auto;
-  margin-top: 100px;
+  margin-bottom: 210px;
 }
 
 .signup-card {
@@ -49,9 +30,11 @@
   justify-content: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
-  width: 400px;
+  width: 320px;
   margin: auto;
-  padding-top: 10px;
+  margin-top: 80px;
+  margin-bottom: 60px;
+  padding-top: 14px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 14px;
@@ -96,7 +79,9 @@
 .signup-greeting {
   text-align: center;
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  font-size: 26px;
+  letter-spacing: .5px;
 }
 
 .signup-subheading {
@@ -108,6 +93,7 @@
 .login-back-link {
   color: #777 ;
   font-size: 11px;
+  padding-left: 10px;
 }
 
 .login-back-link:hover {

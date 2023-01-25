@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom"
 import AccountProfile from './AccountProfile'
 import SignUp from './SignUp'
 import SearchResults from "./SearchResults"
-import PersonProfile from './PersonProfile'
+import UserProfile from './UserProfile'
 import Home from './Home'
-import PersonAdd from './PersonAdd'
+import AddProfile from './AddProfile'
 import WelcomePage from './WelcomePage'
 
 function App() {
@@ -15,14 +15,16 @@ function App() {
   const [person, setPerson] = useState({})
   const [search, setSearch] = useState()
   const [searchResults, setSearchResults] = useState([])
-  const [myFaves, setMyFaves] = useState([])
+  // const [myFaves, setMyFaves] = useState([])
   const [list, setList] = useState([])
+  const [updatedAccount, setUpdatedAccount] = useState({})
   const [updatedProfile, setUpdatedProfile] = useState({})
   const [dataFetched, setDataFetched] = useState(false)
+  const [errors, setErrors] = useState()
 
   // auto-account-login
   useEffect(() => {
-    if (updatedProfile || !dataFetched) {
+    if (updatedAccount || !dataFetched) {
       fetch("/me").then((r) => {
         if (r.ok) {
           r.json().then((user) => {
@@ -30,30 +32,34 @@ function App() {
             setUser(user)
             setPeople(user.people)
           });
+        } else {
+          r.json().then((err) => setErrors(err.errors));
         }
       });
     }
-  }, [updatedProfile, dataFetched, setUpdatedProfile, setDataFetched]);
+  }, [updatedAccount, dataFetched, setPerson, setPeople, setUpdatedProfile, setDataFetched]);
 
   // auto-profile-login & refresh user list on change
   useEffect(() => {
+    if (updatedProfile || !dataFetched) {
       fetch("/profile_me").then((r) => {
         if (r.ok) {
           r.json().then((person) => {
-            console.log(person)
+            // console.log(person)
             setPerson(person)
             setList(person.lists)
           });
         }
       });
-  }, []);
+    }
+  }, [updatedProfile, dataFetched, setPerson, setUpdatedProfile, setDataFetched]);
 
   //fetches all avatars available to choose from 
   useEffect(() => {
     fetch('/avatars')
       .then((res) => res.json())
       .then((avatars) => {
-        console.log(avatars)
+        // console.log(avatars)
         setAvatars(avatars)
       })
   }, [])
@@ -74,7 +80,8 @@ function App() {
             person={person}
             setPerson={setPerson}
             people={people}
-            setPeople={setPeople} />}
+            setPeople={setPeople}
+            errors={errors} />}
         />
         <Route exact path='/Home' element={
           <Home
@@ -97,36 +104,41 @@ function App() {
             setUser={setUser}
             people={people}
             setPeople={setPeople}
-            setPerson={setPerson}
+            // setPerson={setPerson}
             deleteProfile={deleteProfile}
-            setDataFetched={setDataFetched} />} />
-        <Route exact path='/Signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
+            setDataFetched={setDataFetched}
+            setUpdatedProfile={setUpdatedProfile} />} />
+        <Route exact path='/signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
         <Route exact path='/SearchResults' element={
           <SearchResults
             search={search}
             searchResults={searchResults} />}
         />
         <Route exact path='/profile' element={
-          <PersonProfile
+          <UserProfile
             search={search}
             searchResults={searchResults}
             user={user}
             person={person}
             setPerson={setPerson}
-            myFaves={myFaves}
-            setMyFaves={setMyFaves}
+            // myFaves={myFaves}
+            // setMyFaves={setMyFaves}
             list={list}
-            setList={setList} />}
+            setList={setList}
+            // setDataFetched={setDataFetched}
+            // setUpdatedAccount={setUpdatedAccount}
+            deleteProfile={deleteProfile} />}
         />
         <Route exact path='/add_profile' element={
-          <PersonAdd
+          <AddProfile
             user={user}
             person={person}
             avatars={avatars}
             setPerson={setPerson}
             setPeople={setPeople}
             people={people}
-            setDataFetched={setDataFetched} />}
+            setDataFetched={setDataFetched}
+            setUpdatedAccount={setUpdatedAccount} />}
         />
       </Routes>
     </div>

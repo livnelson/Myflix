@@ -6,8 +6,8 @@ function MovieCard({ id, title, poster_path, overview, release_date, vote_averag
   function truncate(str, n) {
     return str?.length > n ? str.substr(0, n - 1) + "..." : str
   }
-
-
+  
+  // movie card for SearchResults component
   return (
     <div>
     <div className='movie-card'>

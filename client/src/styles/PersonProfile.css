@@ -25,8 +25,6 @@ body {
 
 .person-profile-page {
   margin-top: 0;
-  /* min-height: 100vh;
-  min-width: 100vw; */
   max-height: 800px;
   justify-content: center;
 }
@@ -153,4 +151,21 @@ body {
 .delete-button:hover {
   transform: scale(1.12);
   cursor: pointer;
+}
+
+.create-profile-card{
+  background-color: black;
+  color: white;
+  margin-top: 100px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+
+.signup-back-link{
+  color: #777;
+  font-size: 11px;
+  margin-left: -14px;
 }

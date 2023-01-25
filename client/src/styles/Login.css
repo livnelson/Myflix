@@ -1,7 +1,11 @@
 .login-page {
   display: flex;
   flex-direction: column;
-  margin-top: 0;
+  background-image: url('../images/netflix-login-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 100vh;
 }
 
 .login-logo {
@@ -19,6 +23,8 @@
   display: flex;
   justify-content: center;
   margin: auto;
+  margin-top: 80px;
+  margin-bottom: 80px;
 }
 
 .login-card {
@@ -28,6 +34,10 @@
   justify-content: center;
   width: 320px;
   margin-top: 80px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   margin: auto;
   border: none;
   border-radius: 4px;
@@ -153,4 +163,5 @@ a {
   width: 120px;
   text-align: center;
   padding-left: 6px;
+  margin-bottom: 40px;
 }

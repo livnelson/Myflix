@@ -1,40 +1,37 @@
-// client/src/components/Row.js
 import React, { useState, useEffect } from 'react'
-import axios from '../axios'
-import '../styles/Row.css'
 import YouTube from 'react-youtube'
 import movieTrailer from "movie-trailer"
+import { movieAxios } from '../instance'
+import '../styles/Row.css'
 
 const base_url = "http://image.tmdb.org/t/p/original/"
 
-function Row({ title, fetchURL, isLargeRow }) {
+function Row({ title, fetchURL }) {
   const [movies, setMovies] = useState([])
   const [trailerURL, setTrailerURL] = useState('')
+  const [errors, setErrors] = useState(false)
 
   // fetch movies to parse into rows based on category/genre
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(fetchURL)
+      const request = await movieAxios.get(fetchURL)
       // console.log(request)
-      setMovies(request.data.results)
+      await setMovies(request.data.results)
       return request
     }
     fetchData()
   }, [fetchURL]);
 
-  // console.log(movies)
-
+  // mapps movies to display on each row
   const mappedMovies = movies.map(movie => (
     <img
       key={movie.id}
       onClick={() => handleClick(movie)}
-      // className={`row-poster ${isLargeRow && 'row-poster-large'}`}
       className={`row-poster`}
-      // src={`${base_url}${isLargeRow ? movie.poster_path : movie.backdrop_path}`}
       src={`${base_url}${movie.poster_path}`}
       alt={movie.name} />
   ))
-  
+
   // https://www.npmjs.com/package/react-youtube
   // https://www.npmjs.com/package/movie-trailer
   // https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams/URLSearchParams
@@ -49,8 +46,15 @@ function Row({ title, fetchURL, isLargeRow }) {
           console.log("urlParams" + urlParams);
           setTrailerURL(urlParams.get("v"));
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          console.log(error)
+          setErrors(error)
+        });
     }
+  }
+
+  function handleErrors() {
+    setErrors(!errors)
   }
 
   // https://developers.google.com/youtube/player_parameters
@@ -68,8 +72,11 @@ function Row({ title, fetchURL, isLargeRow }) {
       <div className="row-posters">
         {mappedMovies}
       </div>
-      <br/>
-      {trailerURL && <YouTube style={{}} className='youtube-video' videoId={trailerURL} options={options} />}
+      <br />
+      <div>
+        {trailerURL && <YouTube className='youtube-video' videoId={trailerURL} options={options} />}
+        {errors ? <div className="errors" onClick={handleErrors}>ⓧ Video unavailable at this time</div> : null}
+      </div>
     </div>
   )
 }

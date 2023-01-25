@@ -1,22 +1,17 @@
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import Logout from './Logout'
-import Person from './Person'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import SwitchProfile from './SwitchProfile'
 import '../styles/NavMenu.css'
 
 
-function PersonNavMenu({ user, setUser, person, setPerson, people, viewMenu, setViewMenu, list, setList }) {
+function PersonNavMenu({ user, person, setPerson, viewMenu, setViewMenu, list, setList }) {
   const navigate = useNavigate()
-
-  // function handleAddPerson() {
-  //   navigate('/PersonAdd')
-  // }
-  // console.log(person)
 
   function handleMainMenu() {
     navigate('/')
   }
 
+  // sets user selected from NavMenu
   function handleViewProfile() {
     console.log(person.id)
     fetch(`/person_profile/${person.id}`)
@@ -25,13 +20,14 @@ function PersonNavMenu({ user, setUser, person, setPerson, people, viewMenu, set
         console.log(personObj)
         setViewMenu(!viewMenu)
         setPerson(personObj)
+        setList(personObj.lists)
         navigate('/profile')
-        // setShowProfile(!showProfile)
       })
   }
 
+  // current users to select
   const mappedPeople = user.people.map((person) => {
-    return <Person
+    return <SwitchProfile
       key={Math.random()}
       id={person.id}
       username={person.username}
@@ -48,23 +44,14 @@ function PersonNavMenu({ user, setUser, person, setPerson, people, viewMenu, set
   return (
     <div className='navmenu'>
       <div className='nav-dropdown'>
-        {/* <Link to="/UserProfile">
-          <div className='current-user'>
-            <img className="current-user-avatar" src={user.profile_img} alt={user.username} />
-            <p className='current-user-name'>{user.username}</p>
-          </div>
-        </Link> */}
         {mappedPeople}
         <div className='logout'>
           <div>
           <button id='logout-button' onClick={handleViewProfile}>View Your Profile</button>
           <button id='logout-button' onClick={handleMainMenu}>Back to Main Menu</button>
-          {/* <Logout user={user} setUser={setUser} /> */}
-          {/* <button className='logout-button'  onClick={handleAddPerson}>Add User</button> */}
           </div>
         </div>
       </div>
-      {/* {showProfile ? <PersonProfile /> : null} */}
     </div>
   )
 }
