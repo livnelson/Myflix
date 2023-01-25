@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../styles/PersonEdit.css'
 
 
-function PersonEdit({ person, setPerson, showEdit, setShowEdit }) {
+function EditProfile({ person, setPerson, showEdit, setShowEdit }) {
   const [errors, setErrors] = useState(false)
   const [editUsername, setEditUsername] = useState()
   const [editAvatar, setEditAvatar] = useState("")
@@ -97,8 +97,9 @@ function PersonEdit({ person, setPerson, showEdit, setShowEdit }) {
           <br />
         </div>
       </div>
+      {errors ? <div className="errors">{errors}</div> : null}
     </div>
   )
 }
 
-export default PersonEdit
+export default EditProfile

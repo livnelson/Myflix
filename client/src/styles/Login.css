@@ -3,9 +3,10 @@
   flex-direction: column;
   background-image: url('../images/netflix-login-background.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-attachment: fixed;
   height: 100vh;
+  width: 100vw;
 }
 
 .login-logo {
@@ -24,7 +25,7 @@
   justify-content: center;
   margin: auto;
   margin-top: 80px;
-  margin-bottom: 80px;
+  margin-bottom: 160px;
 }
 
 .login-card {
@@ -163,5 +164,5 @@ a {
   width: 120px;
   text-align: center;
   padding-left: 6px;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 }

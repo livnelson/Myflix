@@ -30,7 +30,7 @@
   flex-wrap: wrap;
   flex-direction: row !important;
   justify-content: space-around;
-  width: 500px;
+  max-width: 400px;
 }
 
 .select-user {
