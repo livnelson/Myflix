@@ -85,7 +85,9 @@
   height: 80px;
   font-size: 13px;
   overflow: hidden;
+  margin: 10px;
   margin-bottom: 10px;
+  margin-top: 20px;
   border-radius: 4px;
   background-color: #222;
   color: #777;
