@@ -5,7 +5,7 @@ import '../styles/PersonEdit.css'
 function EditProfile({ person, setPerson, showEdit, setShowEdit }) {
   const [errors, setErrors] = useState(false)
   const [editUsername, setEditUsername] = useState()
-  const [editAvatar, setEditAvatar] = useState(person.profile_img)
+  const [editAvatar, setEditAvatar] = useState(null)
   const [avatars, setAvatars] = useState([])
   
   function handleUserameChange(e) {
