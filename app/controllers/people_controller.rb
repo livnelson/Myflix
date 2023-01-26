@@ -24,9 +24,15 @@ class PeopleController < ApplicationController
   end
 
   def update
-    person = Person.find(params[:id])
-    person.update!(person_params)
-    render json: person, status: :accepted
+    if params[:profile_img] != nil
+      person = Person.find(params[:id])
+      person.update!(person_params)
+      render json: person, status: :accepted
+    else 
+      person = Person.find(params[:id])
+      person.update!(username: params[:username])
+      render json: person, status: :accepted
+    end
   end
 
   def destroy

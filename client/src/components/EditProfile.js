@@ -5,7 +5,7 @@ import '../styles/PersonEdit.css'
 function EditProfile({ person, setPerson, showEdit, setShowEdit }) {
   const [errors, setErrors] = useState(false)
   const [editUsername, setEditUsername] = useState()
-  const [editAvatar, setEditAvatar] = useState("")
+  const [editAvatar, setEditAvatar] = useState(null)
   const [avatars, setAvatars] = useState([])
   
   function handleUserameChange(e) {
@@ -83,7 +83,7 @@ function EditProfile({ person, setPerson, showEdit, setShowEdit }) {
               value={editUsername}
               placeholder="Enter a new profile name"
               onChange={handleUserameChange}
-              required
+              // required
             />
             <br />
              <div className='avatar-section'>
