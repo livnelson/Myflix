@@ -21,6 +21,7 @@ function App() {
   const [dataFetched, setDataFetched] = useState(false)
   const [errors, setErrors] = useState()
 
+  
   // auto-account-login
   useEffect(() => {
     if (updatedAccount || !dataFetched) {
@@ -105,13 +106,14 @@ function App() {
             setPeople={setPeople}
             deleteProfile={deleteProfile}
             setDataFetched={setDataFetched}
-            setUpdatedProfile={setUpdatedProfile} />} />
+            setUpdatedProfile={setUpdatedProfile} />} 
+          />
         <Route exact path='/signup' element={<SignUp avatars={avatars} setUser={setUser} />} />
         <Route exact path='/SearchResults' element={
           <SearchResults
             search={search}
             searchResults={searchResults} />}
-        />
+          />
         <Route exact path='/profile' element={
           <UserProfile
             search={search}
@@ -124,7 +126,7 @@ function App() {
             setUpdatedProfile={setUpdatedProfile}
             setDataFetched={setDataFetched}
             deleteProfile={deleteProfile} />}
-        />
+          />
         <Route exact path='/add_profile' element={
           <AddProfile
             user={user}
@@ -135,7 +137,7 @@ function App() {
             people={people}
             setDataFetched={setDataFetched}
             setUpdatedAccount={setUpdatedAccount} />}
-        />
+          />
       </Routes>
     </div>
   );
