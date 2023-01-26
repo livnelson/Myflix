@@ -75,7 +75,7 @@ function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpda
       <div className='user-profile'>
         <Link to='/Home' onClick={goToHome} className='back-link'>← Back to Home</Link>
         <img src={person.profile_img} alt={person.username} className='user-avatar' />
-        <h1 className='greeting'>Hello {person.first_name}!</h1>
+        <h1 className='greeting'>Hello {person.username}!</h1>
         {showEdit ? <EditProfile person={person} setPerson={setPerson} setShowEdit={setShowEdit} showEdit={showEdit} /> : null}
         <button className="user-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
         <button className="user-button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
