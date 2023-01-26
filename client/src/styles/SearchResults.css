@@ -3,6 +3,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   background-color: #111;
+  padding-top: 100px;
+  margin-top: -100px;
 }
 
 .search-header {
@@ -17,7 +19,9 @@
 
 .search-back-link{
   padding-top: 26px;
+  padding-right: 20px;
   color: #777;
+  font-size: 11px;
 }
 
 .search-back-link:hover{

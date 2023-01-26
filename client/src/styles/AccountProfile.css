@@ -1,10 +1,8 @@
-body {
-  background-color: #111;
-  margin-bottom: 30px;
-}
-
 .user-profile-page {
+  background-color: #111 !important;
+  position: relative;
   margin-top: 0;
+  padding-bottom: 300px;
 }
 
 .user-profile-logo {

@@ -66,7 +66,7 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
   ))
 
   return (
-    <div>
+    <div className='user-profile-page'>
       <div>
         <img className='signup-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       </div>
@@ -74,6 +74,7 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
         <div className="create-profile-card">
           <Link to="/" className="signup-back-link">← Back to Home</Link>
           <h1 className='signup-greeting'>Create a Profile</h1>
+          <br />
           <div className="signup-form">
             <form className='signup-inputs' onSubmit={handleSubmit}>
               <input
