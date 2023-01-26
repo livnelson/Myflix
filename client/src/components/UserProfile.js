@@ -5,7 +5,7 @@ import FaveMovie from './FaveMovie'
 import '../styles/AccountProfile.css'
 
 
-function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpdatedAccount, deleteProfile }) {
+function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpdatedProfile, deleteProfile }) {
   const [showEdit, setShowEdit] = useState(false)
   const [errors, setErrors] = useState(false)  
 
@@ -19,24 +19,24 @@ function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpda
 
   // allows users to delete their profile
   function handleDeleteProfile() {
+    deleteProfile(person.id)
     fetch(`/deleteprofile/${person.id}}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' }
     })
       .then(res => {
         if (res.ok) {
-          setPerson(null)
-          setDataFetched(true)
-          setUpdatedAccount(null)
-          deleteProfile(person.id)
           console.log('User Deleted')
+          setDataFetched(true)
+          setPerson(null)
+          setUpdatedProfile(null)
           navigate('/')
         } else {
           res.json().then((err) => setErrors(err.errors));
         }
       })
-  }
-
+    }
+    
   function goToHome() {
     navigate('/')
   }

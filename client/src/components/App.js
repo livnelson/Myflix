@@ -121,12 +121,10 @@ function App() {
             user={user}
             person={person}
             setPerson={setPerson}
-            // myFaves={myFaves}
-            // setMyFaves={setMyFaves}
             list={list}
             setList={setList}
-            // setDataFetched={setDataFetched}
-            // setUpdatedAccount={setUpdatedAccount}
+            setUpdatedProfile={setUpdatedProfile}
+            setDataFetched={setDataFetched}
             deleteProfile={deleteProfile} />}
         />
         <Route exact path='/add_profile' element={
