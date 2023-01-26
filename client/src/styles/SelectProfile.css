@@ -1,11 +1,15 @@
 .select-user-page {
+  background-color: #111 !important;
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  min-height: 100vh;
+  height: 100vh;
+  margin-bottom: 0;
+  overflow: hidden;
 }
 
 .logo {
