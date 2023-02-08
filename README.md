@@ -1,4 +1,3 @@
-# MYFLIX
 <img src='https://liv-creative.com/wp-content/uploads/2023/02/myflix-logo.png' width='200'>
 <em>A Clever Netflix Clone App</em><br>
 This is a web application that is inspired by the functionality and user interface of the popular streaming service, Netflix. It was built using a React front-end and a Ruby on Rails back-end.
