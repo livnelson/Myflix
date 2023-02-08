@@ -21,7 +21,7 @@ React - Front-end framework <br>
 Ruby on Rails - Back-end framework <br>
 PostgreSQL - Database management system <br>
 
-## Screen Shots
+## Screenshots
 <img src='https://liv-creative.com/wp-content/uploads/2023/02/netflix-coversheet.jpg' width='300'>
 
 
