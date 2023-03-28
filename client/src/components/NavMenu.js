@@ -47,8 +47,8 @@ function PersonNavMenu({ user, person, setPerson, viewMenu, setViewMenu, list, s
         {mappedPeople}
         <div className='logout'>
           <div>
-          <button id='logout-button' onClick={handleViewProfile}>View Your Profile</button>
-          <button id='logout-button' onClick={handleMainMenu}>Back to Main Menu</button>
+          <button id='navmenu-button' onClick={handleViewProfile}>View Your Profile</button>
+          <button id='navmenu-button' onClick={handleMainMenu}>Back to Main Menu</button>
           </div>
         </div>
       </div>

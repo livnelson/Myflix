@@ -8,7 +8,7 @@
   /* margin-right: 36px; */
   margin-top: 44px;
   margin-right: 36px;
-  width: 190px;
+  width: 200px;
   /* min-height: 300px; */
   max-height: 600px;
   background-color: #111;
@@ -79,7 +79,7 @@
   margin-top: 10px;
   margin-bottom: 5px;
   text-align: center;
-}
+} */
 
 #logout-button {
   display: flex;
@@ -146,7 +146,25 @@
   padding-top: 10px;
 }
 
-/* .account-user-name:hover {
+#navmenu-button {
+  background-color: transparent;
+  border: 1px solid #777;
+  color: #777;
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-top: 14px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 90%;
+}
+
+#navmenu-button:hover {
+  border: 1px solid white;
+  color: white !important;
   cursor: pointer;
-  color: #fff;
-} */
+}
