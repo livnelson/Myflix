@@ -4,7 +4,7 @@ This is a web application that is inspired by the functionality and user interfa
 <br></br>
 
 [Deployed version can be found here](https://myflix-db.onrender.com/)<br>
-###### <em>Please note this app is deployed on the free version of Render and can sometimes load slowly... very slowly</em>
+###### <em>Please note this app is deployed on the free version of Render and can sometimes load slowly... very, very slowly</em>
 
 ## Features
 
