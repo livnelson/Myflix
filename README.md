@@ -17,9 +17,9 @@ This is a web application that is inspired by the functionality and user interfa
 
 
 ## Built With
-React - Front-end framework <br>
-Ruby on Rails - Back-end framework <br>
-PostgreSQL - Database management system <br>
+React: Front-end framework <br>
+Ruby on Rails: Back-end framework <br>
+PostgreSQL: Database management system <br>
 
 ## Screenshots
 <img src='https://liv-creative.com/wp-content/uploads/2023/02/netflix-coversheet.jpg' width='300'>
