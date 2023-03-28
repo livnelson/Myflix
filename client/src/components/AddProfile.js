@@ -1,31 +1,31 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useState } from "react"
+import { useNavigate, Link } from "react-router-dom"
 import '../styles/PersonProfile.css'
 
 function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount }) {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("")
   // const [firstName, setFirstName] = useState("");
   // const [lastName, setLastName] = useState("");
-  const [profileImg, setProfileImg] = useState("");
+  const [profileImg, setProfileImg] = useState("")
   const [addUserProfile, setAddUserProfile] = useState(false)
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
 
   function handleUsernameChange(e) {
-    setUsername(e.target.value);
+    setUsername(e.target.value)
   }
 
   const handleAvatarClick = (avatar) => {
     console.log(avatar.id)
-    setProfileImg(avatar.imgUrl);
+    setProfileImg(avatar.imgUrl)
   }
 
   function handleSubmit(e) {
     console.log(user)
-    e.preventDefault();
+    e.preventDefault()
     setAddUserProfile(!addUserProfile)
-    console.log("This feature has been intentionally disabled");
+    console.log("This feature has been intentionally disabled")
 
     // const userObj = {
     //   // first_name: firstName,
@@ -86,7 +86,8 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
                 placeholder="Enter Your First Name"
                 onChange={handleUsernameChange}
                 required
-                />
+              />
+              <p className="errors">{addUserProfile ? "This feature has been intentionally disabled" : null}</p>
               <br />
               <div className='avatar-section'>
                 <h3 className='signup-subheading'>Choose Your Avatar</h3>
@@ -96,7 +97,6 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
               </div>
               <button className="signup-button" type="submit">Save Profile</button>
             </form>
-            <p className="errors">{addUserProfile ? "This feature has been intentionally disabled" : null}</p>
           </div>
         </div>
       </div>
@@ -104,4 +104,4 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
   )
 }
 
-export default PeopleAdd;
+export default PeopleAdd

@@ -30,7 +30,7 @@
   justify-content: center;
   color: white;
   background-color: rgba(0, 0, 0, 0.7);
-  width: 320px;
+  max-width: 320px;
   margin: auto;
   margin-top: 80px;
   margin-bottom: 180px;
