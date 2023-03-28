@@ -7,9 +7,12 @@ function EditProfile({ person, setPerson, showEdit, setShowEdit }) {
   const [editUsername, setEditUsername] = useState()
   const [editAvatar, setEditAvatar] = useState(null)
   const [avatars, setAvatars] = useState([])
+  const [disabled, setDisabled] = useState(false)
   
   function handleUserameChange(e) {
-    setEditUsername(e.target.value);
+    // setEditUsername(e.target.value);
+    console.log("This feature has been intentionally disabled")
+    setDisabled(!disabled)
   }
 
   const handleAvatarClick = (avatar) => {
@@ -37,36 +40,37 @@ function EditProfile({ person, setPerson, showEdit, setShowEdit }) {
       onClick={() => handleAvatarClick(avatar)} />
   ))
 
-  const editUser = {
-    username: editUsername,
-    profile_img: editAvatar
-  };
+  // const editUser = {
+  //   username: editUsername,
+  //   profile_img: editAvatar
+  // };
   
   function handleEditPerson(e) {
     e.preventDefault()
-    
-    console.log(person)
+    console.log("This feature has been intentionally disabled")
+    setDisabled(!disabled)
+    // console.log(person)
 
-    console.log(editUser)
+    // console.log(editUser)
 
-    // updates the user(person) profile
-    fetch(`/updateperson/${person.id}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(editUser)
-    })
-      .then(res => {
-        if (res.ok) {
-          res.json().then(updatedUser => {
-            console.log(updatedUser)
-            setPerson(updatedUser)
-            setEditUsername('')
-            setShowEdit(!showEdit)
-          })
-        } else {
-          res.json().then(json => setErrors(json.errors))
-        }
-      })
+    // // updates the user(person) profile
+    // fetch(`/updateperson/${person.id}`, {
+    //   method: 'PATCH',
+    //   headers: { 'Content-Type': 'application/json' },
+    //   body: JSON.stringify(editUser)
+    // })
+    //   .then(res => {
+    //     if (res.ok) {
+    //       res.json().then(updatedUser => {
+    //         console.log(updatedUser)
+    //         setPerson(updatedUser)
+    //         setEditUsername('')
+    //         setShowEdit(!showEdit)
+    //       })
+    //     } else {
+    //       res.json().then(json => setErrors(json.errors))
+    //     }
+    //   })
   }
 
   return (
@@ -96,6 +100,7 @@ function EditProfile({ person, setPerson, showEdit, setShowEdit }) {
           </form>
           <br />
         </div>
+        <p className="errors">{disabled ? "This feature has been intentionally disabled" : null}</p>
       </div>
       {errors ? <div className="errors">{errors}</div> : null}
     </div>

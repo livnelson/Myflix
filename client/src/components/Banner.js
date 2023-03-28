@@ -38,7 +38,7 @@ function Banner({ person, addToFave, setAddToFave, setList }) {
 
   // shows VideoDetails component
   function toggleViewDetails(e) {
-    e.stopPropagation()
+    e.stopPropagation(e)
     setViewDetails(!viewDetails)
   }
 

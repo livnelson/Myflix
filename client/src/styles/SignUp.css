@@ -105,7 +105,7 @@
 }
 
 .login-back-link:hover {
-  color: white;
+  color: #c40f14;
   cursor: pointer;
 }
 
@@ -162,3 +162,16 @@
   cursor: pointer;
 }
 
+.signup-disclaimer {
+  color: rgb(169, 169, 169);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  line-height: 1.5;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 12px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: 700;
+}

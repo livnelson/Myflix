@@ -12,32 +12,32 @@ function SignUp({ setUser }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("submitted");
+    console.log("This feature has been intentionally disbled");
 
-    const userObj = {
-      username,
-      password,
-    };
+    // const userObj = {
+    //   username,
+    //   password,
+    // };
 
-    console.log(userObj);
+    // // console.log(userObj);
 
-    const configObject = {
-      method: "POST",
-      headers: {
-        "content-type": "application/JSON",
-      },
-      body: JSON.stringify(userObj),
-    };
+    // const configObject = {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/JSON",
+    //   },
+    //   body: JSON.stringify(userObj),
+    // };
 
-    // create a new account and routes to AddProfile component
-    fetch("/create", configObject)
-      .then((r) => r.json())
-      .then((user) => {
-        setUsername("")
-        setPassword("")
-        setUser(user)
-        navigate(`/add_profile`)
-      });
+    // // create a new account and routes to AddProfile component
+    // fetch("/create", configObject)
+    //   .then((r) => r.json())
+    //   .then((user) => {
+    //     setUsername("")
+    //     setPassword("")
+    //     setUser(user)
+    //     navigate(`/add_profile`)
+    //   });
   }
 
   return (
@@ -76,6 +76,7 @@ function SignUp({ setUser }) {
               <button className="signup-button" type="submit">Sign Up Now</button>
             </form>
           </div>
+            <p className="signup-disclaimer">This feature has been intentionally disabled. If you would like to log in and view the app features please return to the log in page and use the guest credentials listed there. Thank you!</p>
         </div>
       </div>
     </div>

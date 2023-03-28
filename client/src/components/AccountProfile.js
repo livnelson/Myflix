@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import EditAccount from './EditAccount'
 import ManageProfiles from './ManageProfiles'
@@ -8,6 +8,7 @@ import '../styles/AccountProfile.css'
 function UserProfile({ user, setUser, people, setPerson, deleteProfile, setDataFetched, setUpdatedProfile }) {
   const [showEdit, setShowEdit] = useState(false)
   const [errors, setErrors] = useState(false)
+  const [deleteUserAccount, setDeleteUserAccount] = useState(false)
 
   const navigate = useNavigate();
   console.log(user)
@@ -24,19 +25,21 @@ function UserProfile({ user, setUser, people, setPerson, deleteProfile, setDataF
 
   // deletes main account and all users
   function handleDeleteAccount() {
-    fetch(`/users/${user.id}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(res => {
-        if (res.ok) {
-          setUser(null)
-          navigate('/signup')
-          console.log('User Deleted')
-        } else {
-          res.json().then((err) => setErrors(err.errors));
-        }
-      })
+    console.log("This feature has been intentionally disabled")
+    setDeleteUserAccount(!deleteUserAccount)
+    // fetch(`/users/${user.id}`, {
+    //   method: 'DELETE',
+    //   headers: { 'Content-Type': 'application/json' }
+    // })
+    //   .then(res => {
+    //     if (res.ok) {
+    //       setUser(null)
+    //       navigate('/signup')
+    //       console.log('User Deleted')
+    //     } else {
+    //       res.json().then((err) => setErrors(err.errors));
+    //     }
+    //   })
   }
 
   function goToHome() {
@@ -60,6 +63,7 @@ function UserProfile({ user, setUser, people, setPerson, deleteProfile, setDataF
     />
   })
 
+
   return (
     <div className='user-profile-page'>
       <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
@@ -70,6 +74,7 @@ function UserProfile({ user, setUser, people, setPerson, deleteProfile, setDataF
         {showEdit ? <EditAccount user={user} setUser={setUser} /> : null}
         <button className="user-button" type="submit" onClick={handleEditAccount}>{showEdit ? "Cancel Edit Profile" : "Edit Account Profile"}</button>
         <button className="user-button" type="submit" onClick={handleDeleteAccount}>Delete Account</button>
+        <p className="errors">{deleteUserAccount ? "This feature has been intentionally disabled" : null}</p>
         <button className="user-button" type="submit" onClick={handleAdduser}>Create a Profile</button>
       </div>
       <br />

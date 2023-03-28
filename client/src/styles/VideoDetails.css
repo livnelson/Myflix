@@ -11,6 +11,7 @@
   margin: auto;
   margin-top: 86px;
   z-index: 9999;
+  border-radius: 5px;
 }
 
 .modal-content {

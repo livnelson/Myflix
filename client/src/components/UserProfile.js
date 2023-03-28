@@ -7,36 +7,40 @@ import '../styles/AccountProfile.css'
 
 function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpdatedProfile, deleteProfile }) {
   const [showEdit, setShowEdit] = useState(false)
-  const [errors, setErrors] = useState(false)  
+  const [errors, setErrors] = useState(false)
+  const [disabled, setDisabled] = useState(false)
 
-  const navigate = useNavigate();
+
+  const navigate = useNavigate()
   console.log(person)
 
   // shows EditProfile component for user(person) 
   function handleShowEdit() {
-    setShowEdit(!showEdit);
+    setShowEdit(!showEdit)
   }
 
   // allows users to delete their profile
   function handleDeleteProfile() {
-    deleteProfile(person.id)
-    fetch(`/deleteprofile/${person.id}}`, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then(res => {
-        if (res.ok) {
-          console.log('User Deleted')
-          setDataFetched(true)
-          setPerson(null)
-          setUpdatedProfile(null)
-          navigate('/')
-        } else {
-          res.json().then((err) => setErrors(err.errors));
-        }
-      })
-    }
-    
+    console.log("This feature has been intentionally disabled")
+    setDisabled(!disabled)
+    // deleteProfile(person.id)
+    // fetch(`/deleteprofile/${person.id}}`, {
+    //   method: 'DELETE',
+    //   headers: { 'Content-Type': 'application/json' }
+    // })
+    //   .then(res => {
+    //     if (res.ok) {
+    //       console.log('User Deleted')
+    //       setDataFetched(true)
+    //       setPerson(null)
+    //       setUpdatedProfile(null)
+    //       navigate('/')
+    //     } else {
+    //       res.json().then((err) => setErrors(err.errors));
+    //     }
+    //   })
+  }
+
   function goToHome() {
     navigate('/')
   }
@@ -44,32 +48,32 @@ function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpda
   // handles deleting movie from useres My Faves list
   const deleteMovie = (name) => {
     console.log(name)
-    const newList= list.filter(movie => {
-      return (movie.name !== name) 
+    const newList = list.filter(movie => {
+      return (movie.name !== name)
     })
-      console.log(newList)
-      setList(newList)
-    }
+    console.log(newList)
+    setList(newList)
+  }
 
   // maps current users(person) fave movies for profile page
   const mappedFaves = list.map(movie => {
-    return <FaveMovie 
-              key={movie.id} 
-              id={movie.id} 
-              name={movie.name || movie.title || movie.original_name} 
-              poster_path={movie.poster_path} 
-              backdrop_path={movie.backdrop_path}
-              overview={movie.overview}
-              release_date={movie.release_date || movie.first_air_date}
-              vote_average={movie.vote_average}
-              vote_count={movie.vote_count}
-              deleteMovie={deleteMovie} 
-              setList={setList}
-              list={list}
-              setDataFetched={setDataFetched} />
+    return <FaveMovie
+      key={movie.id}
+      id={movie.id}
+      name={movie.name || movie.title || movie.original_name}
+      poster_path={movie.poster_path}
+      backdrop_path={movie.backdrop_path}
+      overview={movie.overview}
+      release_date={movie.release_date || movie.first_air_date}
+      vote_average={movie.vote_average}
+      vote_count={movie.vote_count}
+      deleteMovie={deleteMovie}
+      setList={setList}
+      list={list}
+      setDataFetched={setDataFetched} />
   })
 
-  return ( 
+  return (
     <div className='user-profile-page'>
       <img className='user-profile-logo' src='./myflix-logo.png' alt='MYFLIX-LOGO' />
       <div className='user-profile'>
@@ -79,11 +83,12 @@ function UserProfile({ person, setPerson, setList, list, setDataFetched, setUpda
         {showEdit ? <EditProfile person={person} setPerson={setPerson} setShowEdit={setShowEdit} showEdit={showEdit} /> : null}
         <button className="user-button" type="submit" onClick={handleShowEdit}>{showEdit ? "Cancel Edit Profile" : "Edit Profile"}</button>
         <button className="user-button" type="submit" onClick={handleDeleteProfile}>Delete Profile</button>
+        <p className="errors">{disabled ? "This feature has been intentionally disabled" : null}</p>
       </div>
       <br />
       <h2 className='fave-greeting'>My Faves List</h2>
       <div className='faves-row'>
-        <div  className='faves-row-posters'>
+        <div className='faves-row-posters'>
           {mappedFaves}
         </div>
       </div>

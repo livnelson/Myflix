@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-// import '../styles/SignUp.css'
 import '../styles/PersonProfile.css'
 
 function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount }) {
@@ -8,6 +7,7 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
   // const [firstName, setFirstName] = useState("");
   // const [lastName, setLastName] = useState("");
   const [profileImg, setProfileImg] = useState("");
+  const [addUserProfile, setAddUserProfile] = useState(false)
 
   const navigate = useNavigate();
 
@@ -24,40 +24,41 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
   function handleSubmit(e) {
     console.log(user)
     e.preventDefault();
-    console.log("submitted");
+    setAddUserProfile(!addUserProfile)
+    console.log("This feature has been intentionally disabled");
 
-    const userObj = {
-      // first_name: firstName,
-      // last_name: lastName,
-      username,
-      profile_img: profileImg,
-      user_id: user.id
-    };
+    // const userObj = {
+    //   // first_name: firstName,
+    //   // last_name: lastName,
+    //   username,
+    //   profile_img: profileImg,
+    //   user_id: user.id
+    // };
 
-    console.log(userObj);
+    // console.log(userObj);
 
-    const configObject = {
-      method: "POST",
-      headers: {
-        "content-type": "application/JSON",
-      },
-      body: JSON.stringify(userObj),
-    };
+    // const configObject = {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/JSON",
+    //   },
+    //   body: JSON.stringify(userObj),
+    // };
 
-    //  adds user profile to account and navigates to users(person) home
-    fetch("/addperson", configObject)
-      .then((r) => r.json())
-      .then((person) => {
-        console.log(person)
-        // setFirstName("")
-        // setLastName("")
-        setUsername("")
-        setProfileImg("")
-        setPerson(person)
-        setDataFetched(true);
-        setUpdatedAccount(person)
-        navigate(`/Home`)
-      });
+    // //  adds user profile to account and navigates to users(person) home
+    // fetch("/addperson", configObject)
+    //   .then((r) => r.json())
+    //   .then((person) => {
+    //     console.log(person)
+    //     // setFirstName("")
+    //     // setLastName("")
+    //     setUsername("")
+    //     setProfileImg("")
+    //     setPerson(person)
+    //     setDataFetched(true);
+    //     setUpdatedAccount(person)
+    //     navigate(`/Home`)
+    //   });
   }
 
   // all avatars available for users to choose for thier profile
@@ -95,6 +96,7 @@ function PeopleAdd({ setPerson, user, avatars, setDataFetched, setUpdatedAccount
               </div>
               <button className="signup-button" type="submit">Save Profile</button>
             </form>
+            <p className="errors">{addUserProfile ? "This feature has been intentionally disabled" : null}</p>
           </div>
         </div>
       </div>

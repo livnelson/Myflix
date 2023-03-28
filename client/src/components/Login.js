@@ -1,7 +1,7 @@
 // client/src/components/Login.js
 import React, { useState } from 'react'
 import useSound from 'use-sound'
-import  neflixOpeningSound from '../sounds/netflixOpeningSound.mp3'
+import neflixOpeningSound from '../sounds/netflixOpeningSound.mp3'
 import { useNavigate } from 'react-router-dom'
 import '../styles/Login.css'
 
@@ -11,12 +11,12 @@ function Login({ onLogin, setPeople }) {
   const [password, setPassword] = useState("")
   const [errors, setErrors] = useState([])
   const [isLoading, setIsLoading] = useState(false)
-  
+
   const navigate = useNavigate()
 
- function handleSubmit(e) {
-    e.preventDefault();
-    setIsLoading(true);
+  function handleSubmit(e) {
+    e.preventDefault()
+    setIsLoading(true)
     fetch("/login", {
       method: "POST",
       headers: {
@@ -24,17 +24,17 @@ function Login({ onLogin, setPeople }) {
       },
       body: JSON.stringify({ username, password }),
     }).then((r) => {
-      setIsLoading(false);
+      setIsLoading(false)
       if (r.ok) {
         r.json().then((user) => {
           play()
           onLogin(user)
           setPeople(user.people)
-        });
+        })
       } else {
-        r.json().then((err) => setErrors(err.errors));
+        r.json().then((err) => setErrors(err.errors))
       }
-    });
+    })
   }
 
   function handleSignUp() {
@@ -77,6 +77,11 @@ function Login({ onLogin, setPeople }) {
               <button className="login-button" type="submit">Sign In</button>
             </form>
           </div>
+          <div >
+            <h4 className="guest-credentials-header">Guest Credentials:</h4>
+            <p className="guest-credentials">Username: guest</p>
+            <p className="guest-credentials">Password: P@ssw0rd!</p>
+          </div>
           {errors ? <div className="errors">{errors}</div> : null}
           <p className="sign-up-link" onClick={handleSignUp}> New to Myflix? <span className="sign-up-form-link">Sign up now.</span></p>
           <p className="login-disclaimer">This is a Netflix inspired clone built to give viewers an example of my programming abilities and graphic design skills. This app includes all movie listings from Netflix and may include titles that are considered NSFW or inappropriate for underage viewers. Please consider your environment when viewing. Thanks and enjoy!  ~ Liv</p>
@@ -84,8 +89,8 @@ function Login({ onLogin, setPeople }) {
       </div>
       <div className='attribution'>
         <div>
-        <p className='attribution-title'>Movie Data Provided By:</p>
-        <img className='tmdb-logo' src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg' alt="TMDB-logo"/>
+          <p className='attribution-title'>Movie Data Provided By:</p>
+          <img className='tmdb-logo' src='https://www.themoviedb.org/assets/2/v4/logos/v2/blue_long_1-8ba2ac31f354005783fab473602c34c3f4fd207150182061e425d366e4f34596.svg' alt="TMDB-logo" />
         </div>
       </div>
     </div>
