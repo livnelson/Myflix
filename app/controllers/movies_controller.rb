@@ -15,11 +15,6 @@ class MoviesController < ApplicationController
     render json: user, status: :accepted
   end
 
-  # def vote_update
-  #   movie = Movie.find_or_create_by(id: [:id])
-  #   render json: movie, status: :accepted
-  # end
-
   def add_movie
     movie = Movie.find_or_create_by!(movie_params)
     render json: movie, status: :accepted

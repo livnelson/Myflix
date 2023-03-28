@@ -7,6 +7,7 @@ import UserProfile from './UserProfile'
 import Home from './Home'
 import AddProfile from './AddProfile'
 import WelcomePage from './WelcomePage'
+import ManageProfiles from './ManageProfiles'
 
 function App() {
   const [user, setUser] = useState({})
@@ -129,6 +130,17 @@ function App() {
           />
         <Route exact path='/add_profile' element={
           <AddProfile
+            user={user}
+            person={person}
+            avatars={avatars}
+            setPerson={setPerson}
+            setPeople={setPeople}
+            people={people}
+            setDataFetched={setDataFetched}
+            setUpdatedAccount={setUpdatedAccount} />}
+          />
+        <Route exact path='/add_profile' element={
+          <ManageProfiles
             user={user}
             person={person}
             avatars={avatars}

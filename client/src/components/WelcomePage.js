@@ -9,7 +9,7 @@ import '../styles/SelectProfile.css'
 function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, people, setPeople }) {
   const navigate = useNavigate()
 
-  // allows users to choose their profile
+  // maps over people to allow users to choose and view their profile
   const mappedPeople = people.map((person) => {
     return <SelectProfile
       key={Math.random()}
@@ -24,8 +24,12 @@ function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, peop
 
   // console.log(user)
 
-  function handleAddPerson() {
+  function handleManageAccount() {
     navigate('/manage_profiles')
+  }
+
+  function handleAddPerson() {
+    navigate('/add_profile')
   }
 
   if (!user.id) return <Login
@@ -35,27 +39,7 @@ function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, peop
                         people={people}
                         setPeople={setPeople} />
 
-  // if (!people) return <>
-  //                       <h1 className='err-greeting'>Who's watching?</h1>
-  //                       <img
-  //                         className='logo'
-  //                         src='./myflix-logo.png'
-  //                         alt='MYFLIX-LOGO'
-  //                       />
-  //                       <div className='create-profile-error'>
-  //                         <p className='err-msg'><em>Please create a profile</em></p>
-  //                         <div className='sign-out-buttons'>
-  //                           <button className='createprofile-button' onClick={handleAddPerson}>Create a Profile</button>
-  //                           <Logout
-  //                             setUser={setUser}
-  //                             user={user}
-  //                             setIsLoggedIn={setIsLoggedIn}
-  //                             setPerson={setPerson}
-  //                             people={people} />
-  //                           </div>
-  //                         </div>
-  //                       </>
-
+                        
   return (
     <div className='select-user-page'>
       <img
@@ -69,13 +53,14 @@ function WelcomePage({ setUser, user, setAccount, setIsLoggedIn, setPerson, peop
         {mappedPeople}
       </div>
       <div className='sign-out-buttons'>
-        <button className='manageprofile-button' onClick={handleAddPerson}>Manage Account</button>
+        <button className='manageprofile-button' onClick={handleManageAccount}>Manage Account</button>
         <Logout
           setUser={setUser}
           user={user}
           setIsLoggedIn={setIsLoggedIn}
           setPerson={setPerson}
           people={people} />
+        <button className='manageprofile-button' onClick={handleAddPerson}>Create A Profile</button>
       </div>
     </div>
   )

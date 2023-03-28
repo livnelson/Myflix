@@ -149,6 +149,19 @@ a {
   padding-top: 12px;
   margin-bottom: 30px;
 }
+.guest-credentials-header {
+  color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-bottom: 10px;
+}
+
+.guest-credentials {
+  color: rgb(169, 169, 169);
+  padding-left: 30px;
+  padding-right: 30px;
+  line-height: 1.5;
+}
 
 .attribution {
   display: flex;
@@ -156,6 +169,7 @@ a {
   flex-wrap: wrap;
   justify-content: center;
   margin: auto;
+  margin-top: 200px;
   text-align: center;
 }
 

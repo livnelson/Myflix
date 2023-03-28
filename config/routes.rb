@@ -4,13 +4,12 @@ Rails.application.routes.draw do
   # constraints: ->(req) { !req.xhr? && req.format.html? }
 
   # resources :sessions
-  resources :user_avatars
-  resources :avatars
-  resources :my_lists
+  resources :avatars, only: [:index]
+  resources :my_lists, only: [:index, :update]
   resources :users
   resources :accounts
-  resources :movies
-  resources :lists
+  resources :movies, only: [:list, :create, :update]
+  resources :lists,  only: [:index, :update]
   resources :people
 
   get "/me", to: "users#show"
@@ -34,8 +33,8 @@ Rails.application.routes.draw do
   
   post "/add_likes", to: "movies#add_movie"
   
-  get "/personfaves", to: "lists#index"
-  delete "/deletepersonfave/:name", to: "lists#delete_myfave"
+  # get "/personfaves", to: "lists#index"
+  # delete "/deletepersonfave/:name", to: "lists#delete_myfave"
   
   get "/allfaves", to: "my_lists#index"
   post "/add_to_mylist", to: "my_lists#add_to_list"
